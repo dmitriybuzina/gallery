@@ -1,0 +1,66 @@
+
+
+<div class="toppp">
+  <h1>Welcome to gallery</h1>
+
+
+<ul class="nav nav-pills">
+  <li class="nav-item">
+    <%= link_to('Home', root_path) %>
+  </li>
+  <li class="nav-item">
+    <% if user_signed_in? %>
+      <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+    <% else %>
+      <%= link_to('Login', new_user_session_url)  %>
+    <% end %>
+  </li>
+  <li class="nav-item">
+    <%= link_to('New Category', new_category_path) %>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Disabled</a>
+  </li>
+</ul>
+</div>
+
+<section class="section-padding" id="portfolio">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h2 class="title text-center">
+          Let's <span class="decorate">See</span> My work
+        </h2>
+      </div>
+    </div>
+
+    <!-- Image Grid-->
+    <div class="container">
+      <div id="my-grid" class="grid-padding">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="row"><%image_tag("p1.jpg", class: "fit-image", onclick = "openModal") %>image_tag class="fit-image" onclick="openModal();currentSlide(1)"></div>
+          </div>
+          <div class="col-sm-4">
+
+          </div>
+          <div class="col-sm-4">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--<div class="table">-->
+  <%=  image_tag("p1.jpg" , class: "picture")  %>
+  <%#=  image_tag('p2.jpg')   %>
+  <%#=  image_tag('p3.jpeg')  %>
+  <%#=  image_tag('p4.jpg')  %>
+  <%#=  image_tag('p5.jpeg')  %>
+  <%#=  image_tag('p6.jpeg')  %>
+  <%#=  image_tag('p7.jpeg')  %>
+  <%#=  image_tag('p8.jpeg')  %>
+
+<!--</div>-->
