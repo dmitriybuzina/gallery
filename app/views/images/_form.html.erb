@@ -6,7 +6,7 @@
 
   <%= f.label :file %>
   <%= f.file_field :file %>
-
+  <%= f.hidden_field :category_id, value: params[:category_id] %>
 
   <%= f.submit %>
 <% end %>
