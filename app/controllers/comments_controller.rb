@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
   end
 
   def show
-    @comments = Comment.all.where("image_id = #{params[:id]}")
+    @comments = Comment.all.where("image_id = ?", params[:id])
   end
 
   private

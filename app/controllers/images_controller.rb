@@ -15,7 +15,7 @@ class ImagesController < ApplicationController
   end
 
   def show
-    @images = Image.all.where("category_id = #{params[:id]}")
+    @images = Image.all.where("category_id = ?", params[:id])
   end
 
   private
