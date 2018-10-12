@@ -11,7 +11,11 @@
           <%= link_to image_tag('papka.png'), image_path(category) %>
           <%= link_to category.name, image_path(category) %>
           <%= link_to 'Edit', edit_category_path(category) %>
-          <%= link_to 'Subscribe', new_subscription_path(category_id: category.id) %>
+          <% if current_user.following?(category) %>
+            <%= link_to 'Unsubscribe', delete_folower_category_path(category), method: :put %>
+          <% else %>
+            <%= link_to 'Subscribe', new_folower_category_path(category), method: :put %>
+          <% end %>
           <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %>
         </p>
     <% end %>

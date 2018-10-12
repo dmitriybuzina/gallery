@@ -68,5 +68,6 @@ gem 'devise-bootstrap-views', '~> 1.0'
 gem 'letter_opener', :group => :development
 gem 'file_validators'
 gem 'cloudinary'
+gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 
 

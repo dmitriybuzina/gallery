@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, only: [:show, :edit, :update, :destroy, :new_folower, :delete_folower]
 
 
   # GET /categories
@@ -59,8 +59,21 @@ class CategoriesController < ApplicationController
   def destroy
     @category.destroy
     respond_to do |format|
-      format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }
+       format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def new_folower
+    @user = current_user
+    if @user.follow(@category)
+      redirect_to categories_path
+    end
+  end
+
+  def delete_folower
+    if current_user.stop_following(@category)
+      redirect_to categories_path
     end
   end
 
