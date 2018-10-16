@@ -1,0 +1,12 @@
+= form_with(model: category, local: true) do |form|
+  / <div id="error_explanation">
+  / <h2><haml_silent></haml_silent> prohibited this category from being saved:</h2>
+  / <ul>
+  / <li><haml_silent></haml_silent></li>
+  / </ul>
+  / </div>
+  .field
+    = form.label :name
+    = form.text_field :name
+  .actions
+    = form.submit

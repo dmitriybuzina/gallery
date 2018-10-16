@@ -1,0 +1,6 @@
+%p Емайл
+%p= @user.email
+%br/
+- @categories.each do |category|
+  %p
+    = link_to category.name, image_path(category)
