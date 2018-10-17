@@ -8,9 +8,12 @@
         = link_to category.name, image_path(category)
         = link_to 'Edit', edit_category_path(category)
         - if current_user.following?(category)
-          = link_to 'Unsubscribe', delete_folower_category_path(category), method: :put
+          -#= image_tag('red.png'), delete_folower_category_path(category), method: :put
+
+          = link_to image_submit_tag('red.png', width: "20", height: "20"), delete_folower_category_path(category), method: :put, class: 'edituser'
         - else
-          = link_to 'Subscribe', new_folower_category_path(category), method: :put
+          -#= image_tag('green.png'), new_folower_category_path(category), method: :put
+          = link_to image_submit_tag('green.png', width: "20", height: "20"), new_folower_category_path(category), method: :put, class: 'edituser'
         = link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }
     = link_to image_tag('new_category.png'), new_category_path
 %br/

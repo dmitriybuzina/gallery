@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   end
   get 'welcome/index'
   get 'profiles/index'
-  resources :images
+  resources :images do
+    put 'new_like', on: :member
+    put 'delete_like', on: :member
+  end
   resources :profiles
   root 'welcome#index'
   devise_for :users

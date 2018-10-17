@@ -2,5 +2,10 @@
 %p= link_to 'New', new_image_path(category_id: params[:id])
 %tbody
   - @images.each do |image|
-    %p= link_to image_tag(image.file.url, id: "myImg", size: "240x150"), comment_path(image)
+    %p
+      =link_to image_tag(image.file.url, id: "myImg", size: "240x150"), comment_path(image)
+      -if current_user.likes?(image)
+        =link_to 'Unlike', delete_like_image_path(image), method: :put
+      -else
+        =link_to 'Like', new_like_image_path(image), method: :put
   %p= link_to image_tag('addImage.png', class: "img-thumbnail", size: "240x150"), new_image_path(category_id: params[:id])
