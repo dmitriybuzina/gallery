@@ -60,6 +60,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
 gem 'activeadmin'
 gem 'carrierwave', '~> 1.0'
 gem 'devise'
@@ -67,7 +68,6 @@ gem 'bootstrap-sass', '3.2.0.2'
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'letter_opener', :group => :development
 gem 'file_validators'
-gem 'cloudinary'
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 gem 'haml-rails', '~> 1.0'
 gem 'socialization'

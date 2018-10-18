@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  before_action :set_image, only: [:show, :new_like, :delete_like]
+  before_action :set_image, only: [ :new_like, :delete_like ]
 
   def index
     @images = Image.all
@@ -21,15 +21,14 @@ class ImagesController < ApplicationController
   end
 
   def new_like
-    @user = current_user
-    if @user.like!(@image)
+    if current_user.like!(@image)
       redirect_to images_path
     end
   end
 
   def delete_like
     if current_user.unlike!(@image)
-      redirect_to image_path
+      redirect_to images_path
     end
   end
 
@@ -40,7 +39,4 @@ class ImagesController < ApplicationController
   def set_image
     @image = Image.find(params[:id])
   end
-
-
-
 end
