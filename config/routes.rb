@@ -2,16 +2,17 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :categories do
+    put 'new_like', on: :member
+    put 'delete_like', on: :member
+    resources :images do
+      resources :comments
+    end
     put 'new_folower', on: :member
     put 'delete_folower', on: :member
   end
   get 'welcome/index'
   get 'profiles/index'
-  resources :images do
-    resources :comments
-    put 'new_like', on: :member
-    put 'delete_like', on: :member
-  end
+
   resources :profiles
   root 'welcome#index'
   devise_for :users

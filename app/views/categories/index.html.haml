@@ -4,13 +4,12 @@
   %tbody
     - @categories.each do |category|
       %p
-        = link_to image_tag('papka.png'), image_path(category)
-        = link_to category.name, image_path(category)
+        = link_to image_tag('papka.png'), category_images_path(category)
+        = link_to category.name, category_images_path(category)
         = link_to 'Edit', edit_category_path(category)
 
         - if current_user.following?(category)
           -#= image_tag('red.png'), delete_folower_category_path(category), method: :put
-
           = link_to image_submit_tag('red.png', width: "20", height: "20"), delete_folower_category_path(category), method: :put
         - else
           -#= image_tag('green.png'), new_folower_category_path(category), method: :put

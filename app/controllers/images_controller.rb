@@ -1,8 +1,9 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [ :new_like, :delete_like ]
-
+  before_action :set_category, only: [:show, :index]
   def index
-    @images = Image.all
+    @images = @category.images.all
+    # @images = Image.all.where(category_id: params[:id])
   end
 
   def new
@@ -16,8 +17,12 @@ class ImagesController < ApplicationController
   end
 
   def show
-    @images = Image.all.where("category_id = ?", params[:id])
+    @image = Image.find(params[:id])
+    @comments = @image.comments.all
 
+    respond_to do |format|
+      format.js
+    end
   end
 
   def new_like
@@ -33,6 +38,10 @@ class ImagesController < ApplicationController
   end
 
   private
+  def set_category
+    @category = Category.find(params[:category_id])
+  end
+
   def image_params
     params.require(:image).permit(:path, :category_id, :file)
   end

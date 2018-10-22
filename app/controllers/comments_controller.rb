@@ -1,7 +1,9 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_image, only: [:show, :index]
 
   def index
+    @comments = @image.comments.all
   end
 
   def new
@@ -22,6 +24,10 @@ class CommentsController < ApplicationController
   end
 
   private
+  def set_image
+    @image = Image.find(params[:image_id])
+  end
+
   def comment_params
     params.require(:comment).permit(:body, :image_id, :user_id)
   end
