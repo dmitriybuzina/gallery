@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  before_action :set_image, only: [ :new_like, :delete_like ]
+  before_action :set_image, only: [ :new_like, :delete_like, :show ]
   before_action :set_category, only: [:show, :index]
   def index
     @images = @category.images.all
@@ -17,9 +17,7 @@ class ImagesController < ApplicationController
   end
 
   def show
-    @image = Image.find(params[:id])
-    @comments = @image.comments.all
-
+    @comments = @image.comments
     respond_to do |format|
       format.js
     end

@@ -1,9 +1,0 @@
-%h2 Comments
-- @comments.each do |comment|
-  %p
-    %strong User
-    = comment.user_id
-  %p
-    %strong Comment:
-    = comment.body
-%h2= link_to 'Add comment', new_comment_path(image_id: params[:id])
