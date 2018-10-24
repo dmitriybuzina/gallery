@@ -17,6 +17,9 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
+    respond_to do |format|
+      format.js { render partial: "form", locals: {image: @image}}
+    end
     # @comment.user_id = current_user.id
     # @comment.image_id = @image.id
     puts @comment.body

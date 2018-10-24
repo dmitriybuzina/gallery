@@ -7,13 +7,14 @@
         / <h4 class="modal-title">Modal Header</h4>
         %h4.modal-title.text-center
       .modal-body
-        = image_tag(@image.file.url)
-        %br/
+        = image_tag(@image.file.url, remote: true)
+        %br
         %table
           %tbody
             -#-@comments.each do |comment|
             -#  = comment.body
             -#= var = @image
+            -#= render 'comments/form'
             = render 'comments/form'
             = render @image.comments
       .modal-footer

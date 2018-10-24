@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   end
   get 'welcome/index'
   get 'profiles/index'
-
   resources :profiles
   root 'welcome#index'
   devise_for :users

@@ -1,4 +1,4 @@
-= form_with model: @comment, url: category_image_comments_path(image_id: @image.id), method: :post do |form|
+= form_with(model: [ @image, @image.comments.build ], url: category_image_comments_path(image_id: @image.id), remote: true) do |form|
   %p
     = form.label :body
     %br
