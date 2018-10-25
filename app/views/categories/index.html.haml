@@ -18,7 +18,10 @@
           %a.delete Destroy
           -#=link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }
 
-    = link_to image_tag('new_category.png'), new_category_path
+    = link_to image_tag('new_category.png'),"#form_modal", "data-toggle" => "modal"
+
 %br/
 = link_to 'New Category', new_category_path
 = link_to 'Home', welcome_index_path
+
+=render 'categories/modal'

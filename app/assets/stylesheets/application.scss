@@ -14,10 +14,7 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
-input[type=submit] { @extend .btn-success; };
-
- @import "welcome/index.scss" ;
+@import "welcome/index.scss" ;
 
 
 

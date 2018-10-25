@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'welcome#index'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :categories do
@@ -13,7 +14,6 @@ Rails.application.routes.draw do
   get 'welcome/index'
   get 'profiles/index'
   resources :profiles
-  root 'welcome#index'
   devise_for :users
   resources :users
 
