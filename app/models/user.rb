@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :activities, dependent: :destroy
   has_many :categories, dependent: :destroy
   has_many :comments, dependent: :destroy
   acts_as_follower

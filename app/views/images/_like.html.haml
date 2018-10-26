@@ -1,0 +1,4 @@
+-if current_user.likes?(@image)
+  =link_to 'Unlike', delete_like_category_image_path(@image), method: :put
+-else
+  =link_to 'Like', new_like_category_image_path(@image), method: :put

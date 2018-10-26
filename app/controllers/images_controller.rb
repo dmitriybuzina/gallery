@@ -1,8 +1,8 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [ :new_like, :delete_like, :show ]
-  before_action :set_category, only: [:show, :index]
+  before_action :set_category, only: [:new]
   def index
-    @images = @category.images.all
+    @images = Image.all
     # @images = Image.all.where(category_id: params[:id])
   end
 
@@ -18,20 +18,20 @@ class ImagesController < ApplicationController
 
   def show
     @comments = @image.comments
-    respond_to do |format|
-      format.js
-    end
+    # respond_to do |format|
+    #   format.js
+    # end
   end
 
   def new_like
     if current_user.like!(@image)
-      redirect_to images_path
+      redirect_to category_image_path
     end
   end
 
   def delete_like
     if current_user.unlike!(@image)
-      redirect_to images_path
+      redirect_to category_image_path
     end
   end
 

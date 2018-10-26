@@ -1,36 +1,29 @@
-.toppp
-  %h1 Gallery
-  %ul.nav.nav-pills
-    %li.nav-item
-      = link_to('Home', welcome_index_path)
-    %li.nav-item
-      - if user_signed_in?
-        = link_to('Logout', destroy_user_session_path, method: :delete)
-      - else
-        = link_to('Login', new_user_session_url)
-    %li.nav-item
-      = link_to('Categories', categories_path)
-    %li.nav-item
-      = link_to('Profile', profiles_path)
+= render 'welcome/header'
+
 .container
   / Photo Grid
   .row
     .column
-      = image_tag('images.jpeg', width: '100%', height: '35%' )
-      = image_tag('images (1).jpeg', width: '100%', height: '25%' )
-      = image_tag('images (3).jpeg', width: '100%', height: '49%' )
+      = image_tag('images.jpeg', width: '100%' )
+      = image_tag('images (1).jpeg', width: '100%' )
+      = image_tag('images (3).jpeg', width: '100%' )
+      = image_tag('p6.jpeg', width: '100%' )
+      = image_tag('images (5).jpeg', width: '100%' )
+      = image_tag('p8.jpeg', width: '100%')
     .column
-      = image_tag('images (2).jpeg', width: '100%', height: '10%' )
-      = image_tag('p4.jpg', width: '100%', height: '20%' )
-      = image_tag('images (4).jpeg', width: '100%', height: '15%' )
-      = image_tag('p6.jpeg', width: '100%', height: '15%' )
-      = image_tag('images (5).jpeg', width: '100%', height: '10%' )
-      = image_tag('p8.jpeg', width: '100%', height: '30%' )
+      = image_tag('images (2).jpeg', width: '100%' )
+      = image_tag('p4.jpg', width: '100%' )
+      = image_tag('images (4).jpeg', width: '100%' )
+      = image_tag('p6.jpeg', width: '100%' )
+      = image_tag('images (5).jpeg', width: '100%' )
+      = image_tag('p8.jpeg', width: '100%')
     .column
       = image_tag('images (6).jpeg', width: '100%' )
       = image_tag('images (7).jpeg', width: '100%' )
       = image_tag('images (8).jpeg', width: '100%' )
       = image_tag('images (9).jpeg', width: '100%' )
+      = image_tag('images (4).jpeg', width: '100%' )
+      = image_tag('p8.jpeg', width: '100%' )
     .column
       = image_tag('p1.jpg', width: '100%' )
       = image_tag('p2.jpg', width: '100%' )
@@ -52,6 +45,9 @@
       = image_tag('p4.jpg', width: '100%' )
       = image_tag('images (8).jpeg', width: '100%' )
       = image_tag('p6.jpeg', width: '100%' )
-      = image_tag('images (12).jpeg', width: '100%' )
-/ <div class="table">
-/ </div>
+
+
+
+
+
+

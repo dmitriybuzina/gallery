@@ -1,0 +1,15 @@
+.toppp
+  %ul.nav.nav-pills
+    %li.nav-item
+      = link_to('Home', welcome_index_path)
+    %li.nav-item
+      - if user_signed_in?
+        = link_to('Logout', destroy_user_session_path, method: :delete)
+      - else
+        = link_to('Login', new_user_session_url)
+    %li.nav-item
+      = link_to('Categories', categories_path)
+    %li.nav-item
+      = link_to('Images', images_index_path)
+    %li.nav-item
+      = link_to('Profile', profiles_path)

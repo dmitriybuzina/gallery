@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_17_092008) do
+ActiveRecord::Schema.define(version: 2018_10_26_114506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 2018_10_17_092008) do
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
     t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  end
+
+  create_table "activities", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "action"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
   create_table "admin_users", force: :cascade do |t|
@@ -113,6 +122,7 @@ ActiveRecord::Schema.define(version: 2018_10_17_092008) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "activities", "users"
   add_foreign_key "comments", "images"
   add_foreign_key "comments", "users"
   add_foreign_key "images", "categories"

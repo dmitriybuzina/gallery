@@ -1,4 +1,6 @@
--if comment.user
-  =comment.body
-  =comment.user.email
-  %br
+- @comments.each do |comment|
+  %p
+  -if comment.user
+    =comment.body
+    =comment.user.email
+    %br

@@ -1,8 +1,7 @@
-= form_for :image, :html => {:multipart => true} do |f|
+= form_with( model: @image, url: category_images_path(category_id: params[:id])) do |f|
   = f.label :path
   %br/
   = f.text_field :path
   = f.label :file
   = f.file_field :file
-  = f.hidden_field :category_id, value: params[:category_id]
   = f.submit

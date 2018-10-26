@@ -11,32 +11,31 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.js { render partial: "form", locals: {image: @image}}
     end
-    puts @comment.body
     # @comment.image_id = @image.id
   end
 
   def create
     @comment = Comment.new(comment_params)
-    respond_to do |format|
-      format.js { render partial: "form", locals: {image: @image}}
-    end
-    # @comment.user_id = current_user.id
-    # @comment.image_id = @image.id
-    puts @comment.body
+    # respond_to do |format|
+    #   format.js { render partial: "form", locals: {image: @image}}
+    # end
+    @comment.user_id = current_user.id
+    @comment.image_id = @image.id
     if @comment.save
       redirect_to @image
     end
+
   end
 
   def show
-    @comments = Comment.all.where("image_id = ?", params[:id])
-    # @user = User.comment
+    # @comments = Comment.all.where("image_id = ?", params[:id])
+     @user = User.comment
     # puts @user.email
   end
 
   private
   def set_image
-    @image = Image.find(params)
+    @image = Image.find(params[:image_id])
   end
 
   def comment_params

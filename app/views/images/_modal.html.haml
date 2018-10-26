@@ -7,15 +7,9 @@
         / <h4 class="modal-title">Modal Header</h4>
         %h4.modal-title.text-center
       .modal-body
-        = image_tag(@image.file.url)
         %br
         %table
           %tbody
-            -#-@comments.each do |comment|
-            -#  = comment.body
-            -#= var = @image
-            -#= render 'comments/form'
-            = render 'comments/form'
-            = render @image.comments
+            = render 'images/form'
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close

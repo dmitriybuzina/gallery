@@ -1,27 +1,18 @@
-%p#notice= notice
-%h1 Categories
+= render 'welcome/header'
 %table
   %tbody
     - @categories.each do |category|
       %p
-        = link_to image_tag('papka.png'), category_images_path(category)
-        = link_to category.name, category_images_path(category)
+        = link_to image_tag('papka.png'), category_path(category)
+        = link_to category.name, category_path(category)
         = link_to 'Edit', edit_category_path(category)
-
         - if current_user.following?(category)
-          -#= image_tag('red.png'), delete_folower_category_path(category), method: :put
           = link_to image_submit_tag('red.png', width: "20", height: "20"), delete_folower_category_path(category), method: :put
         - else
-          -#= image_tag('green.png'), new_folower_category_path(category), method: :put
           = link_to image_submit_tag('green.png', width: "20", height: "20"), new_folower_category_path(category), method: :put
-        %button{ id: category.id}
-          %a.delete Destroy
-          -#=link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }
-
-    = link_to image_tag('new_category.png'),"#form_modal", "data-toggle" => "modal"
-
+        =link_to 'Destroy', category, method: :delete
+    = link_to image_tag('new_category.png', width: "200", height: "200"), "#form_modal", "data-toggle" => "modal"
 %br/
 = link_to 'New Category', new_category_path
 = link_to 'Home', welcome_index_path
-
-=render 'categories/modal'
+= render 'categories/modal'

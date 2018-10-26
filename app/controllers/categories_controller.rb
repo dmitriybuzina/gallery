@@ -12,6 +12,8 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+    @images = @category.images
+    # @image = @category.images.build
   end
 
   # GET /categories/new
@@ -75,7 +77,7 @@ class CategoriesController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
+  # Use callbacks to share common setup or constraints between actions.rb.
   def set_category
     @category = Category.find(params[:id])
   end

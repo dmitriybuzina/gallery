@@ -49,7 +49,7 @@ ActiveAdmin.setup do |config|
   # == User Authentication
   #
   # Active Admin will automatically call an authentication
-  # method in a before filter of all controller actions to
+  # method in a before filter of all controller actions.rb to
   # ensure that there is a currently logged in admin user.
   #
   # This setting changes the method which Active Admin calls
@@ -59,7 +59,7 @@ ActiveAdmin.setup do |config|
   # == User Authorization
   #
   # Active Admin will automatically call an authorization
-  # method in a before filter of all controller actions to
+  # method in a before filter of all controller actions.rb to
   # ensure that there is a user with proper rights. You can use
   # CanCanAdapter or make your own. Please refer to documentation.
   # config.authorization_adapter = ActiveAdmin::CanCanAdapter
@@ -81,7 +81,7 @@ ActiveAdmin.setup do |config|
 
   # == Current User
   #
-  # Active Admin will associate actions with the current
+  # Active Admin will associate actions.rb with the current
   # user performing them.
   #
   # This setting changes the method which Active Admin calls

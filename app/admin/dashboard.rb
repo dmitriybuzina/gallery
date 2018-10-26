@@ -9,7 +9,9 @@ ActiveAdmin.register_page "Dashboard" do
       #  small I18n.t("active_admin.dashboard_welcome.call_to_action")
      # end
     #end
+    section "Activities" do
 
+    end
     section "Last categories" do
       table_for Category.order("created_at desc").limit(5) do |category|
         category.column(:id)
@@ -33,7 +35,7 @@ ActiveAdmin.register_page "Dashboard" do
         image.column(:path)
         image.column(:category_id)
         image.column "Image" do |img|
-                image_tag(img.file.url, size: "32x20" )
+          image_tag(img.file.url, size: "32x20" )
         end
       end
     end
