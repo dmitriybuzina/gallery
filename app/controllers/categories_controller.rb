@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy, :new_folower, :delete_folower]
-
+  before_action :authenticate_user!
 
   # GET /categories
   # GET /categories.json
@@ -65,15 +65,11 @@ class CategoriesController < ApplicationController
   end
 
   def new_folower
-    if current_user.follow(@category)
-      redirect_to categories_path
-    end
+    redirect_to categories_path if current_user.follow(@category)
   end
 
   def delete_folower
-    if current_user.stop_following(@category)
-      redirect_to categories_path
-    end
+    redirect_to categories_path if current_user.stop_following(@category)
   end
 
   private

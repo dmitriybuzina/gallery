@@ -1,4 +1,4 @@
-= form_with( model: @image, url: category_images_path(category_id: params[:id])) do |f|
+= form_with( model: [@category, @category.images.build]) do |f|
   = f.label :path
   %br/
   = f.text_field :path

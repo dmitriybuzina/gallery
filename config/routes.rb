@@ -13,8 +13,6 @@ Rails.application.routes.draw do
   end
   get 'images/index'
   get 'welcome/index'
-  get 'profiles/index'
-  resources :profiles
   devise_for :users
   resources :users
 

@@ -1,0 +1,42 @@
+%form#registrationForm.form{model: @profile, method: 'post'}
+  .form-group
+    .col-xs-6
+      %h4 First name
+      %input#first_name.form-control{name: 'first_name', placeholder: 'first name', title: 'enter your first name if any.', type: 'text'}/
+  .form-group
+    .col-xs-6
+      %h4 Last name
+      %input#last_name.form-control{name: "last_name", placeholder: "last name", title: "enter your last name if any.", type: "text"}/
+  .form-group
+    .col-xs-6
+      %h4 Phone
+      %input#phone.form-control{name: "phone", placeholder: "enter phone", title: "enter your phone number if any.", type: "text"}/
+  .form-group
+    .col-xs-6
+      %h4 Date of Birth
+      %input#mobile.form-control{name: "mobile", placeholder: "enter mobile number", title: "enter your mobile number if any.", type: "text"}/
+  .form-group
+    .col-xs-6
+      %h4 Email
+      %input#email.form-control{name: "email", value: @user.email, title: "enter your email.", type: "email"}/
+  .form-group
+    .col-xs-6
+      %h4 Location
+      %input#location.form-control{placeholder: "somewhere", title: "enter a location", type: "text"}/
+  .form-group
+    .col-xs-6
+      %h4 Password
+      %input#password.form-control{name: "password", placeholder: "password", title: "enter your password.", type: "password"}/
+  .form-group
+    .col-xs-6
+      %h4 Verify
+      %input#password2.form-control{name: "password2", placeholder: "password2", title: "enter your password2.", type: "password"}/
+  .form-group
+    .col-xs-12
+      %br/
+      %button.btn.btn-lg.btn-success{type: "submit"}
+        %i.glyphicon.glyphicon-ok-sign
+        Save
+      %button.btn.btn-lg{type: "reset"}
+        %i.glyphicon.glyphicon-repeat
+        Reset

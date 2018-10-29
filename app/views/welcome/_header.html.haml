@@ -11,5 +11,6 @@
       = link_to('Categories', categories_path)
     %li.nav-item
       = link_to('Images', images_index_path)
-    %li.nav-item
-      = link_to('Profile', profiles_path)
+    -if(current_user)
+      %li.nav-item
+        = link_to('Profile')
