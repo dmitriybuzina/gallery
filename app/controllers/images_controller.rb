@@ -18,6 +18,7 @@ class ImagesController < ApplicationController
 
   def show
     @comments = @image.comments
+    @likes = Like.count
     # respond_to do |format|
     #   format.js
     # end
