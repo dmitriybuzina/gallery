@@ -1,0 +1,20 @@
+.toppp
+  %ul.nav.nav-pills
+    %li.nav-item
+      = link_to('Home', welcome_index_path)
+    %li.nav-item
+      - if user_signed_in?
+        = link_to('Logout', destroy_user_session_path, method: :delete)
+      - else
+        = link_to('Login', new_user_session_url)
+    %li.dropdown
+      = link_to('Categories', categories_path, "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", role: "button")
+      .dropdown-menu{"aria-labelledby" => "dropdownMenuLink"}
+        - top_categories.each do |category|
+          = link_to(category.name, category_path(category), class: 'dropdown-item')
+
+    %li.nav-item
+      = link_to('Images', images_index_path)
+    -if(current_user)
+      %li.nav-item
+        = link_to('Profile', edit_user_registration_path)

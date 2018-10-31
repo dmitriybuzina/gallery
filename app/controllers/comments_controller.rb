@@ -33,6 +33,8 @@ class CommentsController < ApplicationController
     # puts @user.email
   end
 
+
+
   private
   def set_image
     @image = Image.find(params[:image_id])

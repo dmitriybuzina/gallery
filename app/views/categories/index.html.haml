@@ -1,9 +1,11 @@
-= render 'welcome/header'
+
 %table
   %tbody
     - @categories.each do |category|
       %p
         = link_to image_tag('papka.png'), category_path(category)
+      %p
+        = category.counter
         = link_to category.name, category_path(category)
         = link_to 'Edit', edit_category_path(category)
         - if current_user.following?(category)

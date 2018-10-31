@@ -23,6 +23,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1/edit
   def edit
+
   end
 
   # POST /categories
@@ -59,6 +60,8 @@ class CategoriesController < ApplicationController
 
   # DELETE /categories/1
   # DELETE /categories/1.json
+
+
   def destroy
     @category.destroy
     redirect_to categories_path
