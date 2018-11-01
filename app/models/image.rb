@@ -4,5 +4,4 @@ class Image < ApplicationRecord
 
   mount_uploader :file, FileUploader
   validates :file, file_size: { less_than: 50.megabytes }
-  acts_as_likeable
 end

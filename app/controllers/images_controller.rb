@@ -1,6 +1,8 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [ :new_like, :delete_like, :show ]
   before_action :set_category, only: [:new, :create ]
+  before_action :decrement, only: :delete_like
+  before_action :increment, only: :new_like
   def index
     @images = Image.all
     # @images = Image.all.where(category_id: params[:id])
@@ -21,20 +23,23 @@ class ImagesController < ApplicationController
   end
 
   def new_like
-    if current_user.like!(@image)
-      Category.increment_counter(:counter, @image.category.id)
-      # redirect_to category_image_path
-    end
+    redirect_to category_image_path if current_user.like!(@image)
   end
 
   def delete_like
-    if current_user.unlike!(@image)
-      Category.decrement_counter(:counter, @image.category.id)
-      # redirect_to category_image_path
-    end
+    redirect_to category_image_path if current_user.unlike!(@image)
   end
 
   private
+
+  def decrement
+    Category.decrement_counter(:counter, @image.category.id)
+  end
+
+  def increment
+    Category.increment_counter(:counter, @image.category.id)
+  end
+
   def parent
     @category ||= Category.find(params[:category_id])
   end

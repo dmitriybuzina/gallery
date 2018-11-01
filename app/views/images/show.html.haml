@@ -1,6 +1,6 @@
 %p
   = image_tag(@image.file.url)
 %p
-  = render 'images/like'
+  = link_to('Like', new_category_image_likes_path(image_id: @image.id))
   = render 'comments/form'
   = render 'comments/comment', image: @image

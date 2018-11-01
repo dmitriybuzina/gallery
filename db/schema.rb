@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_31_151120) do
+ActiveRecord::Schema.define(version: 2018_11_01_152038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,24 +91,13 @@ ActiveRecord::Schema.define(version: 2018_10_31_151120) do
     t.index ["category_id"], name: "index_images_on_category_id"
   end
 
-  create_table "likes", id: :serial, force: :cascade do |t|
-    t.string "liker_type"
-    t.integer "liker_id"
-    t.string "likeable_type"
-    t.integer "likeable_id"
-    t.datetime "created_at"
-    t.index ["likeable_id", "likeable_type"], name: "fk_likeables"
-    t.index ["liker_id", "liker_type"], name: "fk_likes"
-  end
-
-  create_table "mentions", id: :serial, force: :cascade do |t|
-    t.string "mentioner_type"
-    t.integer "mentioner_id"
-    t.string "mentionable_type"
-    t.integer "mentionable_id"
-    t.datetime "created_at"
-    t.index ["mentionable_id", "mentionable_type"], name: "fk_mentionables"
-    t.index ["mentioner_id", "mentioner_type"], name: "fk_mentions"
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["image_id"], name: "index_likes_on_image_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -132,4 +121,6 @@ ActiveRecord::Schema.define(version: 2018_10_31_151120) do
   add_foreign_key "comments", "images"
   add_foreign_key "comments", "users"
   add_foreign_key "images", "categories"
+  add_foreign_key "likes", "images"
+  add_foreign_key "likes", "users"
 end

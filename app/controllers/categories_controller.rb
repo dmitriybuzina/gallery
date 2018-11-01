@@ -2,11 +2,13 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy, :new_folower, :delete_folower]
   before_action :authenticate_user!
 
+
   # GET /categories
   # GET /categories.json
   def index
     @categories = Category.all
     @category = Category.new
+
   end
 
   # GET /categories/1
@@ -61,7 +63,6 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.json
 
-
   def destroy
     @category.destroy
     redirect_to categories_path
@@ -77,6 +78,15 @@ class CategoriesController < ApplicationController
 
   private
   # Use callbacks to share common setup or constraints between actions.rb.
+
+  def preview
+    @preview_category = Hash.new
+    @categories.each do |category|
+      @preview_category[category: category.images.limit(4)]
+    end
+    puts @preview_category
+  end
+
   def set_category
     @category = Category.find(params[:id])
   end
