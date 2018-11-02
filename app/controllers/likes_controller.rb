@@ -1,22 +1,26 @@
 class LikesController < ApplicationController
-  before_action :like_params, only: [:new, :create]
+  before_action :set_image
+  before_action :set_like, only: :destroy
 
   def new
-    @like = Like.new(like_params)
+    @like = Like.new
   end
 
   def create
-    @like = Like.new(like_params)
-    @like.save
+    @like = @image.likes.create(user_id: current_user.id)
+    redirect_to category_image_path(@image) if @like.save
   end
 
   def destroy
-
+    redirect_to category_image_path(@image) if @like.destroy
   end
 
   private
+  def set_image
+    @image = Image.find(params[:image_id])
+  end
 
-  def like_params
-    params.require(:like).permit(:user_id, :image_id)
+  def set_like
+    @like = Like.where(user_id: current_user.id, image_id: params[:image_id]).first
   end
 end

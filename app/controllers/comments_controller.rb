@@ -11,7 +11,6 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.js { render partial: "form", locals: {image: @image}}
     end
-    # @comment.image_id = @image.id
   end
 
   def create
@@ -24,16 +23,11 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @image
     end
-
   end
 
   def show
-    # @comments = Comment.all.where("image_id = ?", params[:id])
-     @user = User.comment
-    # puts @user.email
+    @user = User.comment
   end
-
-
 
   private
   def set_image

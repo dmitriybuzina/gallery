@@ -1,6 +1,9 @@
 %p
   = image_tag(@image.file.url)
 %p
-  = link_to('Like', new_category_image_likes_path(image_id: @image.id))
+  -if @check
+    = link_to '', likes_path(user_id: current_user.id, image_id: @image.id), method: :delete, remote: true, class: "glyphicon glyphicon-heart"
+  -else
+    = link_to '', likes_path(user_id: current_user.id, image_id: @image.id), method: :post, remote:true, class: "glyphicon glyphicon-heart-empty"
   = render 'comments/form'
   = render 'comments/comment', image: @image

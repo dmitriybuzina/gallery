@@ -1,5 +1,6 @@
 class ImagesController < ApplicationController
-  before_action :set_image, only: [ :new_like, :delete_like, :show ]
+  before_action :set_image, only: [:show, :check_like ]
+  before_action :check_like, only: [:show]
   before_action :set_category, only: [:new, :create ]
   before_action :decrement, only: :delete_like
   before_action :increment, only: :new_like
@@ -22,12 +23,12 @@ class ImagesController < ApplicationController
     @comments = @image.comments
   end
 
-  def new_like
-    redirect_to category_image_path if current_user.like!(@image)
-  end
-
-  def delete_like
-    redirect_to category_image_path if current_user.unlike!(@image)
+  def check_like
+    if Like.exists?(user_id: current_user.id, image_id: @image.id)
+      @check = true
+    else
+      @check = false
+    end
   end
 
   private
