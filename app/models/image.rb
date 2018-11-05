@@ -5,4 +5,8 @@ class Image < ApplicationRecord
 
   mount_uploader :file, FileUploader
   validates :file, file_size: { less_than: 50.megabytes }
+
+  def is_liked(user)
+    likes.where(user_id: user.id).exists?
+  end
 end

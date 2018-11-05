@@ -1,5 +1,4 @@
 .container
   -@images.each do |image|
-    .col-lg-3.col-md-4.col-xs-6.thumb
+    .col
       =image_tag(image.file.url, size: "240x150")
-      

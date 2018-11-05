@@ -1,17 +1,15 @@
 class ImagesController < ApplicationController
-  before_action :set_image, only: [:show, :check_like ]
-  before_action :check_like, only: [:show]
-  before_action :set_category, only: [:new, :create ]
-  before_action :decrement, only: :delete_like
-  before_action :increment, only: :new_like
+  before_action :set_image, only: [:show, :new_like, :delete_like]
+  before_action :parent, only: [:new, :create, :new_like, :delete_like]
+  before_action :find_like, only: [:delete_like]
+  # before_action :like_params, only: [:new_like]
+
   def index
     @images = Image.all
-    # @images = Image.all.where(category_id: params[:id])
   end
 
   def new
     @image = Image.new
-    # @image.category_id = params[:category_id]
   end
 
   def create
@@ -23,22 +21,30 @@ class ImagesController < ApplicationController
     @comments = @image.comments
   end
 
-  def check_like
-    if Like.exists?(user_id: current_user.id, image_id: @image.id)
-      @check = true
-    else
-      @check = false
+  def new_like
+    @like = Like.new(user_id: current_user.id, image_id: @image.id)
+    if @like.save
+      Image.increment_counter(:count_likes, @image)
+      Category.increment_counter(:counter, @image.category.id)
+      redirect_to category_image_path
+    end
+  end
+
+  def delete_like
+    if @like.destroy
+      Image.decrement_counter(:count_likes, @image)
+      Category.decrement_counter(:counter, @image.category.id)
+      redirect_to category_image_path
     end
   end
 
   private
+  # def like_params
+  #   params.require(:like).permit(:user_id, :image_id)
+  # end
 
-  def decrement
-    Category.decrement_counter(:counter, @image.category.id)
-  end
-
-  def increment
-    Category.increment_counter(:counter, @image.category.id)
+  def find_like
+    @like = Like.where(user_id: params[:user_id], image_id: params[:image_id]).first
   end
 
   def parent

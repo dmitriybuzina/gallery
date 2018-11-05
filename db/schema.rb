@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_02_144417) do
+ActiveRecord::Schema.define(version: 2018_11_05_111918) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 2018_11_02_144417) do
     t.datetime "updated_at", null: false
     t.bigint "category_id"
     t.string "file"
+    t.integer "count_likes"
     t.index ["category_id"], name: "index_images_on_category_id"
   end
 

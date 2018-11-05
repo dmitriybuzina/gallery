@@ -78,7 +78,6 @@ class CategoriesController < ApplicationController
 
   private
   # Use callbacks to share common setup or constraints between actions.rb.
-
   def preview
     @preview_category = Hash.new
     @categories.each do |category|

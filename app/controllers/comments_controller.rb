@@ -15,14 +15,9 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    # respond_to do |format|
-    #   format.js { render partial: "form", locals: {image: @image}}
-    # end
     @comment.user_id = current_user.id
     @comment.image_id = @image.id
-    if @comment.save
-      redirect_to @image
-    end
+    redirect_to category_image_path if @comment.save
   end
 
   def show
