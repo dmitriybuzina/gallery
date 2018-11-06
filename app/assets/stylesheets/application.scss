@@ -12,10 +12,11 @@
  *
  */
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import "welcome/index.scss" ;
-@import "profiles" ;
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'welcome/index.scss';
+@import 'profiles';
+@import 'header';
 
 .toppp{
   width: 100%;
@@ -25,9 +26,6 @@
   padding-right: 20px;
   float: left;
 }
-//.navbar{
-//  background: #7d5ced;
-//}
 
 
 

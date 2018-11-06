@@ -1,4 +1,6 @@
 .container
-  -@images.each do |image|
-    .col
-      =image_tag(image.file.url, size: "240x150")
+  .row
+    -@images.each_slice(4) do |array_image|
+      .col-sm-3
+        -array_image.each do |image|
+          = image_tag(image.file.url, size: "240x150")

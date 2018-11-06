@@ -73,3 +73,5 @@ gem 'haml-rails', '~> 1.0'
 gem 'mini_magick'
 gem 'friendly_id', '~> 5.2.0'
 
+gem 'recaptcha'
+gem 'dotenv-rails', groups: [:development, :test]
