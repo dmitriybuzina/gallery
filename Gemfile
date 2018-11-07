@@ -75,3 +75,8 @@ gem 'friendly_id', '~> 5.2.0'
 
 gem 'recaptcha'
 gem 'dotenv-rails', groups: [:development, :test]
+
+gem 'omniauth-facebook'
+
+# Pagination
+gem 'kaminari'

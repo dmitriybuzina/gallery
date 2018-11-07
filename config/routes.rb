@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   end
   get 'images/index'
   get 'welcome/index'
-  devise_for :users, controllers: { registrations: 'users/registrations', passwords: 'passwords' }
-  # resources :users
+  # devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations', passwords: 'passwords', omniauth_callbacks: 'users/omniauth_callbacks' }
+  # resource :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

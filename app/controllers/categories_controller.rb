@@ -87,7 +87,7 @@ class CategoriesController < ApplicationController
   end
 
   def set_category
-    @category = Category.find(params[:id])
+    @category = Category.friendly.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
