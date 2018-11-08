@@ -8,9 +8,6 @@ class CommentsController < ApplicationController
 
   def new
     @comment = Comment.new
-    respond_to do |format|
-      format.js { render partial: "form", locals: {image: @image}}
-    end
   end
 
   def create

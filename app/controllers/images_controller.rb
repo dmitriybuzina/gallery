@@ -13,7 +13,7 @@ class ImagesController < ApplicationController
 
   def create
     @image = @category.images.new(image_params)
-    @image.save!
+    redirect_to category_path(@category) if @image.save!
   end
 
   def show
@@ -35,11 +35,7 @@ class ImagesController < ApplicationController
   end
 
   def parent
-    @category ||= Category.find(params[:category_id])
-  end
-
-  def set_category
-    @category = Category.find(params[:category_id])
+    @category ||= Category.friendly.find(params[:category_id])
   end
 
   def image_params

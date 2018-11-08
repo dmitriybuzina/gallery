@@ -9,4 +9,5 @@ class Image < ApplicationRecord
   def is_liked(user)
     likes.where(user_id: user.id).exists?
   end
+
 end

@@ -2,52 +2,28 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy, :new_folower, :delete_folower]
   before_action :authenticate_user!
 
-
-  # GET /categories
-  # GET /categories.json
   def index
     @categories = Category.all
     @category = Category.new
-
   end
 
-  # GET /categories/1
-  # GET /categories/1.json
   def show
-    @images = @category.images
-    # @image = @category.images.build
+    @images = @category.images.page(params[:page]).per(5)
   end
 
-  # GET /categories/new
   def new
     @category = Category.new
   end
 
-  # GET /categories/1/edit
   def edit
-
   end
 
-  # POST /categories
-  # POST /categories.json
   def create
     @category = Category.new(category_params)
     @category.user_id = current_user.id
-    # @category.save
-    # redirect_to @category
-    respond_to do |format|
-      if @category.save
-        format.html { redirect_to @category, notice: 'Category was successfully created.' }
-        format.json { render :show, status: :created, location: @category }
-      else
-        format.html { render :new }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
-      end
-    end
+    redirect_to categories_path if @category.save
   end
 
-  # PATCH/PUT /categories/1
-  # PATCH/PUT /categories/1.json
   def update
     respond_to do |format|
       if @category.update(category_params)
@@ -59,9 +35,6 @@ class CategoriesController < ApplicationController
       end
     end
   end
-
-  # DELETE /categories/1
-  # DELETE /categories/1.json
 
   def destroy
     @category.destroy
@@ -77,20 +50,19 @@ class CategoriesController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.rb.
-  def preview
-    @preview_category = Hash.new
-    @categories.each do |category|
-      @preview_category[category: category.images.limit(4)]
-    end
-    puts @preview_category
-  end
+
+  # def preview
+  #   @preview_category = Hash.new
+  #   @categories.each do |category|
+  #     @preview_category[category: category.images.limit(4)]
+  #   end
+  #   puts @preview_category
+  # end
 
   def set_category
     @category = Category.friendly.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def category_params
     params.require(:category).permit(:name)
   end

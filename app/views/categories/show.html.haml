@@ -1,8 +1,11 @@
-- @images.each do |image|
+- @images.each_slice(5) do |array_image|
   .row
-    .col-sm-4
-      =link_to image_tag(image.file.url, size: "240x150"), category_image_path(@category, id: image.id)
--#= paginate @images
--#%p= link_to image_tag('addImage.png', class: "img-thumbnail", size: "240x150"), "#form_modal", "data-toggle" => "modal"
+    -array_image.each_slice(3) do |image|
+      -image.each do |img|
+        .col-sm-2
+          =link_to image_tag(img.file.url, size: "320x200"), category_image_path(@category, id: img.id)
+  %p= link_to image_tag('addImage.png', class: "img-thumbnail", size: "240x150"), "#form_modal", "data-toggle" => "modal"
+= paginate @images
+
 
 = render 'images/modal'

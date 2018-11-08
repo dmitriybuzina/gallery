@@ -7,7 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 #AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
-Comment.create!(body: 'Comment1', image_id: 1, user_id: 1)
-Comment.create!(body: 'Comment1', image_id: 1, user_id: 1)
+# Comment.create!(body: 'Comment1', image_id: 1, user_id: 1)
+# Comment.create!(body: 'Comment1', image_id: 1, user_id: 1)
+#
+# Like.create!(liker_id: 1, likeable_id: 1)
 
-Like.create!(liker_id: 1, likeable_id: 1)
+AdminUser.create!(email: 'admin@example.com', password: 'password')
