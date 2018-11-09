@@ -3,7 +3,4 @@ class WelcomeController < ApplicationController
     @images = Image.order('created_at DESC').limit(16)
   end
 
-  def destroy
-  end
-
 end

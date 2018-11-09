@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   acts_as_follower
 
+  after_create :send_admin_mail
+
   mount_uploader :avatar, AvatarUploader
 
   # Include default devise modules. Others available are:
@@ -14,6 +16,10 @@ class User < ApplicationRecord
   devise :database_authenticatable,:registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook]
+
+  def send_admin_mail
+    UserMailer.welcome_email(self).deliver
+  end
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

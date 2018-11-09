@@ -4,14 +4,25 @@ require 'open-uri'
 ActiveAdmin.register_page "Parser_images" do
 
   # permit_params :url
-  page_action :foo, method: :post do
+  page_action :parser, method: :post do
+    doc = Nokogiri::HTML(open(params[:parser_images][:url]))
+    @images = doc.css('img')
+    # @image_tags.css('img').attr('src').each do |i|
+    #   puts i
+    # end
+    # @images = doc.search('img').map{ |img| img['src']}
+    # @images.each do |image|
+    #   image = "#{params[:parser_images][:url]}/#{image}"
+    # end
+    # puts @images
 
+    # end
+    render partial: 'admin/parser_images/images', image: @images
+    #render inline: "<% @images.each do |image| %><p><%= image_tag(image,url) %></p><% end %>"
   end
 
   content do
-    form action: "parser_images/foo", method: :post do |f|
-      f.input :url, type: :text, name: 'url'
-      f.input :submit, type: :submit
-    end
+    render 'admin/parser_images/form'
   end
+
 end
