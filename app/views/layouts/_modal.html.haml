@@ -1,4 +1,5 @@
-#form_modal.modal.fade{:role => "modal", tabindex: "-1"}
+- modal_id ||= nil
+.modal.fade{:role => "modal", tabindex: "-1", id: modal_id}
   .modal-dialog
     / Modal content
     .modal-content
@@ -7,7 +8,6 @@
         / <h4 class="modal-title">Modal Header</h4>
         %h4.modal-title.text-center
       .modal-body
-        %br
-        = render 'images/form'
+        = yield
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close

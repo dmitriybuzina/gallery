@@ -1,7 +1,6 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :new_like, :delete_like]
   before_action :parent, only: [:new, :create, :new_like, :delete_like]
-  before_action :find_like, only: [:delete_like]
 
   def index
     @images = Image.all
@@ -26,10 +25,12 @@ class ImagesController < ApplicationController
   end
 
   def delete_like
+    find_like
     redirect_to category_image_path if @like.destroy
   end
 
   private
+
   def find_like
     @like = Like.where(user_id: params[:user_id], image_id: params[:image_id]).first
   end

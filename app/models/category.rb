@@ -6,4 +6,5 @@ class Category < ApplicationRecord
 
   extend FriendlyId
   friendly_id :name
+
 end
