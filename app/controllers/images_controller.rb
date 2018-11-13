@@ -16,7 +16,7 @@ class ImagesController < ApplicationController
   end
 
   def show
-    @comments = @image.comments
+    @comments = @image.comments.order(created_at: :desc)
   end
 
   def new_like

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # scope "/:locale" do
   root 'welcome#index'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -13,8 +14,12 @@ Rails.application.routes.draw do
   end
   get 'images/index'
   get 'welcome/index'
-  # devise_for :users
   devise_for :users, controllers: { registrations: 'users/registrations', passwords: 'passwords', omniauth_callbacks: 'users/omniauth_callbacks' }
-  # resource :users
+
+    # devise_for :users
+       # resource :users
+  # end
+  # devise_for :users, controllers: { registrations: 'users/registrations', passwords: 'passwords', omniauth_callbacks: 'users/omniauth_callbacks' }
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

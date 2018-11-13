@@ -15,7 +15,7 @@ ActiveAdmin.register_page "Parser images" do
     # end
     # puts @images
 
-    render partial: 'admin/parser_images/images', layout: 'active_admin', image: @images
+    render 'admin/parser_images/images', image: @images
     #render inline: "<% @images.each do |image| %><p><%= image_tag(image,url) %></p><% end %>"
   end
 

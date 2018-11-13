@@ -1,0 +1,8 @@
+ru:
+  layouts:
+    application:
+      title: 'Галерея'
+      Сategories:
+        all categories: "Все категории"
+        my categories: 'Мои категории'
+      images: 'Картинки'

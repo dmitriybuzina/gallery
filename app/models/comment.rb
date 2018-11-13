@@ -15,5 +15,4 @@ class Comment < ApplicationRecord
   def increment_count
     Category.increment_counter(:counter, self.image.category.id)
   end
-
 end
