@@ -2,24 +2,25 @@
   .containter-fluid
     .navbar-header
       %button.navbar-toggle.collapsed{ type: :button, 'data-toggle' => :collapse, 'data-target' => "#bs-example-navbar-collapse-1" }
-      = link_to 'Gallery', root_path, class: 'navbar-brand'
+      = link_to t('.title'), root_path, class: 'navbar-brand'
     .collapse.navbar-collapse#bs-example-navbar-collapse-1
       %ul.nav.navbar-nav.navbar-right
         %li.dropdown
           = link_to categories_path, 'data-toggle' => 'dropdown', 'role' => 'button', 'aria-expanded' => 'false', 'class' => 'dropdown-toggle' do
-            Categories
+            =t('.categories')
+            -#Categories
             %span.caret
           %ul.dropdown-menu{ role: :menu }
             - @top_categories.each do |category|
               %li= link_to(category.name, category_path(category))
             %li.divider
-            %li= link_to('All categories', categories_path)
+            %li= link_to(t('.all categories'), categories_path)
             -if current_user
-              %li= link_to('My categories')
-              %li= link_to('Subscribe categories')
-        %li= link_to('Images', images_index_path)
+              %li= link_to(t('.my categories'))
+              %li= link_to(t('.follows'))
+        %li= link_to(t('.images'), images_index_path)
         - unless user_signed_in?
-          %li= link_to('Login', new_user_session_url)
+          %li= link_to(t('.login'), new_user_session_url)
         -if current_user
           %ul.nav.navbar-nav.navbar-right
             %li.dropdown
@@ -41,16 +42,16 @@
                             = current_user.last_name
                 .row
                   .col-sm-2
-                    %li= link_to('Settings', edit_user_registration_path)
+                    %li= link_to(t('.settings'), edit_user_registration_path)
                   .col-sm-2
                   - if user_signed_in?
-                    %li= link_to('Logout', destroy_user_session_path, method: :delete)
+                    %li= link_to(t('.log_out'), destroy_user_session_path, method: :delete)
                   - else
-                    %li= link_to('Login', new_user_session_url)
-          %li{class: "nav-item#{" active" if I18n.locale == :ru}"}
-            = link_to "Рус", { locale: :ru }, class: "nav-link"
-          %li{class: "nav-item#{" active" if I18n.locale == :en}"}
-            = link_to "En", { locale: :en }, class: "nav-link"
+                    %li= link_to(t('.login'), new_user_session_url)
+        %li{class: "nav-item#{" active" if I18n.locale == :ru}"}
+          = link_to "Рус", { locale: :ru }, class: "nav-link"
+        %li{class: "nav-item#{" active" if I18n.locale == :en}"}
+          = link_to "En", { locale: :en }, class: "nav-link"
 
 
 

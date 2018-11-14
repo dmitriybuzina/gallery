@@ -1,5 +1,6 @@
 .container-profile
-  %h1 Profile
+  %h1
+    =t('registrations.edit.profile')
   = form_for(resource, as: resource_name, url: registration_path(resource_name), html:  { multipart: true }) do |f|
     = bootstrap_devise_error_messages!
     - if current_user.avatar.url.present?
@@ -10,38 +11,38 @@
       = f.file_field :avatar
       = f.hidden_field :avatar_cache
     .form-group
-      = f.label :email
+      = f.label t('form.email')
       = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control '
     .form-group
-      = f.label :first_name
+      = f.label t('form.first name')
       = f.text_field :first_name, autofocus: true, autocomplete: 'first_name', class: 'form-control'
     .form-group
-      = f.label :last_name
+      = f.label t('form.last name')
       = f.text_field :last_name, autofocus: true, autocomplete: 'last_name', class: 'form-control'
     .form-group
-      = f.label :phone
+      = f.label t('registrations.edit.phone')
       = f.telephone_field :phone, autofocus: true, autocomplete: 'phone', class: 'form-control'
     .form-group
-      = f.label :date_of_birthday
+      = f.label t('registrations.edit.date of birthday')
       = f.date_field :date_of_birthday, autofocus: true, autocomplete: 'date_of_birthday', class: 'form-control'
     .form-group
-      = f.label :location
+      = f.label t('registrations.edit.location')
       = f.text_field :location, autofocus: true, autocomplete: 'location', class: 'form-control'
     .form-group
-      = f.label :password
+      = f.label t('form.password')
       = f.text_field :password, autocomplete: 'new-password', class: 'form-control'
-      %small.form-text.text-muted= t('.leave_blank_if_you_don_t_want_to_change_it')
+      %small.form-text.text-muted= t('registrations.edit.leave_blank_if_no_change')
     .form-group
-      = f.label :password_confirmation
+      = f.label t('registrations.edit.password confirmation')
       = f.password_field :password_confirmation, autocomplete: 'new-password', class: 'form-control'
-      %small.form-text.text-muted= t('.leave_blank_if_you_don_t_want_to_change_it')
+      %small.form-text.text-muted= t('registrations.edit.leave_blank_if_no_change')
     .form-group
-      = f.label :current_password
+      = f.label t('registrations.edit.current password')
       = f.password_field :current_password, autocomplete: 'current-password', class: 'form-control'
-      %small.form-text.text-muted= t('.we_need_your_current_password_to_confirm_your_changes')
+      %small.form-text.text-muted= t('registrations.edit.we_need_password_to_confirm')
     .form-group
-      = f.submit t('.update'), class: 'btn btn-primary'
+      = f.submit t('registrations.edit.update'), class: 'btn btn-primary'
   %p
-    = t('.unhappy')
-    ? #{link_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete}.
+    = t('registrations.edit.unhappy')
+    ? #{link_to t('registrations.edit.delete account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete}.
   = link_to t('.back'), :back

@@ -1,8 +1,30 @@
 ru:
   layouts:
-    application:
+    header:
       title: 'Галерея'
-      Сategories:
-        all categories: "Все категории"
-        my categories: 'Мои категории'
-      images: 'Картинки'
+      categories: 'Категории'
+      all categories: 'Все категории'
+      my categories: 'Мои категории'
+      follows: 'Подписки'
+      images: 'Изображения'
+      settings: 'Настройки'
+      login: 'Войти'
+      log_out: 'Выйти'
+  categories:
+    index:
+      edit: 'Изменить'
+      destroy: 'Удалить'
+      modal:
+        create category: 'Создать категорию'
+        name: 'Имя'
+    show:
+      model:
+        name: 'Имя'
+        choose file: 'Выбирите файл'
+        create image: 'Создать картинку'
+        no file chosen: 'Фалй не выбран'
+  images:
+    show:
+      create comment: 'Создать коментарий'
+
+

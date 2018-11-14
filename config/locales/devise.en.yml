@@ -62,3 +62,39 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+  registrations:
+    edit:
+      profile: 'Profile'
+      phone: 'Phone'
+      date of birthday: 'Data of birthday'
+      location: 'Location'
+      password confirmation: 'Password confirmation'
+      current password: 'Current password'
+      update: 'Update'
+      unhappy: 'Unhappy?'
+      delete account: 'Cancel my account'
+      we_need_password_to_confirm: "We need your current password to confirm your changes"
+      leave_blank_if_no_change: "Leave blank if you don't want to change it"
+    new:
+      email: 'Email'
+      password: 'Password'
+      password confirmation: 'Password confirmation'
+      log in: 'Log in'
+      min password length: 'Minimum Password Length'
+  shared:
+    sign in with provider: 'Sign in with Facebook'
+    forgot your password: 'Forgot your password?'
+    sign in: 'Войти'
+  sessions:
+    sign in: 'Sign in'
+    remember me: 'Remember me'
+    home: 'Home'
+  form:
+    email: 'Email'
+    password: 'Password'
+    sign up: 'Sign up'
+    sign in: 'Sign in'
+    first name: 'Name'
+    last name: 'Surname'
+
+

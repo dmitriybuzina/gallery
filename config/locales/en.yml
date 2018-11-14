@@ -31,4 +31,30 @@
 
 en:
   layouts:
+    header:
+      title: 'Gallery'
+      categories: 'Categories'
+      all categories: 'All categories'
+      my categories: 'My categories'
+      follows: 'Follows'
+      images: 'Images'
+      settings: 'Settings'
+      login: 'Login'
+      log_out: 'Log out'
+  categories:
+    index:
+      edit: 'Edit'
+      destroy: 'Delete'
+      modal:
+        create category: 'Create category'
+        name: 'Name'
+    show:
+      model:
+        name: 'Name'
+        choose file: 'Choose file'
+        create image: 'Create image'
+        no file chosen: 'No file chosen'
+  images:
+    show:
+      create comment: 'Create comment'
 

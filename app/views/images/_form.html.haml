@@ -1,7 +1,7 @@
 = form_with( model: [@category, @category.images.build]) do |f|
-  = f.label :name
+  = f.label t('categories.index.modal.name')
   %br/
   = f.text_field :name
   = f.label :file
   = f.file_field :file
-  = f.submit
+  = f.submit t('categories.show.model.create image')

@@ -59,3 +59,37 @@ ru:
         few: "%{resource}: сохранение не удалось из-за %{count} ошибок"
         many: "%{resource}: сохранение не удалось из-за %{count} ошибок"
         other: "%{resource}: сохранение не удалось из-за %{count} ошибки"
+  registrations:
+    edit:
+      profile: 'Профиль'
+      phone: 'Телефон'
+      date of birthday: 'Дата рождения'
+      location: 'Локация'
+      password confirmation: 'Повторите пароль'
+      current password: 'Текущий пароль'
+      update: 'Обновить'
+      unhappy: 'Вам здесь не нравится?'
+      delete account: 'Удалить аккаунт'
+      we_need_password_to_confirm: "Необходимо ввести текущий пароль, чтобы подтвердить данные "
+      leave_blank_if_no_change: "Оставьте пустым, если не хотите менять"
+    new:
+      password confirmation: 'Повторите пароль'
+      log in: 'Войти'
+      min password length: 'Минимальная длинна пароля'
+  shared:
+    forgot your password: 'Забыли свой пароль?'
+    sign in: 'Войти'
+    sign in with provider: 'Войти через Facebook'
+  sessions:
+    sign in: 'Вход'
+    remember me: 'Запомнить меня'
+    home: 'На главную'
+  form:
+    email: 'Емеил'
+    password: 'Пароль'
+    sign up: 'Регистрация'
+    sign in: 'Войти'
+    first name: 'Имя'
+    last name: 'Фамилия'
+
+

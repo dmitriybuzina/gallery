@@ -5,12 +5,12 @@
       = link_to image_tag('papka.png'), category_path(category)
       = category.counter
       = link_to category.name, category_path(category)
-      = link_to 'Edit', edit_category_path(category)
+      = link_to t('.edit'), edit_category_path(category)
       - if current_user.following?(category)
         = link_to image_submit_tag('red.png', width: "20", height: "20"), delete_folower_category_path(category), method: :put
       - else
         = link_to image_submit_tag('green.png', width: "20", height: "20"), new_folower_category_path(category), method: :put
-      =link_to 'Destroy', category, method: :delete
+      =link_to t('.destroy'), category, method: :delete
 -#= link_to image_tag('new_category.png', width: "200", height: "200"), "#categories_modal", "data-toggle" => "modal"
 %div{'data-target' => '#categories_modal', 'data-toggle' => 'modal'}
   = image_tag('new_category.png', width: "200", height: "200")

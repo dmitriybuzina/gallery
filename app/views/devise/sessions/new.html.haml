@@ -1,20 +1,20 @@
 .container
-  %h1= t('.sign_in')
+  %h1= t('sessions.sign in')
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .form-group
-      = f.label :email
+      = f.label t('form.email')
       = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control'
     .form-group
-      = f.label :password
+      = f.label t('form.password')
       = f.password_field :password, autocomplete: 'current-password', class: 'form-control'
     - if devise_mapping.rememberable?
       .form-group.form-check
         = f.check_box :remember_me, class: 'form-check-input'
-        = f.label :remember_me, class: 'form-check-label' do
-          = resource.class.human_attribute_name('remember_me')
+        = f.label t('sessions.remember me'), class: 'form-check-label' do
+          = resource.class.human_attribute_name(t('sessions.remember me'))
     .form-group
       = flash[:recaptcha_error]
       = recaptcha_tags
-      = f.submit  t('.sign_in'), class: 'btn btn-primary'
-    = link_to 'Home', welcome_index_path
+      = f.submit  t('form.sign in'), class: 'btn btn-primary'
+    = link_to t('sessions.home'), welcome_index_path
   = render 'devise/shared/links'
