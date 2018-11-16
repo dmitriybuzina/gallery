@@ -1,6 +1,18 @@
 .container
-  .row.grid
-    -@images.each_slice(4) do |array_image|
-      .col-sm-3
-        -array_image.each do |image|
-          = image_tag(image.file.url, size: "240x150")
+  .row
+    .col-12.col-md-8
+      =image_tag('Rome/download.jpeg')
+    .col-6.col-md-4
+      =image_tag('Rome/download (1).jpeg')
+  .row
+    .col-6.col-md-4
+      =image_tag('Berlin/download (1).jpeg')
+    .col-6.col-md-4
+      =image_tag('Berlin/download (2).jpeg')
+    .col-6.col-md-4
+      =image_tag('Berlin/download (3).jpeg')
+  .row
+    .col-6
+      =image_tag('London/download.jpeg')
+    .col-6
+      =image_tag('London/download (2).jpeg')

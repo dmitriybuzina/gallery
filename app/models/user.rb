@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   acts_as_follower
 
-  # after_create :send_admin_mail
+  after_create :send_admin_mail
 
   mount_uploader :avatar, AvatarUploader
 
@@ -18,7 +18,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[facebook]
 
   def send_admin_mail
-    UserMailer.welcome_email(self).deliver
+    Resque.enqueue(WelcomeMail, self.id)
   end
 
   def self.from_omniauth(auth)

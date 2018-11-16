@@ -80,3 +80,5 @@ gem 'omniauth-facebook'
 
 # Pagination
 gem 'kaminari'
+
+gem 'resque'
