@@ -19,7 +19,7 @@
     = f.label t('registrations.new.password confirmation')
     = f.password_field :password_confirmation, autocomplete: 'current-password', class: 'form-control'
   .form-group
-    -#= flash[:recaptcha_error]
-    -#= recaptcha_tags
+    = flash[:recaptcha_error]
+    = recaptcha_tags
     = f.submit t('form.sign up'), class: 'btn btn-primary'
 = render 'devise/shared/links'

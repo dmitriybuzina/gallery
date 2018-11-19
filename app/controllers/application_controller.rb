@@ -7,8 +7,11 @@ class ApplicationController < ActionController::Base
     @top_categories = Category.order('counter DESC').limit(5)
   end
 
-  protected
+  def activity(action)
+    Activity.new(user_id: current_user.id, action: action, url: request.original_url).save
+  end
 
+  protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :first_name, :last_name, :password, :password_confirmation])
@@ -16,7 +19,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end

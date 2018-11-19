@@ -1,9 +1,28 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
-  before_action :configure_sign_in_params, only: [:create]
+  # before_action :configure_sign_in_params, only: [:create]
+  #
+  # before_action :check_captcha, only: [:create]
 
-  before_action :check_captcha, only: [:create]
+
+
+  # GET /resource/sign_in
+  # def new
+  #   super
+  # end
+
+  # POST /resource/sign_in
+  def create
+    super
+    activity('user sign in')
+  end
+
+  # DELETE /resource/sign_out
+  def destroy
+    activity('user sign out')
+    super
+  end
 
   private
   def check_captcha
@@ -26,21 +45,6 @@ class Users::SessionsController < Devise::SessionsController
   #       respond_with resource
   #     end
   #   end
-  # end
-
-  # GET /resource/sign_in
-  # def new
-  #   super
-  # end
-
-  # POST /resource/sign_in
-  # def create
-  #   super
-  # end
-
-  # DELETE /resource/sign_out
-  # def destroy
-  #   super
   # end
 
   # protected

@@ -19,6 +19,8 @@ class User < ApplicationRecord
 
   def send_admin_mail
     Resque.enqueue(WelcomeMail, self.id)
+    # UserMailer.with(user: self).welcome_email.deliver_later
+    # UserMailer.welcome_email.deliver_now
   end
 
   def self.from_omniauth(auth)

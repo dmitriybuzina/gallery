@@ -5,10 +5,12 @@ class CategoriesController < ApplicationController
   def index
     @categories = Category.all
     @category = Category.new
+    activity('navigation')
   end
 
   def show
     @images = @category.images.page(params[:page]).per(5)
+    activity('navigation')
   end
 
   def new
@@ -16,6 +18,7 @@ class CategoriesController < ApplicationController
   end
 
   def edit
+
   end
 
   def create

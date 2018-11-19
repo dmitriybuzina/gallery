@@ -13,7 +13,10 @@ class CommentsController < ApplicationController
   def create
     @comment = @image.comments.create(comment_params)
     @comment.user_id = current_user.id
-    redirect_to category_image_path if @comment.save
+    if @comment.save
+      activity('comments')
+      redirect_to category_image_path(id: @image.id), remote: true
+    end
   end
 
   def show
