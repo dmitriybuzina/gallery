@@ -21,9 +21,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  #
+
   # def create
   #   super
+  #   # Resque.enqueue(WelcomeMail, @user.id)
+  #   # UserMailer.with(user: @user).welcome_email.deliver_later
   # end
 
   # GET /resource/edit

@@ -18,6 +18,9 @@ class ImagesController < ApplicationController
 
   def show
     @comments = @image.comments.order(created_at: :desc)
+    # respond_to do |format|
+    #   format.js
+    # end
     activity('navigation')
   end
 

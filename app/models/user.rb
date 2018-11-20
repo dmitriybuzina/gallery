@@ -18,8 +18,8 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[facebook]
 
   def send_admin_mail
-    Resque.enqueue(WelcomeMail, self.id)
-    # UserMailer.with(user: self).welcome_email.deliver_later
+    # Resque.enqueue(WelcomeMail, self.id)
+    UserMailer.with(user: self).welcome_email.deliver_later
     # UserMailer.welcome_email.deliver_now
   end
 
