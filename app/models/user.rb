@@ -7,19 +7,30 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   acts_as_follower
 
+  attr_accessor :cached_failed_attempts
+
   after_create :send_admin_mail
 
   mount_uploader :avatar, AvatarUploader
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable,:registerable,
+  devise :database_authenticatable,:registerable, :lockable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook]
 
+  def self.logins_before_captcha
+    3
+  end
+
+  def after_sign_in_path_for(resource)
+    resource.update cached_failed_attempts: 0, failed_attempts: 0
+    root_path
+  end
+
   def send_admin_mail
-    # Resque.enqueue(WelcomeMail, self.id)
-    UserMailer.with(user: self).welcome_email.deliver_later
+    Resque.enqueue(WelcomeMail, self.id)
+    # UserMailer.with(user: self).welcome_email.deliver_now
     # UserMailer.welcome_email.deliver_now
   end
 

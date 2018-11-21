@@ -13,8 +13,11 @@
         = f.label t('sessions.remember me'), class: 'form-check-label' do
           = resource.class.human_attribute_name(t('sessions.remember me'))
     .form-group
-      = flash[:recaptcha_error]
-      = recaptcha_tags
+      - if User.find_by_email(resource.email)
+        - if User.find_by_email(resource.email).failed_attempts > User.logins_before_captcha
+          = recaptcha_tags
+      -#= flash[:recaptcha_error]
+      -#= recaptcha_tags
       = f.submit  t('form.sign in'), class: 'btn btn-primary'
     = link_to t('sessions.home'), welcome_index_path
   = render 'devise/shared/links'

@@ -32,9 +32,9 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
-  config.action_mailer.perform_caching = false
+  config.action_mailer.perform_caching = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -60,16 +60,16 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.action_mailer.default_url_options = { host: 'localhost:3000', port: 3000 }
-  config.action_mailer.delivery_method = :smpt
-  config.action_mailer.smtp_settings = {
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
       address:              'smtp.gmail.com',
-      port:                 587,
-      domain:               'example.com',
+      port:                  587,
+      domain:               'gmail.com',
       user_name:            'dmytro.buzyna@gmail.com',
       password:             '',
-      authentication:       'plain',
+      authentication:       :plain,
       enable_starttls_auto: true
   }
-  config.action_mailer.perform_deliveries = true
 end
