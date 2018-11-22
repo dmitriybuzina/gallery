@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_21_143226) do
+ActiveRecord::Schema.define(version: 2018_11_22_154501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -129,7 +129,6 @@ ActiveRecord::Schema.define(version: 2018_11_21_143226) do
     t.string "avatar"
     t.string "provider"
     t.string "uid"
-    t.integer "cached_failed_attempts", default: 0
     t.datetime "locked_at"
     t.integer "failed_attempts", default: 0
     t.string "unlock_token"
