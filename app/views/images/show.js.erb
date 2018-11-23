@@ -1,4 +1,5 @@
 $('#image-content').html("<%= j render 'image_modal', image: @image %>");
 $('#image-modal').modal('show');
 
-history.replaceState({}, "<%= @image.name %>", "<%= request.original_url %>");
+//history.replaceState({}, "<%= @image.name %>", "<%= request.original_url %>");
+

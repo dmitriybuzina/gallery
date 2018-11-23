@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     end
     get 'images/index'
     get 'welcome/index'
+    get '/categories/:category_id/images/:id', to: 'images#image_show'
     devise_for :users, skip: :omniauth_callbacks, controllers: {
         registrations: 'users/registrations',
         passwords: 'users/passwords',

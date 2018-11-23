@@ -18,7 +18,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[facebook]
 
   def self.logins_before_captcha
-    3
+    2
   end
 
   def send_admin_mail
