@@ -22,8 +22,8 @@ class User < ApplicationRecord
   end
 
   def send_admin_mail
-    # Resque.enqueue(WelcomeMail, self.id)
-    UserMailer.with(user: self).welcome_email.deliver_later
+    Resque.enqueue(WelcomeMail, self.id)
+    # UserMailer.with(user: self).welcome_email.deliver_now
     # UserMailer.welcome_email.deliver_now
   end
 

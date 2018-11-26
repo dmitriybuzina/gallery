@@ -46,7 +46,11 @@ class CategoriesController < ApplicationController
   end
 
   def new_folower
-    redirect_to categories_path if current_user.follow(@category)
+    if current_user.follow(@category)
+      redirect_to categories_path
+      Resque.enqueue(FollowMail, current_user.id, @category.id)
+      # UserMailer.with(user: current_user, category: @category).follow_email.deliver_now
+    end
   end
 
   def delete_folower

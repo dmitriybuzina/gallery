@@ -1,0 +1,12 @@
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1
+      Hello, #{@user.first_name}
+    %p
+      In your follow category #{ @category.name } new image
+      %br/
+    %p
+      To see it, just follow this link: #{@url}.
+    %p Thanks for joining and have a great day!

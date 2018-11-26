@@ -13,7 +13,10 @@ class ImagesController < ApplicationController
 
   def create
     @image = @category.images.new(image_params)
-    redirect_to category_path(@category) if @image.save!
+    if @image.save!
+      send_new_image_mail(@image)
+      redirect_to category_path(@category)
+    end
   end
 
   def show
@@ -37,6 +40,14 @@ class ImagesController < ApplicationController
   end
 
   private
+  def send_new_image_mail(image)
+    users = @category.followers
+    users.each do |user|
+      # UserMailer.with(user: user, image: image).new_image_email.deliver_now
+      Resque.enqueue(NewImageMail, user.id, image.id)
+    end
+  end
+
   def find_like
     @like = Like.where(user_id: params[:user_id], image_id: params[:image_id]).first
   end
