@@ -4,7 +4,7 @@ class Image < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   mount_uploader :file, FileUploader
-  validates :file, file_size: { less_than: 50.megabytes }
+  validates :file, file_size: { less_than: 50.megabytes }, presence: true
 
   def is_liked(user)
     likes.where(user_id: user.id).exists?
