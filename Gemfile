@@ -91,3 +91,4 @@ gem 'omniauth-facebook'
 gem 'kaminari'
 
 gem 'resque'
+gem 'rails-controller-testing'

@@ -4,7 +4,7 @@ class ImagesController < ApplicationController
 
   def index
     @images = Image.all
-    activity('navigation')
+    activity('navigation') if current_user
   end
 
   def new
