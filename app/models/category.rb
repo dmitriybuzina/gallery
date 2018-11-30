@@ -5,6 +5,6 @@ class Category < ApplicationRecord
   acts_as_followable
 
   extend FriendlyId
-  friendly_id :name
+  friendly_id :name, use: :slugged
 
 end

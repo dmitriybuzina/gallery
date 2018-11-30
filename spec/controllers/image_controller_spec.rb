@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe ImagesController do
   let(:user) { FactoryBot.create(:user) }
   let(:image) { FactoryBot.create(:image) }
+  let(:category) { FactoryBot.create(:category) }
+  let(:image_params) { FactoryBot.attributes_for(:image).stringify_keys }
   describe 'GET index' do
     it 'has a 200 status code' do
       get :index
@@ -48,11 +50,43 @@ RSpec.describe ImagesController do
     end
   end
 
-  describe 'POST create' do
-    it 'create image' do
-      image_attributes = FactoryBot.create(:image).attributes
-      post :create, image: image_attributes
-      expect(Image.count).to eq(1)
+  describe 'GET new' do
+    before do
+      sign_in user
+    end
+    it 'has a 200 status code' do
+      get :new, params: { category_id: category.id }
+      expect(response.status).to eq(200)
+    end
+
+    it 'renders the new template' do
+      get :new, params: { category_id: category.id }
+      expect(response).to render_template('new')
     end
   end
+
+  describe 'POST create' do
+    let(:category) { FactoryBot.create(:category) }
+    let(:image) { FactoryBot.build(:image, category: category) }
+    before do
+      sign_in user
+      post :create,
+           params: {
+               category_id: category.id,
+               image: {
+                   name: image.name,
+                   file: fixture_file_upload('spec/factories/image.jpeg')
+               }
+           }
+    end
+    it 'create image' do
+      expect(Image.count).to eq(1)
+    end
+    it 'create image' do
+      expect(response).to redirect_to(category_path(category))
+    end
+  end
+
+
+
 end

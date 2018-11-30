@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe CategoriesController do
   let(:user) { FactoryBot.create(:user) }
   let(:category) { FactoryBot.create(:category) }
-
+  let(:category_params) { FactoryBot.attributes_for(:category).stringify_keys }
+  before do
+    sign_in user
+  end
   describe 'GET index' do
-    before do
-      sign_in user
-    end
     it 'has a 200 status code' do
       get :index
       expect(response.status).to eq(200)
@@ -27,9 +27,6 @@ RSpec.describe CategoriesController do
   end
 
   describe 'GET show' do
-    before do
-      sign_in user
-    end
     it 'has a 200 status code' do
       get :show, params: { id: category.id }
       expect(response.status).to eq(200)
@@ -52,11 +49,66 @@ RSpec.describe CategoriesController do
     end
   end
 
-  # describe 'POST create' do
-  #   it 'create category' do
-  #     # category = FactoryBot.build(:category)
-  #     post :create, category: FactoryBot.build(:category).attributes
-  #     expect(Category.count).to eq(1)
-  #   end
-  # end
+  describe 'GET new' do
+    it 'has a 200 status code' do
+      get :new
+      expect(response.status).to eq(200)
+    end
+
+    it 'renders the new template' do
+      get :new
+      expect(response).to render_template('new')
+    end
+  end
+
+  describe 'POST create' do
+    it 'after create redirect to category index' do
+      post :create, params: { category: FactoryBot.attributes_for(:category) }
+      expect(response).to redirect_to(categories_path)
+    end
+
+    it 'create category' do
+      post :create, params: { category: FactoryBot.attributes_for(:category) }
+      expect(Category.count).to eq(1)
+    end
+  end
+
+  describe 'PUT update' do
+    before do
+      put :update, params: { id: category.id, category: category_params }
+    end
+    it 'has a 200 status code' do
+      expect(response.status).to eq(200)
+    end
+    it 'assigns @category' do
+      expect(assigns(:category)).to eq(category)
+    end
+    it 'after update redirect to category show' do
+      @category = FactoryBot.create(:category, name: 'Category_name')
+      put :update, params: { id: @category.id, category: category_params }
+      expect(response).to redirect_to @category
+    end
+  end
+
+  describe 'DELETE destroy' do
+    before do
+      @category = FactoryBot.create(:category)
+    end
+    it 'destroys the requested select_option' do
+      expect { delete :destroy, params: { id: category.id } }.to change(Category, :count).by(-1)
+    end
+    it 'after delete redirect to categories index' do
+      delete :destroy, params: { id: category.id }
+      expect(response).to redirect_to categories_path
+    end
+  end
+
+  describe 'PUT new_folower' do
+    before do
+      put :new_folower, params: { id: category.id }
+    end
+    it 'has a 200 status code' do
+      expect(response.status).to eq(200)
+    end
+  end
 end
