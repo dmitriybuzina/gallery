@@ -22,6 +22,15 @@ RSpec.describe ImagesController do
       get :index
       expect(assigns(:images)).to eq(images)
     end
+    it 'create activity when sign_in' do
+      sign_in user
+      get :index
+      expect(Activity.count).to eq(1)
+    end
+    it 'not create activity when not sign_in' do
+      get :index
+      expect(Activity.count).to eq(0)
+    end
   end
 
   describe 'GET show' do
@@ -48,6 +57,10 @@ RSpec.describe ImagesController do
       get :show, params: { category_id: image.category_id, id: image.id }
       expect(assigns(:comments)).to eq(comments.sort_by { |comment| comment['created_at'] }.reverse)
     end
+    it 'create activity' do
+      get :show, params: { category_id: image.category_id, id: image.id }
+      expect(Activity.count).to eq(1)
+    end
   end
 
   describe 'GET new' do
@@ -58,7 +71,6 @@ RSpec.describe ImagesController do
       get :new, params: { category_id: category.id }
       expect(response.status).to eq(200)
     end
-
     it 'renders the new template' do
       get :new, params: { category_id: category.id }
       expect(response).to render_template('new')
@@ -82,11 +94,56 @@ RSpec.describe ImagesController do
     it 'create image' do
       expect(Image.count).to eq(1)
     end
-    it 'create image' do
+    it 'after create image redirect to category_path' do
       expect(response).to redirect_to(category_path(category))
     end
   end
 
+  describe 'POST new_like' do
+    before do
+      sign_in user
+      post :new_like, params: { category_id: category.id, id: image.id }
+    end
+    it 'has a 302 status code' do
+      expect(response.status).to eq(302)
+    end
+    it 'assigns @image' do
+      expect(assigns(:image)).to eq(image)
+    end
+    it 'after post new like redirect to categories_image_path' do
+      expect(response).to redirect_to(category_image_path)
+    end
+    it 'create new like' do
+      expect(Like.count).to eq(1)
+    end
+    it 'create new activity' do
+      expect(Activity.count).to eq(1)
+    end
+  end
 
+  describe 'DELETE delete_like' do
+    before do
+      sign_in user
+      @image = FactoryBot.create(:image)
+      @like = FactoryBot.create(:like, image_id: @image.id)
+      delete :delete_like, params: { id: @like.image_id, category_id: @image.category_id, image_id: @like.image_id, user_id: @like.user_id }
+    end
+    it 'has a 302 status code' do
+      expect(response.status).to eq(302)
+    end
+    it 'assigns @image' do
+      expect(assigns(:image)).to eq(@image)
+    end
+    it 'after delete like redirect to categories_image_path' do
+      expect(response).to redirect_to(category_image_path)
+    end
+    it 'delete like' do
+      expect(Like.count).to eq(0)
+    end
+    it 'create new activity' do
+      expect(Activity.count).to eq(1)
+    end
+
+  end
 
 end

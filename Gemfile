@@ -80,7 +80,7 @@ gem 'file_validators'
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 gem 'haml-rails', '~> 1.0'
 gem 'mini_magick'
-gem 'friendly_id', '~> 5.2.0'
+gem 'friendly_id', '~> 5.2.4'
 
 gem 'recaptcha'
 gem 'dotenv-rails', groups: [:development, :test]

@@ -12,9 +12,9 @@
             = link_to '', edit_category_path(category), class: 'glyphicon glyphicon-pencil'
             = link_to '', category, method: :delete, class: 'glyphicon glyphicon-remove'
             - if current_user.following?(category)
-              = link_to image_submit_tag('red.png', width: "20", height: "20"), delete_folower_category_path(category), method: :put
+              = link_to image_submit_tag('red.png', width: "20", height: "20"), delete_follower_category_path(category), method: :delete
             - else
-              = link_to image_submit_tag('green.png', width: "20", height: "20"), new_folower_category_path(category), method: :put
+              = link_to image_submit_tag('green.png', width: "20", height: "20"), new_follower_category_path(category), method: :post
 
       -#= category.counter
       -#= link_to category.name, category_path(category)

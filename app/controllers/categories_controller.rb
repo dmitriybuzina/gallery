@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :edit, :update, :destroy, :new_folower, :delete_folower]
+  before_action :set_category, only: [:show, :edit, :update, :destroy, :new_follower, :delete_follower]
   before_action :authenticate_user!
 
   def index
@@ -44,7 +44,7 @@ class CategoriesController < ApplicationController
     redirect_to categories_path
   end
 
-  def new_folower
+  def new_follower
     if current_user.follow(@category)
       redirect_to categories_path
       Resque.enqueue(FollowMail, current_user.id, @category.id)
@@ -52,7 +52,7 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def delete_folower
+  def delete_follower
     redirect_to categories_path if current_user.stop_following(@category)
   end
 
@@ -67,7 +67,7 @@ class CategoriesController < ApplicationController
   # end
 
   def set_category
-    @category = Category.friendly.find(params[:id])
+    @category = Category.find(params[:id])
   end
 
   def category_params

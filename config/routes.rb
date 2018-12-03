@@ -12,8 +12,8 @@ Rails.application.routes.draw do
         delete 'delete_like', on: :member
         resources :comments
       end
-      put 'new_folower', on: :member
-      put 'delete_folower', on: :member
+      post 'new_follower', on: :member
+      delete 'delete_follower', on: :member
     end
     get 'images/index'
     get 'welcome/index'
