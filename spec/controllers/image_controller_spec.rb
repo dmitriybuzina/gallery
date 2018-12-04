@@ -119,6 +119,9 @@ RSpec.describe ImagesController do
     it 'create new activity' do
       expect(Activity.count).to eq(1)
     end
+    # it 'increment category counter' do
+    #   expect().to change(category.counter).by(1)
+    # end
   end
 
   describe 'DELETE delete_like' do
@@ -143,7 +146,5 @@ RSpec.describe ImagesController do
     it 'create new activity' do
       expect(Activity.count).to eq(1)
     end
-
   end
-
 end

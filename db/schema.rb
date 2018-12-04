@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_30_134137) do
+ActiveRecord::Schema.define(version: 2018_12_04_133250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2018_11_30_134137) do
     t.bigint "user_id"
     t.integer "counter"
     t.string "slug"
+    t.string "main_image"
     t.index ["slug"], name: "index_categories_on_slug", unique: true
   end
 
@@ -71,17 +72,10 @@ ActiveRecord::Schema.define(version: 2018_11_30_134137) do
   end
 
   create_table "follows", force: :cascade do |t|
-    t.string "followable_type", null: false
-    t.bigint "followable_id", null: false
-    t.string "follower_type", null: false
-    t.bigint "follower_id", null: false
-    t.boolean "blocked", default: false, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["followable_id", "followable_type"], name: "fk_followables"
-    t.index ["followable_type", "followable_id"], name: "index_follows_on_followable_type_and_followable_id"
-    t.index ["follower_id", "follower_type"], name: "fk_follows"
-    t.index ["follower_type", "follower_id"], name: "index_follows_on_follower_type_and_follower_id"
+    t.bigint "user_id"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_follows_on_category_id"
+    t.index ["user_id"], name: "index_follows_on_user_id"
   end
 
   create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
@@ -142,6 +136,8 @@ ActiveRecord::Schema.define(version: 2018_11_30_134137) do
   add_foreign_key "activities", "users"
   add_foreign_key "comments", "images"
   add_foreign_key "comments", "users"
+  add_foreign_key "follows", "categories"
+  add_foreign_key "follows", "users"
   add_foreign_key "images", "categories"
   add_foreign_key "likes", "images"
   add_foreign_key "likes", "users"

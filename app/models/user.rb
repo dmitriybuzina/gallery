@@ -5,7 +5,8 @@ class User < ApplicationRecord
   has_many :categories, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  acts_as_follower
+  has_many :follows, dependent: :destroy
+  # acts_as_follower
 
   after_create :send_admin_mail
 

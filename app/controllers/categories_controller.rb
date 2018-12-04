@@ -45,18 +45,23 @@ class CategoriesController < ApplicationController
   end
 
   def new_follower
-    if current_user.follow(@category)
-      redirect_to categories_path
+    @follow = Follow.new(user_id: current_user.id, category_id: @category.id)
+    if @follow.save
       Resque.enqueue(FollowMail, current_user.id, @category.id)
       # UserMailer.with(user: current_user, category: @category).follow_email.deliver_now
+      redirect_to categories_path
     end
   end
 
   def delete_follower
-    redirect_to categories_path if current_user.stop_following(@category)
+    find_follow
+    redirect_to categories_path if @follow.destroy
   end
 
   private
+  def find_follow
+    @follow = Follow.where(user_id: current_user.id, category_id: params[:id]).first
+  end
 
   # def preview
   #   @preview_category = Hash.new

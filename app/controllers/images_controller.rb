@@ -41,7 +41,7 @@ class ImagesController < ApplicationController
 
   private
   def send_new_image_mail(image)
-    users = @category.followers
+    users = User.joins(follows: :category)
     users.each do |user|
       # UserMailer.with(user: user, image: image).new_image_email.deliver_now
       Resque.enqueue(NewImageMail, user.id, image.id)
