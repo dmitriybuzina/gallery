@@ -12,6 +12,12 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 #
+ENV['RAILS_ENV'] ||= 'test'
+require File.expand_path('../../config/environment', __FILE__)
+
+require 'rspec/rails'
+require 'capybara/rspec'
+require 'capybara/rails'
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -118,4 +124,21 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
+  # Capybara.register_driver :selenium do |app|
+  #   Capybara::Selenium::Driver.new(app, browser: :chrome)
+  # end
+  #
+  # Capybara.javascript_driver = :chrome
+  #
+  # Capybara.configure do |config|
+  #   config.default_max_wait_time = 10 # seconds
+  #   config.default_driver        = :selenium
+  # end
+  #
+  # config.before(:each, type: :feature) do
+  #   # Note (Mike Coutermarsh): Make browser huge so that no content is hidden during tests
+  #   Capybara.current_session.driver.browser.manage.window.resize_to(2_500, 2_500)
+  # end
+
 end
+

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :top_categories
-  before_action :set_locale
+  # before_action :set_locale
 
   def top_categories
     @top_categories = Category.order('counter DESC').limit(5)

@@ -120,7 +120,7 @@ RSpec.describe ImagesController do
       expect(Activity.count).to eq(1)
     end
     # it 'increment category counter' do
-    #   expect().to change(category.counter).by(1)
+    #   expect(post :new_like, params: { category_id: category.id, id: image.id }).to change(category.counter).by(1)
     # end
   end
 

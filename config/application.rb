@@ -22,7 +22,7 @@ module Gallery
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.time_zone = 'Europe/Kiev'
     config.i18n.available_locales = [:ru, :en]
-    config.i18n.default_locale = :ru
+    config.i18n.default_locale = :en
 
     config.generators do |g|
       g.test_framework :rspec
