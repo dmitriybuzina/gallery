@@ -20,6 +20,15 @@ describe 'the signin process', type: :feature do
     User.create(email: 'user@example.com', password: 'password')
     visit user_session_path
   end
+  it 'have h1 Sign in' do
+    expect(page).to have_css('h1', text: 'Sign in')
+  end
+  it 'have input email' do
+    expect(page).to have_css('input', id: 'user_email')
+  end
+  it 'have input password' do
+    expect(page).to have_css('input', id: 'user_password')
+  end
   it 'signs me in' do
     within('form') do
       fill_in 'user_email', with: 'user@example.com'
@@ -36,5 +45,12 @@ describe 'the signin process', type: :feature do
     end
     click_button 'Sign in'
     expect(page).to have_content 'Sign in'
+  end
+  it 'capture should appear' do
+    3.times do
+      fill_in 'user_email', with: 'other@example.com'
+      fill_in 'user_password', with: 'rous'
+    end
+    expect(page).to have_css('label', text: "I'm not a robot")
   end
 end
