@@ -1,21 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe Image, :type => :model do
-  subject(:image){ FactoryBot.create(:image) }
-  it 'is valid without name' do
-    expect(FactoryBot.build :image, name: nil, file: image.file).to be_valid
-  end
+  let(:image){ FactoryBot.create(:image) }
+  describe 'Validation' do
+    it 'is valid without name' do
+      expect(FactoryBot.build :image, name: nil, file: image.file).to be_valid
+    end
 
-  it 'is not valid without category_id' do
-    expect(FactoryBot.build :image, category_id: nil).not_to be_valid
-  end
+    it 'is not valid without category_id' do
+      expect(FactoryBot.build :image, category_id: nil).not_to be_valid
+    end
 
-  it 'is not valid without file' do
-    expect(FactoryBot.build :image, file: nil).not_to be_valid
-  end
+    it 'is not valid without file' do
+      expect(FactoryBot.build :image, file: nil).not_to be_valid
+    end
 
-  it 'is valid without count_likes' do
-    expect(FactoryBot.build :image, count_likes: nil).to be_valid
+    it 'is valid without count_likes' do
+      expect(FactoryBot.build :image, count_likes: nil).to be_valid
+    end
   end
 
   describe 'Associations' do
@@ -32,6 +34,30 @@ RSpec.describe Image, :type => :model do
     it 'belongs to category' do
       assc = described_class.reflect_on_association(:category)
       expect(assc.macro).to eq :belongs_to
+    end
+
+    it 'destroy comments when destroy image' do
+      5.times { FactoryBot.create(:comment, image_id: image.id) }
+      expect { image.destroy }.to change { Comment.count }.by(-5)
+    end
+
+    it 'destroy likes when destroy image' do
+      5.times { FactoryBot.create(:like, image_id: image.id) }
+      expect { image.destroy }.to change { Like.count }.by(-5)
+    end
+  end
+
+  describe 'Methods' do
+    let(:image_like) { FactoryBot.create(:image) }
+    let(:image_not_like) { FactoryBot.create(:image) }
+    let(:like) { FactoryBot.create(:like, image_id: image_like.id) }
+
+    it 'is liked user' do
+      expect(image_like.is_liked(like.user_id)).to eq(true)
+    end
+
+    it 'is not liked user' do
+      expect(image_not_like.is_liked(like.user_id)).to eq(false)
     end
   end
 

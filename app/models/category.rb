@@ -8,7 +8,7 @@ class Category < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  def is_follow(user)
-    follows.where(user_id: user.id).exists?
+  def is_follow(user_id)
+    follows.where(user_id: user_id).exists?
   end
 end

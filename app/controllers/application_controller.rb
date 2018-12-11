@@ -3,15 +3,16 @@ class ApplicationController < ActionController::Base
   before_action :top_categories
   before_action :set_locale
 
-  def top_categories
-    @top_categories = Category.order('counter DESC').limit(5)
-  end
-
   def activity(action)
     Activity.new(user_id: current_user.id, action: action, url: request.original_url).save
   end
 
   protected
+
+  def top_categories
+    @top_categories = Category.order('counter DESC').limit(5)
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :first_name, :last_name, :password, :password_confirmation])

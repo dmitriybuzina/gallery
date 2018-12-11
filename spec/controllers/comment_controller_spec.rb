@@ -12,20 +12,21 @@ RSpec.describe CommentsController do
     before do
       get :index, params: { category_id: image.category_id, image_id: image.id }
     end
+
     it 'has a 200 status code' do
       expect(response.status).to eq(200)
     end
+
     it 'renders the index template' do
       expect(response).to render_template('index')
     end
+
     it 'assigns the @image' do
       expect(assigns(:image)).to eq(image)
     end
+
     it 'assign the @comments' do
-      comments = Array.new
-      5.times do
-        comments << FactoryBot.create(:comment, image_id: image.id)
-      end
+      comments = Array.new(5) { FactoryBot.create(:comment, image_id: image.id) }
       expect(assigns(:comments)).to eq(comments)
     end
   end
@@ -34,9 +35,11 @@ RSpec.describe CommentsController do
     before do
       get :new, params: { category_id: image.category_id, image_id: image.id }
     end
+
     it 'has a 200 status code' do
       expect(response.status).to eq(200)
     end
+
     it 'renders the new template' do
       expect(response).to render_template('new')
     end
@@ -46,15 +49,19 @@ RSpec.describe CommentsController do
     before do
       post :create, params: { category_id: image.category_id, image_id: image.id, comment: FactoryBot.attributes_for(:comment, image_id: image.id) }
     end
+
     it 'has a 302 status code' do
       expect(response.status).to eq(302)
     end
+
     it 'after create redirect to category_image_path' do
       expect(response).to redirect_to(category_image_path(id: image.id))
     end
+
     it 'create comment' do
       expect(Comment.count).to eq(1)
     end
+
     it 'create new activity' do
       expect(Activity.count).to eq(1)
     end
