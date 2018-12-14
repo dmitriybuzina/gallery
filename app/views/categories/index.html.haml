@@ -18,7 +18,7 @@
               = link_to image_submit_tag('red.png', width: "20", height: "20"), delete_follower_category_path(category), method: :delete, remote: true
             - else
               = link_to image_submit_tag('green.png', width: "20", height: "20"), new_follower_category_path(category), method: :post, remote: true
-%button{ 'id'=>'button_category', 'data-target' => '#categories_modal', 'data-toggle' => 'modal'}
+%button{ 'id'=>'button_category', 'data-target' => '#categories_modal', 'data-toggle' => 'modal' }
   = image_tag('new_category.png', width: "200", height: "200")
 %br/
 = link_to 'New Category', new_category_path

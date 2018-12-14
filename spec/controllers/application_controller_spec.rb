@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ApplicationController do
   describe 'Top categories' do
-    subject!(:category) { FactoryBot.create(:category_with_images) }
+    let(:category) { FactoryBot.create(:category_with_images) }
 
     controller do
       def index; end

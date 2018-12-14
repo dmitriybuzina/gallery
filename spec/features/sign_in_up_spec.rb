@@ -1,23 +1,62 @@
+require 'rails_helper'
+
 describe 'the signup process', type: :feature do
-  before :each do
-    visit new_user_registration_path
-    within('form') do
-      fill_in 'user_email', with: 'user@example.com'
-      fill_in 'user_first_name', with: 'John'
-      fill_in 'user_last_name', with: 'Smith'
-      fill_in 'user_password', with: '123456'
-      fill_in 'user_password_confirmation', with: '123456'
+  context 'user sign up' do
+    before do
+      visit new_user_registration_path
+      within('form') do
+        fill_in 'user_email', with: 'user@example.com'
+        fill_in 'user_first_name', with: 'John'
+        fill_in 'user_last_name', with: 'Smith'
+        fill_in 'user_password', with: '123456'
+        fill_in 'user_password_confirmation', with: '123456'
+      end
+      click_button 'Sign up'
     end
-    click_button 'Sign up'
+    it 'signs me up' do
+      expect(page).to have_no_content 'Log in'
+    end
   end
-  it 'signs me up' do
-    expect(page).to have_content 'Log out'
+
+  context 'email exist' do
+    before do
+      FactoryBot.create(:user, email: 'user@example.com')
+      visit new_user_registration_path
+      within('form') do
+        fill_in 'user_email', with: 'user@example.com'
+        fill_in 'user_first_name', with: 'John'
+        fill_in 'user_last_name', with: 'Smith'
+        fill_in 'user_password', with: '123456'
+        fill_in 'user_password_confirmation', with: '123456'
+      end
+      click_button 'Sign up'
+    end
+    it 'not sign me up' do
+      expect(page).to have_content('Email has already been taken')
+    end
+  end
+
+  context 'wrong password confirmation' do
+    before do
+      visit new_user_registration_path
+      within('form') do
+        fill_in 'user_email', with: 'user@example.com'
+        fill_in 'user_first_name', with: 'John'
+        fill_in 'user_last_name', with: 'Smith'
+        fill_in 'user_password', with: '123456'
+        fill_in 'user_password_confirmation', with: '1234567'
+      end
+      click_button 'Sign up'
+    end
+    it 'not sign me up' do
+      expect(page).to have_content("Password confirmation doesn't match Password")
+    end
   end
 end
 
 describe 'the signin process', type: :feature do
   before :each do
-    User.create(email: 'user@example.com', password: 'password')
+    FactoryBot.create(:user, email: 'user@example.com', password: 'password')
     visit user_session_path
   end
   it 'have h1 Sign in' do
@@ -35,7 +74,7 @@ describe 'the signin process', type: :feature do
       fill_in 'user_password', with: 'password'
     end
     click_button 'Sign in'
-    expect(page).to have_content 'Log out'
+    expect(page).to have_no_content 'Log in'
   end
 
   it 'sign in as another user' do

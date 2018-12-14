@@ -77,7 +77,6 @@ gem 'bootstrap-sass', '3.2.0.2'
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'letter_opener', :group => :development
 gem 'file_validators'
-gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 gem 'haml-rails', '~> 1.0'
 gem 'mini_magick'
 gem 'friendly_id', '~> 5.2.4'

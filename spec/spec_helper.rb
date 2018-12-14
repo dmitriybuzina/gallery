@@ -100,45 +100,59 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 
-  #Database Cleaner
+  # Database Cleaner
   # This part turns off the default RSpec database cleansing strategy.
   # config.use_transactional_fixtures = true
-
-  config.before(:suite) do
-    # This says that before the entire test suite runs, clear the test database out completely.
-    # This gets rid of any garbage left over from interrupted or poorly-written tests - a common source of surprising test behavior.
-    DatabaseCleaner.clean_with(:truncation)
-
-    # This part sets the default database cleaning strategy to be transactions.
-    # Transactions are very fast, and for all the tests where they do work - that is, any test where the entire test runs in the RSpec process - they are preferable.
-    DatabaseCleaner.strategy = :transaction
-  end
+  #
+  # config.before(:suite) do
+  #   # This says that before the entire test suite runs, clear the test database out completely.
+  #   # This gets rid of any garbage left over from interrupted or poorly-written tests - a common source of surprising test behavior.
+  #   DatabaseCleaner.clean_with(:truncation)
+  #
+  #   # This part sets the default database cleaning strategy to be transactions.
+  #   # Transactions are very fast, and for all the tests where they do work - that is, any test where the entire test runs in the RSpec process - they are preferable.
+  #   DatabaseCleaner.strategy = :transaction
+  # end
 
   # These lines hook up database_cleaner around the beginning and end of each test,
   # telling it to execute whatever cleanup strategy we selected beforehand.
-  config.before(:each) do
-    DatabaseCleaner.start
+  # config.before(:each) do
+  #   DatabaseCleaner.start
+  # end
+  #
+  # config.after(:each) do
+  #   DatabaseCleaner.clean
+  # end
+  # config.before(:suite) do
+  #   DatabaseCleaner.strategy = :transaction
+  #   DatabaseCleaner.clean_with(:truncation)
+  # end
+  #
+  # config.around(:each) do |example|
+  #   DatabaseCleaner.cleaning do
+  #     example.run
+  #   end
+  # end
+  #
+  # config.before(:each, js: true) do
+  #   DatabaseCleaner.strategy = :truncation
+  # end
+
+  Capybara.register_driver :selenium do |app|
+    Capybara::Selenium::Driver.new(app, browser: :chrome)
   end
 
-  config.after(:each) do
-    DatabaseCleaner.clean
+  Capybara.javascript_driver = :chrome
+
+  Capybara.configure do |config|
+    config.default_max_wait_time = 3 # seconds
+    config.default_driver        = :selenium
   end
 
-  # Capybara.register_driver :selenium do |app|
-  #   Capybara::Selenium::Driver.new(app, browser: :chrome)
-  # end
-  #
-  # Capybara.javascript_driver = :chrome
-  #
-  # Capybara.configure do |config|
-  #   config.default_max_wait_time = 10 # seconds
-  #   config.default_driver        = :selenium
-  # end
-  #
-  # config.before(:each, type: :feature) do
-  #   # Note (Mike Coutermarsh): Make browser huge so that no content is hidden during tests
-  #   Capybara.current_session.driver.browser.manage.window.resize_to(2_500, 2_500)
-  # end
+  config.before(:each, type: :feature) do
+    # Note (Mike Coutermarsh): Make browser huge so that no content is hidden during tests
+    Capybara.current_session.driver.browser.manage.window.resize_to(2_500, 2_500)
+  end
 
 end
 

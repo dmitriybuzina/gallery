@@ -21,8 +21,9 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.new(category_params)
-    @category.user_id = current_user.id
+    @category = current_user.categories.new(category_params)
+    #@category = Category.new(category_params)
+    #@category.user_id = current_user.id
     @category.counter = 0
     redirect_to categories_path if @category.save
   end
@@ -72,7 +73,7 @@ class CategoriesController < ApplicationController
   # end
 
   def set_category
-    @category = Category.find(params[:id])
+    @category = Category.friendly.find(params[:id])
   end
 
   def category_params
