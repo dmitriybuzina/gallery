@@ -53,7 +53,7 @@ class ImagesController < ApplicationController
   end
 
   def parent
-    @category ||= Category.friendly.find(params[:category_id])
+    @category ||= Category.friendly.find_by(id: params[:category_id])
   end
 
   def image_params

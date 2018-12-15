@@ -9,7 +9,7 @@ FactoryBot.define do
     name { 'CategoryName' }
     association :user, factory: :user
     after(:create) do |category|
-      create_list(:image, rand(0..10), category: category)
+      create_list(:image, rand(6..10), category: category)
     end
   end
 

@@ -14,8 +14,9 @@ RSpec.describe 'categories/index',:type => :view do
     find('#button_category').click
     expect(page).to have_css('.modal-dialog')
     fill_in 'category[name]', with: 'Category_name'
-    find_button('Create category').click
-    expect(Category.count).to eq(7)
+    expect { click_button('Create category') }.to change(Category, :count).by(1)
+    # find_button('Create category').click
+    # expect(Category.count).to eq(7)
   end
 
   scenario 'Edit category' do
@@ -28,9 +29,8 @@ RSpec.describe 'categories/index',:type => :view do
 
   scenario 'Delete category' do
     first('.container-category').hover
-    first(:xpath, "//a[contains(@data-method,'delete')]").click
+    expect { first(:xpath, "//a[contains(@data-method,'delete')]").click }.to change(Category, :count).by(-1)
     expect(current_path).to eq('/en/categories')
-    expect(Category.count).to eq(5)
   end
 
   scenario 'Follow category' do

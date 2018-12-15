@@ -11,7 +11,7 @@
 = paginate @images
 %select{name: "category[main_image]"}
   -@images.each do |image|
-    %option{value: image.name}
+    %option{ value: image.name }
 = render 'layouts/modal', modal_id: 'image_modal' do
   = render 'images/form'
 
