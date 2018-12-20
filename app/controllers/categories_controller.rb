@@ -1,9 +1,11 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :edit, :update, :destroy, :new_follower, :delete_follower]
+  before_action :set_category, only: [ :show, :edit, :update, :destroy, :new_follower, :delete_follower]
   before_action :authenticate_user!
-
   def index
     @categories = Category.all
+    @categories.each do |category|
+      preview(category)
+    end
     @category = Category.new
     activity('navigation')
   end
@@ -21,9 +23,9 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = current_user.categories.new(category_params)
-    #@category = Category.new(category_params)
-    #@category.user_id = current_user.id
+    # @category = current_user.categories.new(category_params)
+    @category = Category.new(category_params)
+    @category.user_id = current_user.id
     @category.counter = 0
     redirect_to categories_path if @category.save
   end
@@ -61,7 +63,13 @@ class CategoriesController < ApplicationController
 
   private
   def find_follow
-    @follow = Follow.where(user_id: current_user.id, category_id: params[:id]).first
+    @follow = Follow.where(user_id: current_user.id, category_id: Category.friendly.find(params[:id])).first
+  end
+
+  def preview(category)
+    if category.images.exists?
+      category.main_image = category.images.first.file
+    end
   end
 
   # def preview

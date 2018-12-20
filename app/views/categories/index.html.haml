@@ -1,23 +1,21 @@
 .row-3
   .column
-  - @categories.each_slice(4) do |array_category|
-    - array_category.each do |category|
+    - @categories.each do |category|
       .container-category
         -if(category.main_image)
-          = link_to image_tag(category.main_image.url, class: 'category-image'), category_path(category)
-        -else
-          = link_to image_tag('London/download (2).jpeg', class: 'category-image'), category_path(category)
+          = link_to image_tag(category.main_image, class: 'category-image'), category_path(category)
+        -#-else
+        -#  = link_to image_tag('London/download (2).jpeg', class: 'category-image'), category_path(category)
         .center
           .text
             = link_to category.name, category_path(category)
-        .middle
-          .text
-            = link_to '', edit_category_path(category), class: 'glyphicon glyphicon-pencil'
-            = link_to '', category, method: :delete, class: 'glyphicon glyphicon-remove'
-            - if category.is_follow(current_user.id)
-              = link_to image_submit_tag('red.png', width: "20", height: "20"), delete_follower_category_path(category), method: :delete, remote: true
-            - else
-              = link_to image_submit_tag('green.png', width: "20", height: "20"), new_follower_category_path(category), method: :post, remote: true
+        .container-actions
+          = link_to '', edit_category_path(category), class: 'glyphicon glyphicon-pencil'
+          = link_to '', category, method: :delete, class: 'glyphicon glyphicon-remove'
+          - if category.is_follow(current_user.id)
+            = link_to image_submit_tag('red.png', width: "20", height: "20"), delete_follower_category_path(category), method: :delete, remote: true
+          - else
+            = link_to image_submit_tag('green.png', width: "20", height: "20"), new_follower_category_path(category), method: :post, remote: true
 %button{ 'id'=>'button_category', 'data-target' => '#categories_modal', 'data-toggle' => 'modal' }
   = image_tag('new_category.png', width: "200", height: "200")
 %br/

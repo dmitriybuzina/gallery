@@ -20,7 +20,7 @@ RSpec.describe Comment, :type => :model do
   end
 
   describe 'Methods' do
-    let(:category) { FactoryBot.create(:category_with_three_images) }
+    let(:category) { FactoryBot.create(:category_with_six_images) }
     before do
       @comment = FactoryBot.create(:comment, image: category.images.first)
     end

@@ -1,18 +1,43 @@
-.container
-  .row
-    .col-12.col-md-8
-      =image_tag('Rome/download.jpeg')
-    .col-6.col-md-4
-      =image_tag('Rome/download (1).jpeg')
-  .row
-    .col-6.col-md-4
-      =image_tag('Berlin/download (1).jpeg')
-    .col-6.col-md-4
-      =image_tag('Berlin/download (2).jpeg')
-    .col-6.col-md-4
-      =image_tag('Berlin/download (3).jpeg')
-  .row
-    .col-6
-      =image_tag('London/download.jpeg')
-    .col-6
-      =image_tag('London/download (2).jpeg')
+#myCarousel.carousel.slide{"data-ride" => "carousel"}
+  / Indicators
+  %ol.carousel-indicators
+    %li.active{"data-slide-to" => "0", "data-target" => "#myCarousel"}
+    %li{"data-slide-to" => "1", "data-target" => "#myCarousel"}
+    %li{"data-slide-to" => "2", "data-target" => "#myCarousel"}
+    %li{"data-slide-to" => "3", "data-target" => "#myCarousel"}
+    %li{"data-slide-to" => "4", "data-target" => "#myCarousel"}
+  / Wrapper for slides
+  .carousel-inner
+    .item.active
+      =image_tag(@images.first.file.url, size: '480x300', class: 'image')
+    -@images[1..-1].each do |image|
+      .item
+        =image_tag(image.file.url, size: '480x300', class: 'image')
+  / Left and right controls
+  %a.left.carousel-control{"data-slide" => "prev", :href => "#myCarousel"}
+    %span.glyphicon.glyphicon-chevron-left
+    %span.sr-only Previous
+  %a.right.carousel-control{"data-slide" => "next", :href => "#myCarousel"}
+    %span.glyphicon.glyphicon-chevron-right
+    %span.sr-only Next
+
+
+
+  -#    .container
+  -#.row
+  -#  .col-12.col-md-8
+  -#    =image_tag('Rome/download.jpeg')
+  -#  .col-6.col-md-4
+  -#    =image_tag('Rome/download (1).jpeg')
+  -#.row
+  -#  .col-6.col-md-4
+  -#    =image_tag('Berlin/download (1).jpeg')
+  -#  .col-6.col-md-4
+  -#    =image_tag('Berlin/download (2).jpeg')
+  -#  .col-6.col-md-4
+  -#    =image_tag('Berlin/download (3).jpeg')
+  -#.row
+  -#  .col-6
+  -#    =image_tag('London/download.jpeg')
+  -#  .col-6
+  -#    =image_tag('London/download (2).jpeg')

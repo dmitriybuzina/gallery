@@ -21,9 +21,12 @@ class ImagesController < ApplicationController
 
   def show
     @comments = @image.comments.order(created_at: :desc)
-    # respond_to do |format|
-    #   format.js
-    # end
+    respond_to do |format|
+      format.json
+      format.js
+      format.html
+    end
+    # redirect_to 'images/image_modal'
     activity('navigation')
   end
 
@@ -53,7 +56,7 @@ class ImagesController < ApplicationController
   end
 
   def parent
-    @category ||= Category.friendly.find_by(id: params[:category_id])
+    @category ||= Category.friendly.find(params[:category_id])
   end
 
   def image_params

@@ -1,15 +1,12 @@
-- @images.each_slice(5) do |array_image|
-  .row
-    -array_image.each_slice(3) do |image|
-      -image.each do |img|
-        .col-sm-2
-          =link_to image_tag(img.file.url, size: "320x200"), category_image_path(@category, id: img.id)
-
-%div{'data-target' => '#image_modal', 'data-toggle' => 'modal'}
+.images
+  - @images.each_slice(3) do |image|
+    -image.each do |img|
+      =link_to image_tag(img.file.url, size: "480x300"), category_image_path(@category, id: img.id)
+%div{ 'data-target' => '#image_modal', 'data-toggle' => 'modal' }
   = image_tag('addImage.png', class: "img-thumbnail", size: "240x150")
   -#%p= link_to image_tag('addImage.png', class: "img-thumbnail", size: "240x150"), "#form_modal", "data-toggle" => "modal"
 = paginate @images
-%select{name: "category[main_image]"}
+%select{ name: "category[main_image]" }
   -@images.each do |image|
     %option{ value: image.name }
 = render 'layouts/modal', modal_id: 'image_modal' do

@@ -1,6 +1,8 @@
 - @comments.each do |comment|
   %p
   -if comment.user
-    =comment.body
-    =comment.user.email
-    %br
+    -#.container-comment
+    .alert.alert-success
+      =comment.user.email
+      =comment.body
+      %br

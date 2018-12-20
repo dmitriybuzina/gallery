@@ -14,7 +14,7 @@ RSpec.describe Like, :type => :model do
   end
 
   describe 'Methods' do
-    let(:category) { FactoryBot.create(:category_with_three_images) }
+    let(:category) { FactoryBot.create(:category_with_six_images) }
     let(:image) { FactoryBot.create(:image, category: category) }
     before do
       @like = FactoryBot.create(:like, image: image)

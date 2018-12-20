@@ -51,7 +51,7 @@ RSpec.describe Image, :type => :model do
     let(:image_like) { FactoryBot.create(:image) }
     let(:image_not_like) { FactoryBot.create(:image) }
     let(:like) { FactoryBot.create(:like, image_id: image_like.id) }
-    let(:category) { FactoryBot.create(:category_with_three_images) }
+    let(:category) { FactoryBot.create(:category_with_six_images) }
     it 'is liked user' do
       expect(image_like.is_liked(like.user_id)).to eq(true)
     end
@@ -61,7 +61,7 @@ RSpec.describe Image, :type => :model do
     end
 
     it 'category counter cache' do
-      expect(category.counter).to eq(3)
+      expect(category.counter).to eq(6)
     end
 
     it 'increment category counter cache' do

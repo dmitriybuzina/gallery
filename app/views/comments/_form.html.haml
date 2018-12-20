@@ -1,7 +1,6 @@
 = form_with(model: [ @image, @image.comments.build ], remote: true, url: category_image_comments_path(image_id: @image.id)) do |form|
   %p
-    = form.label :body
     %br
-      = form.text_area :body
+      = form.text_area :body, class: 'form-control'
     %p
-      = form.submit
+      = form.submit class: 'form-control'
