@@ -6,8 +6,6 @@ RSpec.describe 'categories/show', :type => :view do
   before do
     login_as user, scope: :user
     category
-    assign(:category, category)
-    assign(:images, category.images)
     visit category_path(id: category.id)
   end
 

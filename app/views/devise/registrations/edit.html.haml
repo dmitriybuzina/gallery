@@ -10,7 +10,7 @@
     - else
       = f.file_field :avatar
       = f.hidden_field :avatar_cache
-    .form-group
+    .form_group
       = f.label t('form.email')
       = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control '
     .form-group
@@ -30,11 +30,11 @@
       = f.text_field :location, autofocus: true, autocomplete: 'location', class: 'form-control'
     .form-group
       = f.label t('form.password')
-      = f.text_field :password, autocomplete: 'new-password', class: 'form-control'
+      = f.text_field :password, autocomplete: 'off', class: 'form-control'
       %small.form-text.text-muted= t('registrations.edit.leave_blank_if_no_change')
     .form-group
       = f.label t('registrations.edit.password confirmation')
-      = f.password_field :password_confirmation, autocomplete: 'new-password', class: 'form-control'
+      = f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control'
       %small.form-text.text-muted= t('registrations.edit.leave_blank_if_no_change')
     .form-group
       = f.label t('registrations.edit.current password')

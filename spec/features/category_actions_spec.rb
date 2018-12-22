@@ -13,9 +13,7 @@ RSpec.describe 'features/categories_actions',type: :feature do
     find('#button_category').click
     expect(page).to have_css('.modal-dialog')
     fill_in 'category[name]', with: 'Category_name'
-    expect { click_button('Create category') }.to change(Category, :count).by(1)
-    # find_button('Create category').click
-    # expect(Category.count).to eq(7)
+    expect{ find_button('Create category').click } .to change(Category, :count).by(1)
   end
 
   scenario 'Edit category' do
@@ -24,6 +22,7 @@ RSpec.describe 'features/categories_actions',type: :feature do
     expect(page).to have_content('Editing Category')
     fill_in 'category[name]', with: 'Other_category_name'
     find_button('Create category').click
+    expect(categories.include? Category.find_by(name: 'Other_category_name' )).to eq(true)
   end
 
   scenario 'Delete category' do

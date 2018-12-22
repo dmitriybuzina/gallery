@@ -1,8 +1,10 @@
 require 'rails_helper'
 
 describe 'the signup process', type: :feature do
+  let(:images) { FactoryBot.create_list(:image, 5) }
   context 'user sign up' do
     before do
+      images
       visit new_user_registration_path
       within('form') do
         fill_in 'user_email', with: 'user@example.com'
@@ -55,6 +57,7 @@ describe 'the signup process', type: :feature do
 end
 
 describe 'the signin process', type: :feature do
+  let(:images) { FactoryBot.create_list(:image, 5) }
   before :each do
     FactoryBot.create(:user, email: 'user@example.com', password: 'password')
     visit user_session_path
@@ -69,6 +72,7 @@ describe 'the signin process', type: :feature do
     expect(page).to have_css('input', id: 'user_password')
   end
   it 'signs me in' do
+    images
     within('form') do
       fill_in 'user_email', with: 'user@example.com'
       fill_in 'user_password', with: 'password'
