@@ -82,7 +82,7 @@ gem 'mini_magick'
 gem 'friendly_id', '~> 5.2.4'
 
 gem 'recaptcha'
-gem 'dotenv-rails', groups: [:development, :test]
+gem 'dotenv-rails', groups: [:development, :production, :test]
 
 gem 'omniauth-facebook'
 
