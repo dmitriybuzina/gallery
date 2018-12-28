@@ -34,11 +34,11 @@
                     .row
                       .col-lg-4
                         %p
-                          -unless(current_user.avatar)
+                          -unless current_user.avatar.url.present?
                             %span.glyphicon.glyphicon-user.icon-size
                           -else
                             %span
-                              -#=image_tag(current_user.avatar.url)
+                              = image_tag(current_user.avatar.url)
                       .col-lg-8
                         %p
                           %strong
@@ -52,10 +52,12 @@
                     %li= link_to(t('.log_out'), destroy_user_session_path, method: :delete)
                   - else
                     %li= link_to(t('.login'), new_user_session_url)
-        %li{class: "nav-item#{" active" if I18n.locale == :ru}"}
-          = link_to "Рус", { locale: :ru }, class: "nav-link"
-        %li{class: "nav-item#{" active" if I18n.locale == :en}"}
-          = link_to "En", { locale: :en }, class: "nav-link"
+        -if I18n.locale == :ru
+          %li{class: "nav-item#{" active" if I18n.locale == :en}"}
+            = link_to "En", { locale: :en }, class: "nav-link"
+        -else
+          %li{class: "nav-item#{" active" if I18n.locale == :ru}"}
+            = link_to "Рус", { locale: :ru }, class: "nav-link"
 
 
 
