@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
   end
 
   protected
-
   def top_categories
     @top_categories = Category.order('counter DESC').limit(5)
   end

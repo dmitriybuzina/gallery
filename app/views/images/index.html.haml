@@ -1,5 +1,5 @@
-.row-4
+.images-index
   - @images.each do |image|
-    =link_to image_tag(image.file.url, size: "240x150"), category_image_path(image.category_id, id: image.id)
+    =link_to image_tag(image.file.url, size: "240x150"), category_image_path(category_id: image.category_id, id: image.id)
 
 

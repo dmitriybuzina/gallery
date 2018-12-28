@@ -1,6 +1,6 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :new_like, :delete_like]
-  before_action :parent, only: [:new, :create, :new_like, :delete_like]
+  before_action :parent, only: [:new, :create, :new_like, :delete_like, :show]
 
   def index
     @images = Image.all
@@ -20,6 +20,7 @@ class ImagesController < ApplicationController
   end
 
   def show
+    @category
     @comments = @image.comments.order(created_at: :desc)
     respond_to do |format|
       format.json

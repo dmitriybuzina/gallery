@@ -34,7 +34,11 @@
                     .row
                       .col-lg-4
                         %p
-                          %span.glyphicon.glyphicon-user.icon-size
+                          -unless(current_user.avatar)
+                            %span.glyphicon.glyphicon-user.icon-size
+                          -else
+                            %span
+                              -#=image_tag(current_user.avatar.url)
                       .col-lg-8
                         %p
                           %strong
