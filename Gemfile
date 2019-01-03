@@ -88,6 +88,10 @@ gem 'omniauth-facebook'
 
 # Pagination
 gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 
 gem 'resque'
 gem 'rails-controller-testing'
+
+# Amazon
+gem 'fog-aws'

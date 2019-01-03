@@ -25,7 +25,11 @@
           %ul.nav.navbar-nav.navbar-right
             %li.dropdown
               = link_to edit_user_registration_path, 'data-toggle' => 'dropdown', 'role' => 'button', 'aria-expanded' => 'false', 'class' => 'dropdown-toggle' do
-                %span.glyphicon.glyphicon-user
+                -unless current_user.avatar.url.present?
+                  %span.glyphicon.glyphicon-user
+                -else
+                  %span
+                    = image_tag(current_user.avatar.url, class: 'icon')
                 = current_user.email
                 %span.glyphicon.glyphicon-chevron-down
               %ul.dropdown-menu
@@ -33,14 +37,14 @@
                   .navbar-login
                     .row
                       .col-lg-4
-                        %p
+                        %p.text-center
                           -unless current_user.avatar.url.present?
                             %span.glyphicon.glyphicon-user.icon-size
                           -else
                             %span
-                              = image_tag(current_user.avatar.url)
+                              = image_tag(current_user.avatar.url, class: 'avatar')
                       .col-lg-8
-                        %p
+                        .text-name-surname
                           %strong
                             = current_user.first_name
                             = current_user.last_name

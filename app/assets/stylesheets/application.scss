@@ -20,6 +20,7 @@
 @import 'categories';
 @import 'images';
 @import 'comments';
+//@import 'pagination';
 
 body {
   background: lightyellow;
@@ -28,4 +29,12 @@ body {
   //-moz-background-size: cover;
   //-o-background-size: cover;
   //background-size: cover;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  text-align: right;
 }
