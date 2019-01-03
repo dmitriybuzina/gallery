@@ -13,6 +13,7 @@ class ImagesController < ApplicationController
 
   def create
     @image = @category.images.new(image_params)
+    @image.count_likes = 0
     if @image.save!
       send_new_image_mail(@image)
       redirect_to category_path(@category)
@@ -61,7 +62,7 @@ class ImagesController < ApplicationController
   end
 
   def image_params
-    params.require(:image).permit(:name, :file)
+    params.require(:image).permit(:name, :file, :count_likes)
   end
 
   def set_image
