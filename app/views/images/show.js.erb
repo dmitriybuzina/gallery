@@ -7,7 +7,7 @@ $('#image-modal').on("hidden.bs.modal", function () {
     history.back(-3)
 });
 
-
+$("<%= escape_javascript(render @image) %>").appendTo("#image");
 //if(('#image-modal').close)
 //{
 //    history.back();

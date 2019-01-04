@@ -95,3 +95,5 @@ gem 'rails-controller-testing'
 
 # Amazon
 gem 'fog-aws'
+
+gem 'jquery-rails'

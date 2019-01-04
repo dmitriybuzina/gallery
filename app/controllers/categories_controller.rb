@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  respond_to :html, :js
   before_action :set_category, only: [ :show, :edit, :update, :destroy, :new_follower, :delete_follower]
   before_action :authenticate_user!
   def index
@@ -49,6 +50,10 @@ class CategoriesController < ApplicationController
 
   def new_follower
     @follow = Follow.new(user_id: current_user.id, category_id: @category.id)
+    respond_to do |format|
+      format.html
+      format.js
+    end
     if @follow.save
       Resque.enqueue(FollowMail, current_user.id, @category.id)
       # UserMailer.with(user: current_user, category: @category).follow_email.deliver_now

@@ -11,9 +11,9 @@
           = link_to '', edit_category_path(category), class: 'glyphicon glyphicon-pencil'
           = link_to '', category, method: :delete, class: 'glyphicon glyphicon-remove'
           - if category.is_follow(current_user.id)
-            = link_to image_submit_tag('unsubscribe.png', width: "20", height: "20"), delete_follower_category_path(category), method: :delete, remote: true
+            = link_to image_submit_tag('unsubscribe.png', width: "20", height: "20"), delete_follower_category_path(category), method: :delete
           - else
-            = link_to image_submit_tag('subscribe.png', width: "20", height: "20"), new_follower_category_path(category), method: :post, remote: true
+            = link_to image_submit_tag('subscribe.png', width: "20", height: "20"), new_follower_category_path(category), method: :post, id: 'follow_link'
 %button{ 'id'=>'button_category', 'data-target' => '#categories_modal', 'data-toggle' => 'modal' }
   = image_tag('new_category.png', width: "200", height: "200")
 %br/
