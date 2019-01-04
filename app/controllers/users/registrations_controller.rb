@@ -13,13 +13,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
 
   def create
-    if !verify_recaptcha
-      self.resource = resource_class.new(sign_up_params)
-      sign_out
-      render :new
-    else
+    # if !verify_recaptcha
+    #   self.resource = resource_class.new(sign_up_params)
+    #   sign_out
+    #   render :new
+    # else
       super
-    end
+    # end
   end
 
   # GET /resource/edit
