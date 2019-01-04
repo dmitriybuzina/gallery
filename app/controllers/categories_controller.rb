@@ -77,14 +77,6 @@ class CategoriesController < ApplicationController
     end
   end
 
-  # def preview
-  #   @preview_category = Hash.new
-  #   @categories.each do |category|
-  #     @preview_category[category: category.images.limit(4)]
-  #   end
-  #   puts @preview_category
-  # end
-
   def set_category
     @category = Category.friendly.find(params[:id])
   end

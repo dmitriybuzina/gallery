@@ -20,15 +20,9 @@
 @import 'categories';
 @import 'images';
 @import 'comments';
-//@import 'pagination';
 
 body {
-  background: image_url('cool-background.png');
-  //background: url(background2.jpeg) no-repeat center center fixed;
-  //-webkit-background-size: cover;
-  //-moz-background-size: cover;
-  //-o-background-size: cover;
-  //background-size: cover;
+  background: image_url('diagonal_waves.png');
 }
 
 .avatar {

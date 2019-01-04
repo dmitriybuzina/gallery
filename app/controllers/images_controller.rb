@@ -34,7 +34,7 @@ class ImagesController < ApplicationController
 
   def new_like
     @like = Like.new(user_id: current_user.id, image_id: @image.id)
-    redirect_to category_image_path if @like.save
+    redirect_to category_image_path(@category.slug) if @like.save
     activity('like')
   end
 

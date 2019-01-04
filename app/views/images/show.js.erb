@@ -4,10 +4,10 @@ $('#image-modal').modal('show');
 history.replaceState({}, "<%= @image.name %>", "<%= request.original_url %>");
 
 $('#image-modal').on("hidden.bs.modal", function () {
-    history.back(-3)
+    history.back(-1)
 });
 
-$("<%= escape_javascript(render @image) %>").appendTo("#image");
+//$('#new_like_link').hide().after('<%= j render("images/show") %>');
 //if(('#image-modal').close)
 //{
 //    history.back();

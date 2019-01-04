@@ -21,13 +21,6 @@ ActiveAdmin.register_page "Parser images" do
   content do
     render 'admin/parser_images/form'
   end
-
-  # page_action :save_images, method: :post do
-  #   @images.each do |image|
-  #     File.open('app/assets/images') { |f| f.write(image.read) }
-  #   end
-  # end
-
 end
 
 def uri?(string)
