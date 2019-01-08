@@ -18,5 +18,4 @@ RSpec.describe 'features/sign_in_with_facebook', type: :view do
   it 'should redirect to root' do
     expect(response).to eq('')
   end
-
 end
