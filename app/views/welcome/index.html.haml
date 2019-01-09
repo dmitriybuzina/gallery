@@ -8,15 +8,41 @@
     %li{ "data-slide-to" => "4", "data-target" => "#myCarousel" }
   / Wrapper for slides
   .carousel-inner
+    -#.item.active
+    -#  =image_tag(@images.first.file.url, class: 'welcome-image')
+    -#-@images[1..-1].each do |image|
+    -#  .item
+    -#    =image_tag(image.file.url, class: 'welcome-image')
+    .welcome-info
+      .back
+        %h1
+          AWESOME GALLERY
+        %p
+          go in with us
     .item.active
-      =image_tag(@images.first.file.url, size: '480x300', class: 'image')
-    -@images[1..-1].each do |image|
-      .item
-        =image_tag(image.file.url, size: '480x300', class: 'image')
+      =image_tag('back3.jpg', class: 'welcome-image')
+    .item.welcome-image
+      =image_tag('back4.jpg', class: 'welcome-image')
+    .item.welcome-image
+      =image_tag('back5.jpg', class: 'welcome-image')
+    .item.welcome-image
+      =image_tag('back6.jpg', class: 'welcome-image')
+    .item.welcome-image
+      =image_tag('back7.jpg', class: 'welcome-image')
+
   / Left and right controls
   %a.left.carousel-control{ "data-slide" => "prev", :href => "#myCarousel" }
-    %span.glyphicon.glyphicon-chevron-left
+    -#%span.glyphicon.glyphicon-chevron-left
     %span.sr-only Previous
   %a.right.carousel-control{ "data-slide" => "next", :href => "#myCarousel" }
-    %span.glyphicon.glyphicon-chevron-right
+    -#%span.glyphicon.glyphicon-chevron-right
     %span.sr-only Next
+
+.second-page
+  .content
+    %h1
+      We have a huge number of images and you can add your own!
+
+.third-page
+  =image_tag('back2.jpg', class: 'welcome-image')
+

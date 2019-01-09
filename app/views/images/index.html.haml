@@ -1,3 +1,4 @@
-.images-index
-  - @images.each do |image|
-    =link_to image_tag(image.file.url, size: "320x200"), category_image_path(category_id: image.category.slug, id: image.id)
+.gallery
+  -@images.each do |image|
+    .item-image
+      =link_to image_tag(image.file.url, class: 'img'), category_image_path(category_id: image.category.slug, id: image.id)

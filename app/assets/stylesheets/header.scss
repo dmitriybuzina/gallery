@@ -24,3 +24,23 @@
   padding-left: 10px;
   padding-top: 40px;
 }
+
+.containter-fluid {
+  max-width: 90%;
+  margin: auto;
+  position: relative;
+  z-index: 1;
+  //opacity: 0.5;
+}
+
+.navbar {
+  margin: 0;
+  //height: 500px;
+  //background: url("back3.jpg") no-repeat;
+  background: white;
+  //-webkit-background-size: cover;
+  //-moz-background-size: cover;
+  //-o-background-size: cover;
+  background-position: center ;
+  background-size: cover;
+}
