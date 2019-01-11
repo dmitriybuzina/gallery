@@ -18,10 +18,8 @@
 //  margin: 0 auto;
 //}
 
-
-
-.item .welcome-image {
-  max-height: 400px;
+.welcome-image {
+  max-height: 550px;
   z-index: 0;
   width: 100%;
   height: 20%;
@@ -31,7 +29,7 @@
 }
 
 h1 {
-  font-size: 200%;
+  font-size: 180%;
   font-family: "Lucida Console", Monaco, monospace
 }
 
@@ -75,9 +73,9 @@ p {
 .back {
   border-radius: 15px;
   //padding: 5%;
-  padding-top: 12%;
+  padding-top: 13%;
   padding-right: 16%;
-  padding-bottom: 12%;
+  padding-bottom: 13%;
   padding-left: 16%;
   background: white;
   position: absolute;
@@ -90,7 +88,7 @@ p {
 .second-page {
   height: 400px;
   width: 100%;
-  position: absolute;
+  position: relative;
   background: white;
 }
 
@@ -102,10 +100,9 @@ p {
 }
 
 .third-page {
-  height: 600px;
-  width: 100%;;
+  position: relative;
 }
 
-
-
-
+.border-signup {
+  border: 3px black;
+}
