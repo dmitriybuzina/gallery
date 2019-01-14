@@ -9,10 +9,10 @@
           = image_tag(@image.file.url)
         %p
           -if @image.is_liked(current_user)
-            = link_to '', delete_like_category_image_path(user_id: current_user.id, image_id: @image.id), method: :delete, remote: true, class: "glyphicon glyphicon-heart"
+            = link_to image_tag('heart_red.png'), delete_like_category_image_path(user_id: current_user.id, image_id: @image.id), method: :delete, remote: true
             = @image.count_likes
           -else
-            = link_to '', new_like_category_image_path(category_id: @image.category_id), method: :post, remote: true, class: "glyphicon glyphicon-heart-empty"
+            = link_to image_tag('heart.png'), new_like_category_image_path(category_id: @image.category_id), method: :post, remote: true
             = @image.count_likes
           = render 'comments/form'
           = render 'comments/comment', image: @image

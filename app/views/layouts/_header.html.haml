@@ -30,7 +30,7 @@
     - else
       %ul.nav.navbar-nav.navbar-right
         %li.nav-item.dropdown
-          %a.dropdown-toggle{"data-toggle" => "dropdown"}
+          %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => ""}
             %span
               -unless current_user.avatar.url.present?
                 = image_tag('profile.png', class: 'icon')

@@ -1,8 +1,8 @@
 .images
   - @images.each_slice(3) do |image|
     -image.each do |img|
-      =link_to image_tag(img.file.url, size: "480x300"), category_image_path(@category, id: img.id), remote: true
-  = paginate @images
+      =link_to image_tag(img.file.url, class: 'img'), category_image_path(@category, id: img.id), remote: true
+  = paginate @images, class: 'pagination'
 %div{ 'data-target' => '#image_modal', 'data-toggle' => 'modal' }
   = image_tag('addImage.png', class: "img-thumbnail", size: "240x150")
   -#%p= link_to image_tag('addImage.png', class: "img-thumbnail", size: "240x150"), "#form_modal", "data-toggle" => "modal"

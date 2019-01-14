@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @images = @category.images.page(params[:page]).per(5)
+    @images = @category.images.page(params[:page]).per(6)
     activity('navigation')
   end
 
