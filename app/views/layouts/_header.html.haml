@@ -3,14 +3,7 @@
   %button.navbar-toggler{"aria-controls" => "navbarNavDropdown", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavDropdown", "data-toggle" => "collapse", :type => "button"}
     %span.navbar-toggler-icon
   #navbarNavDropdown.collapse.navbar-collapse
-    %ul.navbar-nav
-      -#%li.nav-item.active
-      -#  %a.nav-link{:href => "#"}
-      -#    Home
-      -#    %span.sr-only (current)
-      %li.nav-item
-        %a.nav-link{ :href => images_index_path }
-          =t('.images')
+    %ul.navbar-nav.ml-auto
       %li.nav-item.dropdown
         %a#navbarDropdownMenuLink.nav-link.dropdown-toggle{ "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "" }
           =t('.categories')
@@ -21,44 +14,44 @@
           .dropdown-divider
           %a.dropdown-item{ :href => categories_path }
             =t('.all categories')
+      %li.nav-item
+        %a.nav-link{ :href => images_index_path }
+          =t('.images')
       -if I18n.locale == :ru
         %li{class: "nav-item#{" active" if I18n.locale == :en}"}
           = link_to "En", { locale: :en }, class: "nav-link"
       -else
         %li{class: "nav-item#{" active" if I18n.locale == :ru}"}
           = link_to "Рус", { locale: :ru }, class: "nav-link"
-      -#%li.nav-item
-      -#  - unless user_signed_in?
-      -#    %a.nav-link{ :href => new_user_session_url }
-      -#      =t('.login')
-      -#  -if current_user
-      -#    %li.nav-item.dropdown
-      -#      %a.nav-link{ 'data-toggle' => 'dropdown', 'role' => 'button', 'aria-expanded' => 'false', 'class' => 'dropdown-toggle', :href => edit_user_registration_path }
-      -#        -current_user.email
-      -#      %ul.dropdown-menu
-      -#        %li
-      -#          .navbar-login
-      -#            .row
-      -#              .col-lg-4
-      -#                %p.text-center
-      -#                  -unless current_user.avatar.url.present?
-      -#                    %span.glyphicon.glyphicon-user.icon-size
-      -#                  -else
-      -#                    %span
-      -#                      = image_tag(current_user.avatar.url, class: 'avatar')
-      -#              .col-lg-8
-      -#                .text-name-surname
-      -#                  %strong
-      -#                    = current_user.first_name
-      -#                    = current_user.last_name
-      -#        .row
-      -#          .col-sm-2
-      -#            %li= link_to(t('.settings'), edit_user_registration_path)
-      -#          .col-sm-2
-      -#          - if user_signed_in?
-      -#            %li= link_to(t('.log_out'), destroy_user_session_path, method: :delete)
-      -#          - else
-      -#            %li= link_to(t('.login'), new_user_session_url)
+
+    - unless user_signed_in?
+      %a.nav-link{ :href => new_user_session_url }
+        =t('.login')
+    - else
+      %ul.nav.navbar-nav.navbar-right
+        %li.nav-item.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown"}
+            %span
+              -unless current_user.avatar.url.present?
+                = image_tag('profile.png', class: 'icon')
+              -else
+                = image_tag(current_user.avatar.url, class: 'icon')
+              =current_user.email
+              -#= image_tag('caret-bottom.png')
+          %ul.dropdown-menu
+            %li.well{ :align => "center" }
+              %div
+                -unless current_user.avatar.url.present?
+                  = image_tag('profile.png', class: 'avatar')
+                -else
+                  %span
+                    = image_tag(current_user.avatar.url, class: 'avatar')
+                  %span
+                    = current_user.first_name
+                    = current_user.last_name
+              = link_to(t('.log_out'), destroy_user_session_path, method: :delete)
+              = link_to(t('.settings'), edit_user_registration_path)
+
 
     -#.collapse.navbar-collapse#bs-example-navbar-collapse-1
     -#  %ul.nav.navbar-nav.navbar-right
@@ -119,10 +112,7 @@
     -#    -else
     -#      %li{class: "nav-item#{" active" if I18n.locale == :ru}"}
     -#        = link_to "Рус", { locale: :ru }, class: "nav-link"
-    -#
-    -#
-    -#
-    -#
+
 
 
 

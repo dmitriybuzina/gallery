@@ -16,6 +16,11 @@
   height: 25px;
   border-radius: 50%;
   text-align: center;
+  margin-right: -6px ;
+}
+
+.indent {
+  margin-left: -6px ;
 }
 
 .text-name-surname {
@@ -38,5 +43,8 @@
   position: relative;
   top: 0;
   z-index: 1;
+}
 
+.nav-profile {
+  clear: both;
 }
