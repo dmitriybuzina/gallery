@@ -28,7 +28,7 @@ class ImagesController < ApplicationController
       format.js
       format.html
     end
-    # redirect_to 'images/image_modal'
+    # redirect_to partial: 'images/image_modal'
     activity('navigation')
   end
 

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
     get 'images/index'
     get 'welcome/index'
-
+    # match 'categories/:category_id/images/:id' => 'images#show', :as => :img
     devise_for :users, skip: :omniauth_callbacks, controllers: {
         registrations: 'users/registrations',
         passwords: 'users/passwords',

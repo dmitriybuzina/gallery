@@ -7,24 +7,28 @@
 
 .container-category {
   position: relative;
-  width:350px;
-  height:200px;
-  //border:1px solid black;
   padding:10px;
   float: none;
   margin:25px;
   display: inline-block;
 }
 
+.name-category {
+  width: 250px;
+  height: 80px;
+  padding-top: 0px;
+  background: aquamarine;
+}
+
 .category-image {
   position: relative;
   opacity: 1;
   display: block;
-  width: 350px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   transition: .5s ease;
   backface-visibility: hidden;
-  border: 3px solid black;
+  //border: 3px solid black;
 }
 
 .center {

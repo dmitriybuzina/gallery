@@ -46,9 +46,9 @@
                 -else
                   %span
                     = image_tag(current_user.avatar.url, class: 'avatar')
-                  %span
-                    = current_user.first_name
-                    = current_user.last_name
+                %span
+                  = current_user.first_name
+                  = current_user.last_name
               = link_to(t('.log_out'), destroy_user_session_path, method: :delete)
               = link_to(t('.settings'), edit_user_registration_path)
 

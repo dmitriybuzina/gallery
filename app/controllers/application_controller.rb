@@ -7,6 +7,12 @@ class ApplicationController < ActionController::Base
     Activity.new(user_id: current_user.id, action: action, url: request.original_url).save
   end
 
+  def preview(category)
+    if category.images.exists?
+      category.main_image = category.images.first.file
+    end
+  end
+
   protected
   def top_categories
     @top_categories = Category.order('counter DESC').limit(5)

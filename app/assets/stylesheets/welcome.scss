@@ -1,22 +1,6 @@
 // Place all the styles related to the Welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-//
-//.container {
-//  text-align: center;
-//}
-//
-//.row.grid {
-//  display: flex;
-//  flex-wrap: wrap;
-//  padding: 0 6px;
-//  width: 1000px;
-//}
-//
-//.image {
-//  display: block;
-//  margin: 0 auto;
-//}
 
 .welcome-image {
   max-height: 550px;
@@ -86,6 +70,37 @@ p {
 }
 
 .second-page {
+  height: auto;
+  width: 100%;
+  position: relative;
+}
+
+.welcome-categories {
+  position: relative;
+  margin-top: 20px;
+  width: 80%;
+  display: flex;
+}
+
+.welcome-category {
+  padding: 20px;
+  margin: auto;
+  width: 250px;
+  height: 300px;
+}
+
+.name-welcome-category {
+  height: 80px;
+  width: auto;
+  padding-top: 0;
+  background: aquamarine;
+}
+
+h1.txt {
+  padding-top: 50px;
+}
+
+.third-page {
   height: 400px;
   width: 100%;
   position: relative;
@@ -99,7 +114,7 @@ p {
   transform: translate(-50%, -50%)
 }
 
-.third-page {
+.fourth-page {
   position: relative;
 }
 

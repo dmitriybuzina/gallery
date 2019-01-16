@@ -18,3 +18,8 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require bootstrap/modal
+
+// $(document).on("click", '[data-toggle="lightbox"]', function(event) {
+//     event.preventDefault();
+//     $(this).ekkoLightbox();
+// });

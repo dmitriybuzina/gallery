@@ -71,12 +71,6 @@ class CategoriesController < ApplicationController
     @follow = Follow.where(user_id: current_user.id, category_id: Category.friendly.find(params[:id])).first
   end
 
-  def preview(category)
-    if category.images.exists?
-      category.main_image = category.images.first.file
-    end
-  end
-
   def set_category
     @category = Category.friendly.find(params[:id])
   end
