@@ -13,15 +13,15 @@
         %p
           go in with us
     .carousel-item.active
-      =image_tag('back3.jpg', class: 'welcome-image')
+      =image_tag('back3.jpg', class: 'carousel-image')
     .carousel-item
-      =image_tag('back4.jpg', class: 'welcome-image')
+      =image_tag('back4.jpg', class: 'carousel-image')
     .carousel-item
-      =image_tag('back5.jpg', class: 'welcome-image')
+      =image_tag('back5.jpg', class: 'carousel-image')
     .carousel-item
-      =image_tag('back6.jpg', class: 'welcome-image')
+      =image_tag('back6.jpg', class: 'carousel-image')
     .carousel-item
-      =image_tag('back7.jpg', class: 'welcome-image')
+      =image_tag('back7.jpg', class: 'carousel-image')
   %a.carousel-control-prev{"data-slide" => "prev", :href => "#carouselExampleIndicators", :role => "button"}
   %a.carousel-control-next{"data-slide" => "next", :href => "#carouselExampleIndicators", :role => "button"}
 
@@ -31,24 +31,29 @@
   .welcome-categories
     - @categories.each do |category|
       -if(category.main_image)
-        .welcome-category.row-3
-          = link_to image_tag(category.main_image, size: '250x250'), category_path(category)
-          -#.name-welcome-category
-          -#  = link_to category.name, category_path(category)
+        .welcome-category
+          = link_to image_tag(category.main_image, size: '250x220'), category_path(category)
+          .name-welcome-category
+            %h1.centered
+              = link_to category.name, category_path(category)
+  %h1.txt
+    Images
+  .welcome-images
+    - @images.each do |image|
+      .welcome-image
+        =link_to image_tag(image.file.url, size: '250x220'), category_image_path(category_id: image.category, id: image.id)
 
 .third-page
-  .content
-    %h1
-      We have a huge number of images and you can add your own!
-
-.fourth-page
-  =image_tag('back2.jpg', class: 'welcome-image')
-  .content
-    %h1
-      Choose us!
-      %br/
-    .border-signup
-      =link_to('Sign up', new_user_registration_path)
+  %h1.centered
+    We have a huge number of images and you can add your own!
+-#.fourth-page
+-#  =image_tag('back2.jpg', class: 'welcome-image')
+-#  .content
+-#    %h1
+-#      Choose us!
+-#      %br/
+-#    .border-signup
+-#      =link_to('Sign up', new_user_registration_path)
 
 
 

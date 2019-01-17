@@ -2,12 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.welcome-image {
+.carousel-image {
   max-height: 550px;
   z-index: 0;
   width: 100%;
   height: 20%;
-  background-position: center ;
+  background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -51,7 +51,10 @@ p {
 }
 
 .centered {
-
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: relative;
 }
 
 .back {
@@ -71,40 +74,79 @@ p {
 
 .second-page {
   height: auto;
-  width: 100%;
+  max-width: 80%;
   position: relative;
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .welcome-categories {
   position: relative;
-  margin-top: 20px;
-  width: 80%;
-  display: flex;
+  width: 100%;
+  display: block;
+  text-align: center;
 }
 
 .welcome-category {
   padding: 20px;
-  margin: auto;
-  width: 250px;
-  height: 300px;
+  margin: 0 auto;
+  display: inline-block;
+  opacity: 1;
+}
+
+.welcome-images {
+  margin-bottom: 40px;
+}
+
+.welcome-image {
+  position: relative;
+  padding:10px;
+  float: none;
+  margin:10px;
+  display: inline-block;
+  opacity: 1;
+}
+
+.welcome-image:hover {
+  opacity: 0.8;
+}
+
+
+.welcome-category:hover {
+  opacity: 0.8;
 }
 
 .name-welcome-category {
   height: 80px;
   width: auto;
   padding-top: 0;
-  background: aquamarine;
+  background: powderblue;
+  //background: lightblue;
+}
+
+.name-welcome-category a:link {
+  text-decoration: none;
+  text-decoration-color: black;
 }
 
 h1.txt {
   padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+.third-page p {
+  justify-content: center;
 }
 
 .third-page {
   height: 400px;
   width: 100%;
   position: relative;
-  background: white;
+  background: url('back2.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat
 }
 
 .content {
@@ -114,10 +156,3 @@ h1.txt {
   transform: translate(-50%, -50%)
 }
 
-.fourth-page {
-  position: relative;
-}
-
-.border-signup {
-  border: 3px black;
-}

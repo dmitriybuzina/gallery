@@ -53,66 +53,6 @@
               = link_to(t('.settings'), edit_user_registration_path)
 
 
-    -#.collapse.navbar-collapse#bs-example-navbar-collapse-1
-    -#  %ul.nav.navbar-nav.navbar-right
-    -#    %li.dropdown
-    -#      = link_to categories_path, 'data-toggle' => 'dropdown', 'role' => 'button', 'aria-expanded' => 'false', 'class' => 'dropdown-toggle' do
-    -#        =t('.categories')
-    -#        -#Categories
-    -#        %span.caret
-    -#      %ul.dropdown-menu{ role: :menu }
-    -#        - @top_categories.each do |category|
-    -#          %li= link_to(category.name, category_path(category))
-    -#        %li.divider
-    -#        %li= link_to(t('.all categories'), categories_path)
-    -#        -if current_user
-    -#          %li= link_to(t('.my categories'))
-    -#          %li= link_to(t('.follows'))
-    -#    %li= link_to(t('.images'), images_index_path)
-    -#    - unless user_signed_in?
-    -#      %li= link_to(t('.login'), new_user_session_url)
-    -#    -if current_user
-    -#      %ul.nav.navbar-nav.navbar-right
-    -#        %li.dropdown
-    -#          = link_to edit_user_registration_path, 'data-toggle' => 'dropdown', 'role' => 'button', 'aria-expanded' => 'false', 'class' => 'dropdown-toggle' do
-    -#            -unless current_user.avatar.url.present?
-    -#              %span.glyphicon.glyphicon-user
-    -#            -else
-    -#              %span
-    -#                = image_tag(current_user.avatar.url, class: 'icon')
-    -#            = current_user.email
-    -#            %span.glyphicon.glyphicon-chevron-down
-    -#          %ul.dropdown-menu
-    -#            %li
-    -#              .navbar-login
-    -#                .row
-    -#                  .col-lg-4
-    -#                    %p.text-center
-    -#                      -unless current_user.avatar.url.present?
-    -#                        %span.glyphicon.glyphicon-user.icon-size
-    -#                      -else
-    -#                        %span
-    -#                          = image_tag(current_user.avatar.url, class: 'avatar')
-    -#                  .col-lg-8
-    -#                    .text-name-surname
-    -#                      %strong
-    -#                        = current_user.first_name
-    -#                        = current_user.last_name
-    -#            .row
-    -#              .col-sm-2
-    -#                %li= link_to(t('.settings'), edit_user_registration_path)
-    -#              .col-sm-2
-    -#              - if user_signed_in?
-    -#                %li= link_to(t('.log_out'), destroy_user_session_path, method: :delete)
-    -#              - else
-    -#                %li= link_to(t('.login'), new_user_session_url)
-    -#    -if I18n.locale == :ru
-    -#      %li{class: "nav-item#{" active" if I18n.locale == :en}"}
-    -#        = link_to "En", { locale: :en }, class: "nav-link"
-    -#    -else
-    -#      %li{class: "nav-item#{" active" if I18n.locale == :ru}"}
-    -#        = link_to "Рус", { locale: :ru }, class: "nav-link"
-
 
 
 

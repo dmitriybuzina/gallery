@@ -1,12 +1,8 @@
-.row-3
-  .column
-    - @categories.each do |category|
-      .container-category
-        -if(category.main_image)
-          = link_to image_tag(category.main_image, class: 'category-image'), category_path(category)
-        -#.center
-        -#  .text
-        -#    = link_to category.name, category_path(category)
+.container-category
+  - @categories.each do |category|
+    -if(category.main_image)
+      .category-image
+        = link_to image_tag(category.main_image, size: '250x220'), category_path(category)
         .container-actions
           = link_to image_tag('edit.png'), edit_category_path(category)
           = link_to image_tag('delete.png'), category, method: :delete
@@ -15,8 +11,9 @@
           - else
             = link_to image_submit_tag('subscribe.png', width: "20", height: "20"), new_follower_category_path(category), method: :post, id: 'follow_link'
         .name-category
-          .center
+          %h1.centered
             = link_to category.name, category_path(category)
+
 %button{ 'id'=>'button_category', 'data-target' => '#categories_modal', 'data-toggle' => 'modal' }
   = image_tag('new_category.png', width: "200", height: "200")
 %br/
