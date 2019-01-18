@@ -3,7 +3,7 @@
     -if(category.main_image)
       .category-image
         = link_to image_tag(category.main_image, size: '250x220'), category_path(category)
-        .container-actions
+        .container-actions.center
           = link_to image_tag('edit.png'), edit_category_path(category)
           = link_to image_tag('delete.png'), category, method: :delete
           - if category.is_follow(current_user.id)
@@ -18,8 +18,10 @@
   = image_tag('new_category.png', width: "200", height: "200")
 %br/
 
+
 -#= link_to 'New Category', new_category_path
 -#= link_to 'Home', welcome_index_path
+
 
 = render 'layouts/modal', modal_id: 'categories_modal' do
   = render 'categories/form'
