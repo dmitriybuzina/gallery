@@ -1,25 +1,29 @@
-%h1= t('form.sign up')
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = bootstrap_devise_error_messages!
-  .form-group
-    = f.label t('form.email')
-    = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control'
-  .form-group
-    = f.label t('form.first name')
-    = f.text_field :first_name, autofocus: true, class: 'form-control'
-  .form-group
-    = f.label t('form.last name')
-    = f.text_field :last_name, autofocus: true, class: 'form-control'
-  .form-group
-    = f.label t('form.password')
-    = f.password_field :password, autocomplete: 'current-password', class: 'form-control'
-    - if @minimum_password_length
-      %small.form-text.text-muted= t('registrations.new.min password length', count: @minimum_password_length)
-  .form-group
-    = f.label t('registrations.new.password confirmation')
-    = f.password_field :password_confirmation, autocomplete: 'current-password', class: 'form-control'
-  .form-group
-    = f.submit t('form.sign up'), class: 'btn btn-primary'
-  -#  = flash[:recaptcha_error]
-  -#  = recaptcha_tags
-= render 'devise/shared/links'
+.page-log-in
+  .container-log-in
+    .signin-html
+      .log-in-action
+        %h1= t('form.sign up')
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = bootstrap_devise_error_messages!
+        .form-group
+          = f.label t('form.email')
+          = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control'
+        .form-group
+          = f.label t('form.first name')
+          = f.text_field :first_name, autofocus: true, class: 'form-control'
+        .form-group
+          = f.label t('form.last name')
+          = f.text_field :last_name, autofocus: true, class: 'form-control'
+        .form-group
+          = f.label t('form.password')
+          = f.password_field :password, autocomplete: 'current-password', class: 'form-control'
+          - if @minimum_password_length
+            %small.form-text.text-muted= t('registrations.new.min password length', count: @minimum_password_length)
+        .form-group
+          = f.label t('registrations.new.password confirmation')
+          = f.password_field :password_confirmation, autocomplete: 'current-password', class: 'form-control'
+        .form-group
+          = f.submit t('form.sign up'), class: 'btn btn-primary'
+        -#  = flash[:recaptcha_error]
+        -#  = recaptcha_tags
+      = render 'devise/shared/links'
