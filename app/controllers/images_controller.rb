@@ -3,7 +3,7 @@ class ImagesController < ApplicationController
   before_action :parent, only: [:new, :create, :new_like, :delete_like, :show]
 
   def index
-    @images = Image.all
+    @images = Image.all.page(params[:page]).per(25)
     activity('navigation') if current_user
   end
 
@@ -15,8 +15,8 @@ class ImagesController < ApplicationController
     @image = @category.images.new(image_params)
     @image.count_likes = 0
     if @image.save!
+      redirect_to category_path(@category.slug)
       send_new_image_mail(@image)
-      redirect_to category_path(@category)
     end
   end
 
@@ -34,13 +34,15 @@ class ImagesController < ApplicationController
 
   def new_like
     @like = Like.new(user_id: current_user.id, image_id: @image.id)
-    redirect_to category_image_path(@category.slug) if @like.save
+    # redirect_to category_image_path(@category.slug) if @like.save
+    @like.save
     activity('like')
   end
 
   def delete_like
     find_like
     redirect_to category_image_path if @like.destroy
+    # @like.destroy
     activity('like')
   end
 

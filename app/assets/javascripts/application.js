@@ -23,3 +23,7 @@
 //     event.preventDefault();
 //     $(this).ekkoLightbox();
 // });
+
+if ( window.location.pathname == "image/show" ) {
+    $('#image-modal').modal('show');
+}

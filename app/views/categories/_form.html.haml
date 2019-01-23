@@ -1,6 +1,6 @@
 = form_with(model: @category, local: true) do |form|
-  .field
-    = form.label t('categories.index.modal.name')
-    = form.text_field :name
-  .actions
-    = form.submit t('categories.index.modal.create category')
+  .form-inline
+    .form-category
+      = form.label t('categories.index.modal.name'), class: 'form-control '
+      = form.text_field :name, class: 'form-control'
+      = form.submit t('categories.index.modal.create category'), class: 'form-control'

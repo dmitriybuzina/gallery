@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [ :show, :edit, :update, :destroy, :new_follower, :delete_follower]
   before_action :authenticate_user!
   def index
-    @categories = Category.all
+    @categories = Category.all.page(params[:page]).per(6)
     @categories.each do |category|
       preview(category)
     end

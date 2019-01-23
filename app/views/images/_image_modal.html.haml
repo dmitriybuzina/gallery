@@ -4,7 +4,7 @@
       .modal-header
         %button.close{"data-dismiss" => "modal", type: "button"} ×
       .modal-body
-        -#=render 'images/show', image: @image
+        -#=render 'show', image: @image
         %p
           = image_tag(@image.file.url)
         %p

@@ -26,33 +26,40 @@
 
 
 .body-images {
+  padding-top: 20px ;
   top: 0;
   z-index: 0;
   width: 100%;
-  height: 100%;
-  position: fixed;
-  background: white;
-  background: url('back7.jpg') center center no-repeat;
-  background-position: center;
+  min-height: 100vh;
+  position: relative;
+  //background: white;
+  background: url("back3.jpg") center no-repeat;
   background-size: cover;
+  padding-bottom: 5%;
+}
+
+.body-images h1 {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .gallery {
   //background: white;
+  padding-bottom: 30px;
   margin: auto;
   max-width: 80%;
   display: grid;
-  grid-gap: 20px;
+  grid-gap: 5px;
   grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
   grid-auto-rows: 200px 100px;
   grid-auto-flow: dense;
 
   .item-image {
     img {
-      border-radius: 10px;
-      border-color: black;
-      border-style: solid;
-      border-width: medium;
+      //border-radius: 10px;
+      //border-color: black;
+      //border-style: solid;
+      //border-width: medium;
       width: 100%;
       height: 100%;
       object-fit: cover;

@@ -73,6 +73,8 @@ p {
 }
 
 .second-page {
+  //background: url("back7.jpg") center no-repeat;
+  //background-size: cover;
   height: auto;
   max-width: 80%;
   position: relative;
@@ -121,8 +123,8 @@ p {
   height: 80px;
   width: auto;
   padding-top: 0;
-  background: powderblue;
-  //background: lightblue;
+  background: aliceblue;
+  //background: darkcyan;
 }
 
 .name-welcome-category a:link {
@@ -143,10 +145,8 @@ h1.txt {
   height: 400px;
   width: 100%;
   position: relative;
-  background: url('back2.jpg');
-  background-position: center;
+  background: url('back2.jpg') center no-repeat;
   background-size: cover;
-  background-repeat: no-repeat
 }
 
 .content {

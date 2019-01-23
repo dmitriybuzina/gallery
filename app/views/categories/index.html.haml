@@ -1,27 +1,31 @@
-.container-category
+.body-categories
+  .category-form
+    =render 'categories/form'
   - @categories.each do |category|
-    -if(category.main_image)
+    .container-category
       .category-image
-        = link_to image_tag(category.main_image, size: '250x220'), category_path(category)
-        .container-actions.center
-          = link_to image_tag('edit.png'), edit_category_path(category)
+        -if(category.main_image)
+          = link_to image_tag(category.main_image, size: '360x320'), category_path(category)
+        -else
+          = link_to image_tag('category-no-image.png', size: '360x320'), category_path(category)
+      .container-actions
+        .center
+          = link_to image_tag('edit.png', 'data-target' => '#categories_modal', 'data-toggle' => 'modal'), edit_category_path(category)
           = link_to image_tag('delete.png'), category, method: :delete
           - if category.is_follow(current_user.id)
             = link_to image_submit_tag('unsubscribe.png', width: "20", height: "20"), delete_follower_category_path(category), method: :delete
           - else
             = link_to image_submit_tag('subscribe.png', width: "20", height: "20"), new_follower_category_path(category), method: :post, id: 'follow_link'
-        .name-category
-          %h1.centered
-            = link_to category.name, category_path(category)
-
-%button{ 'id'=>'button_category', 'data-target' => '#categories_modal', 'data-toggle' => 'modal' }
-  = image_tag('new_category.png', width: "200", height: "200")
-%br/
-
+      .name-category
+        %h1.centered
+          = link_to category.name, category_path(category)
+  = paginate @categories
+-#%button{ 'id'=>'button_category', 'data-target' => '#categories_modal', 'data-toggle' => 'modal' }
+-#  = image_tag('new_category.png', width: "200", height: "200")
+-#%br/
 
 -#= link_to 'New Category', new_category_path
 -#= link_to 'Home', welcome_index_path
 
-
-= render 'layouts/modal', modal_id: 'categories_modal' do
-  = render 'categories/form'
+-#= render 'layouts/modal', modal_id: 'categories_modal' do
+-#  = render 'categories/form', category:

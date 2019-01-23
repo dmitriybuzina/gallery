@@ -12,33 +12,33 @@
       = f.hidden_field :avatar_cache
     .form_group
       = f.label t('form.email')
-      = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control '
+      = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control form-devise '
     .form-group
       = f.label t('form.first name')
-      = f.text_field :first_name, autofocus: true, autocomplete: 'first_name', class: 'form-control'
+      = f.text_field :first_name, autofocus: true, autocomplete: 'first_name', class: 'form-control form-devise'
     .form-group
       = f.label t('form.last name')
-      = f.text_field :last_name, autofocus: true, autocomplete: 'last_name', class: 'form-control'
+      = f.text_field :last_name, autofocus: true, autocomplete: 'last_name', class: 'form-control form-devise'
     .form-group
       = f.label t('registrations.edit.phone')
-      = f.telephone_field :phone, autofocus: true, autocomplete: 'phone', class: 'form-control'
+      = f.telephone_field :phone, autofocus: true, autocomplete: 'phone', class: 'form-control form-devise'
     .form-group
       = f.label t('registrations.edit.date of birthday')
-      = f.date_field :date_of_birthday, autofocus: true, autocomplete: 'date_of_birthday', class: 'form-control'
+      = f.date_field :date_of_birthday, autofocus: true, autocomplete: 'date_of_birthday', class: 'form-control form-devise'
     .form-group
       = f.label t('registrations.edit.location')
-      = f.text_field :location, autofocus: true, autocomplete: 'location', class: 'form-control'
+      = f.text_field :location, autofocus: true, autocomplete: 'location', class: 'form-control form-devise'
     .form-group
       = f.label t('form.password')
-      = f.text_field :password, autocomplete: 'off', class: 'form-control'
+      = f.text_field :password, autocomplete: 'off', class: 'form-control form-devise'
       %small.form-text.text-muted= t('registrations.edit.leave_blank_if_no_change')
     .form-group
       = f.label t('registrations.edit.password confirmation')
-      = f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control'
+      = f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control form-devise'
       %small.form-text.text-muted= t('registrations.edit.leave_blank_if_no_change')
     .form-group
       = f.label t('registrations.edit.current password')
-      = f.password_field :current_password, autocomplete: 'current-password', class: 'form-control'
+      = f.password_field :current_password, autocomplete: 'current-password', class: 'form-control form-devise'
       %small.form-text.text-muted= t('registrations.edit.we_need_password_to_confirm')
     .form-group
       = f.submit t('registrations.edit.update'), class: 'btn btn-primary'

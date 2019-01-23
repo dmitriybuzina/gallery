@@ -5,6 +5,8 @@ class Category < ApplicationRecord
   belongs_to :user
   # acts_as_followable
 
+  validates :name, presence: true
+
   extend FriendlyId
   friendly_id :name, use: :slugged
 

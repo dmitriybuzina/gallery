@@ -1,16 +1,21 @@
-.images
-  - @images.each_slice(3) do |image|
-    -image.each do |img|
-      =link_to image_tag(img.file.url, class: 'img'), category_image_path(@category, id: img.id), remote: true
-%div{ 'data-target' => '#image_modal', 'data-toggle' => 'modal' }
+.container-show
+  =render 'images/form'
+  .images
+    - @images.each_slice(3) do |image|
+      -image.each do |img|
+        =link_to image_tag(img.file.url, class: 'img'), category_image_path(@category, id: img.id), remote: true
   = paginate @images
-  = image_tag('addImage.png', class: "img-thumbnail", size: "240x150")
-  -#%p= link_to image_tag('addImage.png', class: "img-thumbnail", size: "240x150"), "#form_modal", "data-toggle" => "modal"
+  -#%div{ 'data-target' => '#image_modal', 'data-toggle' => 'modal' }
 
-%select{ name: "category[main_image]" }
-  -@images.each do |image|
-    %option{ value: image.name }
+  -#  = image_tag('addImage.png', class: "img-thumbnail", size: "240x150")
+  -#  -#%p= link_to image_tag('addImage.png', class: "img-thumbnail", size: "240x150"), "#form_modal", "data-toggle" => "modal"
+
+-#%select{ name: "category[main_image]" }
+-#  -@images.each do |image|
+-#    %option{ value: image.name }
 = render 'layouts/modal', modal_id: 'image_modal' do
   = render 'images/form'
 
 #image-content
+
+-#=render 'images/image_modal'

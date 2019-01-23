@@ -28,18 +28,20 @@
   text-align: right;
 }
 
-.nav {
-  max-width: 80%;
+.navbar {
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 .app-footer {
   width: 100%;
   height: 60px;
+  background: aliceblue;
 }
 
-.bg-company-grey {
-  //background: url('back_images2.jpg');
-  background: white;
+.bg-company-sky {
+  //background: url('chuttersnap.jpg');
+  background: aliceblue;
 }
 
 .app-footer span {
@@ -50,7 +52,7 @@
   margin-right: auto;
 }
 
-.form-control {
+.form-devise {
   max-width: 80%;
   margin-left: auto;
   margin-right: auto;
@@ -90,5 +92,6 @@
   width: 100%;
   min-height: 100vh;
   background: url('https://hdqwalls.com/download/material-design-4k-2048x1152.jpg') no-repeat center;
+  background-size: cover;
 }
 
