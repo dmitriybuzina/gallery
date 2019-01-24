@@ -1,8 +1,8 @@
 .container-show
   .container-image
-    %p
-      = image_tag(@image.file.url, size: "480x300")
-    %p
+    .image
+      = image_tag(@image.file.url, size: "560x350")
+    .container-comments
       -if @image.is_liked(current_user.id)
         = link_to image_tag('heart_red.png'), delete_like_category_image_path(user_id: current_user.id, image_id: @image.id), method: :delete, remote: true
         = @image.count_likes

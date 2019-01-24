@@ -9,13 +9,12 @@
         -else
           = link_to image_tag('category-no-image.png', size: '360x320'), category_path(category)
       .container-actions
-        .center
-          = link_to image_tag('edit.png', 'data-target' => '#categories_modal', 'data-toggle' => 'modal'), edit_category_path(category)
-          = link_to image_tag('delete.png'), category, method: :delete
-          - if category.is_follow(current_user.id)
-            = link_to image_submit_tag('unsubscribe.png', width: "20", height: "20"), delete_follower_category_path(category), method: :delete
-          - else
-            = link_to image_submit_tag('subscribe.png', width: "20", height: "20"), new_follower_category_path(category), method: :post, id: 'follow_link'
+        = link_to image_tag('edit.png', class: 'action-icon', title: 'Edit'), edit_category_path(category), remote: true
+        = link_to image_tag('delete.png', class: 'action-icon', title: 'Delete'), category, method: :delete
+        - if category.is_follow(current_user.id)
+          = link_to image_tag('unfollow.png', class: 'action-icon', title: 'Unfollow'), delete_follower_category_path(category), method: :delete
+        - else
+          = link_to image_tag('follow.png', class: 'action-icon', title: 'Follow'), new_follower_category_path(category), method: :post
       .name-category
         %h1.centered
           = link_to category.name, category_path(category)
@@ -28,4 +27,6 @@
 -#= link_to 'Home', welcome_index_path
 
 -#= render 'layouts/modal', modal_id: 'categories_modal' do
--#  = render 'categories/form', category:
+-#  = render 'categories/edit'
+
+#category-edit

@@ -3,10 +3,29 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .container-image {
+  border: 3px black;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  max-width: 550px;
+  max-width: 70%;
+  display: flex;
+  //float: left;
+}
+
+.image {
+  //display: block;
+  //float: left;
+  width: 50%;
+  //display: inline-block;
+  //float: left;
+}
+
+.container-comments {
+  //float: right;
+  //display: block;
+  background: silver;
+  width: 50%;
+  //display: inline-block;
 }
 
 .images-index {
@@ -14,16 +33,6 @@
   margin-left: 10%;
   margin-right: 10%;
 }
-
-//.container-images {
-//  background: #2E2F30;
-//}
-//
-//.container-images .images {
-//  background: #DADADA;
-//}
-
-
 
 .body-images {
   padding-top: 20px ;
