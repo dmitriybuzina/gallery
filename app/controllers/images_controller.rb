@@ -22,7 +22,7 @@ class ImagesController < ApplicationController
 
   def show
     @category
-    @comments = @image.comments.order(created_at: :desc)
+    @comments = @image.comments.order('created_at')
     respond_to do |format|
       format.json
       format.js

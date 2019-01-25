@@ -3,19 +3,33 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .container-comment {
-  background: moccasin;
+  background: white;
   height: auto;
   border-radius: 5px;
-  max-width: 550px;
+  max-width: 80%;
   text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.text-name-comment {
+  background: white;
+  font-style: italic;
+  font-weight: bolder;
+  float: left;
+  padding-right: 3%;
 }
 
 .user-email {
   margin-left: 0px;
 }
 
-.body_comment {
+.form-comment {
 
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80%;
 }
 
 .avatar-comment {
@@ -27,7 +41,9 @@
 }
 
 .comment-body {
-  font: 12pt sans-serif;
-  margin-left: 30px;
-  margin-top: 10px;
+  background: white;
+  //font-style: italic;
+  //font: 12pt sans-serif;
+  //margin-left: 30px;
+  //margin-top: 10px;
 }

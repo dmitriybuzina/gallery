@@ -1,1 +1,1 @@
-$('#image-modal > div > div > div.modal-body > p:nth-child(2)').html('<%= link_to image_tag('heart_red.png'), delete_like_category_image_path(user_id: current_user.id, image_id: @image.id), method: :delete, remote: true %>')
+$('body > div > div > div.container-comment-form > a').html('<%-@image.count_likes += 1%>').html('<%= link_to image_tag('heart_red.png'), delete_like_category_image_path(user_id: current_user.id, image_id: @image.id), method: :delete, remote: true %>')

@@ -6,19 +6,3 @@ history.replaceState({}, "<%= @image.name %>", "<%= request.original_url %>");
 $('#image-modal').on("hidden.bs.modal", function () {
     history.go(-1);
 });
-
-//window.addEventListener("popstate", function(e) {
-//    window.location.href = location.href;
-//});
-
-//if(('#image-modal').close)
-//{
-//    history.back(-1);
-//}
-//$(document).ready(function() {
-
-//    if(window.location.href.indexOf('#myModal') != -1) {
-//        $('#image-modal').modal('show');
-//    }
-
-//});

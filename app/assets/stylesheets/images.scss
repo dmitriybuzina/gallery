@@ -2,29 +2,71 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.modal-header {
+  border-bottom: 0 none;
+}
+
+//.modal {
+//  position: relative;
+//}
+
+.modal-dialog {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+#image-modal .modal-body {
+  height: 600px;
+}
+
+.close-modal {
+  position: absolute;
+  top: 1%;
+  right: 1%;
+}
+
+#image-modal {
+  margin: 0 auto;
+  .container-image {
+    min-width: 90%;
+    .image {
+      height: 70%;
+    }
+  }
+}
+
 .container-image {
+  padding-top: 3%;
   border: 3px black;
-  text-align: center;
   margin-left: auto;
   margin-right: auto;
-  max-width: 70%;
-  display: flex;
-  //float: left;
+  max-width: 60%;
+  min-height: 60%;
+  display: block;
 }
 
 .image {
-  //display: block;
-  //float: left;
-  width: 50%;
-  //display: inline-block;
-  //float: left;
+  text-align: center;
 }
 
 .container-comments {
+  overflow-y: scroll;
+  max-height: 200px;
+}
+
+.container-comment-form {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  height: 45%;
   //float: right;
-  //display: block;
-  background: silver;
-  width: 50%;
+  background: white;
+
   //display: inline-block;
 }
 
@@ -35,7 +77,7 @@
 }
 
 .body-images {
-  padding-top: 20px ;
+  padding-top: 20px;
   top: 0;
   z-index: 0;
   width: 100%;

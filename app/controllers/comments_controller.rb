@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :set_image, only: [:show, :index, :create, :new]
 
   def index
-    @comments = @image.comments.all
+    @comments = @image.comments.order('created_at DESC').all
   end
 
   def new
