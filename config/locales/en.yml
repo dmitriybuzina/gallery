@@ -52,7 +52,7 @@ en:
       model:
         name: 'Name'
         choose file: 'Choose file'
-        create image: 'Create image'
+        create image: 'Upload image'
         no file chosen: 'No file chosen'
   images:
     show:

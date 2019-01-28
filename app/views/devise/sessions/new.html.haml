@@ -6,10 +6,10 @@
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .form-group
           = f.label t('form.email')
-          = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control form-devise'
+          = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control form-new-session'
         .form-group
           = f.label t('form.password')
-          = f.password_field :password, autocomplete: 'current-password', class: 'form-control form-devise'
+          = f.password_field :password, autocomplete: 'current-password', class: 'form-control form-new-session'
         - if devise_mapping.rememberable?
           .form-group.form-check
             = f.check_box :remember_me, class: 'form-check-input'

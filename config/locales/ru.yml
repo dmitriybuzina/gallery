@@ -21,7 +21,7 @@ ru:
       model:
         name: 'Имя'
         choose file: 'Выбирите файл'
-        create image: 'Создать картинку'
+        create image: 'Загрузить изображение'
         no file chosen: 'Фалй не выбран'
   images:
     show:

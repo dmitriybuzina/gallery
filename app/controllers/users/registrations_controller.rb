@@ -12,20 +12,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
 
+
   def create
     # if !verify_recaptcha
     #   self.resource = resource_class.new(sign_up_params)
     #   sign_out
     #   render :new
     # else
-      super
+    super
     # end
   end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    @count_categories = self.resource.categories.count
+  end
 
   # PUT /resource
   # def update
@@ -67,4 +68,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  protected
+
+  def update_resource(resource, params)
+    if params[:current_password].blank?
+      resource.update_without_password(params.except(:current_password))
+    else
+      resource.update_with_password(params)
+    end
+  end
 end

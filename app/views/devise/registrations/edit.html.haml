@@ -1,48 +1,69 @@
-.container-profile
-  %h1
-    =t('registrations.edit.profile')
-  = form_for(resource, as: resource_name, url: registration_path(resource_name), html:  { multipart: true }) do |f|
-    = bootstrap_devise_error_messages!
-    - if current_user.avatar.url.present?
-      = image_tag(current_user.avatar.url, class: 'avatar')
-      = f.label :remove_avatar do
-        = f.check_box :remove_avatar
-    - else
-      = f.file_field :avatar
-      = f.hidden_field :avatar_cache
-    .form_group
-      = f.label t('form.email')
-      = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control form-devise'
-    .form-group
-      = f.label t('form.first name')
-      = f.text_field :first_name, autofocus: true, autocomplete: 'first_name', class: 'form-control form-devise'
-    .form-group
-      = f.label t('form.last name')
-      = f.text_field :last_name, autofocus: true, autocomplete: 'last_name', class: 'form-control form-devise'
-    .form-group
-      = f.label t('registrations.edit.phone')
-      = f.telephone_field :phone, autofocus: true, autocomplete: 'phone', class: 'form-control form-devise'
-    .form-group
-      = f.label t('registrations.edit.date of birthday')
-      = f.date_field :date_of_birthday, autofocus: true, autocomplete: 'date_of_birthday', class: 'form-control form-devise'
-    .form-group
-      = f.label t('registrations.edit.location')
-      = f.text_field :location, autofocus: true, autocomplete: 'location', class: 'form-control form-devise'
-    .form-group
-      = f.label t('form.password')
-      = f.text_field :password, autocomplete: 'off', class: 'form-control form-devise'
-      %small.form-text.text-muted= t('registrations.edit.leave_blank_if_no_change')
-    .form-group
-      = f.label t('registrations.edit.password confirmation')
-      = f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control form-devise'
-      %small.form-text.text-muted= t('registrations.edit.leave_blank_if_no_change')
-    .form-group
-      = f.label t('registrations.edit.current password')
-      = f.password_field :current_password, autocomplete: 'current-password', class: 'form-control form-devise'
-      %small.form-text.text-muted= t('registrations.edit.we_need_password_to_confirm')
-    .form-group
-      = f.submit t('registrations.edit.update'), class: 'btn btn-primary'
-  %p
-    = t('registrations.edit.unhappy')
-    ? #{link_to t('registrations.edit.delete account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete}.
-  = link_to t('.back'), :back
+.body-edit-registration
+  .container-profile
+    -#%h1
+    -#  =t('registrations.edit.profile')
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html:  { multipart: true }) do |f|
+      = bootstrap_devise_error_messages!
+      .row
+        .col-sm-4.mb-3
+          .container-avatar
+            - if current_user.avatar.url.present?
+              = image_tag(current_user.avatar.url, class: 'avatar')
+              = f.submit :remove_avatar, class: 'btn btn-primary'
+              = f.label :remove_avatar do
+                = f.check_box :remove_avatar
+            - else
+              = f.file_field :avatar
+              = f.hidden_field :avatar_cache
+          .container-info-profile
+            .form-group
+              =f.label 'Images upload', class: 'form-control'
+              =f.text_field :count_categories, class: 'form-control'
+            .form-group
+              =f.label 'Follows category', class: 'form-control'
+            .form-group
+              =f.label 'Created category', class: 'form-control'
+
+        .col-sm-8.mb-3
+          .container-edit
+            .form-row
+              .col-md-4.mb-3
+                = f.label t('form.email')
+                .input-group
+                  .input-group-prepend
+                    %span.input-group-text @
+                  = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control'
+              .col-md-4.mb-3
+                = f.label t('form.first name')
+                = f.text_field :first_name, autofocus: true, autocomplete: 'first_name', class: 'form-control'
+              .col-md-4.mb-3
+                = f.label t('form.last name')
+                = f.text_field :last_name, autofocus: true, autocomplete: 'last_name', class: 'form-control'
+            .form-row
+              .col-md-6.mb-3
+                = f.label t('registrations.edit.phone')
+                = f.telephone_field :phone, autofocus: true, autocomplete: 'phone', class: 'form-control'
+              .col-md-3.mb-3
+                = f.label t('registrations.edit.date of birthday')
+                = f.date_field :date_of_birthday, autofocus: true, autocomplete: 'date_of_birthday', class: 'form-control'
+              .col-md-3.mb-3
+                = f.label t('registrations.edit.location')
+                = f.text_field :location, autofocus: true, autocomplete: 'location', class: 'form-control'
+            .form-group
+              = f.label t('form.password')
+              = f.text_field :password, autocomplete: 'off', class: 'form-control'
+              %small.form-text.text-muted= t('registrations.edit.leave_blank_if_no_change')
+            .form-group
+              = f.label t('registrations.edit.password confirmation')
+              = f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control form-devise'
+              %small.form-text.text-muted= t('registrations.edit.leave_blank_if_no_change')
+            .form-group
+              = f.label t('registrations.edit.current password')
+              = f.password_field :current_password, autocomplete: 'current-password', class: 'form-control form-devise'
+              %small.form-text.text-muted= t('registrations.edit.we_need_password_to_confirm')
+            .form-group
+              = f.submit t('registrations.edit.update'), class: 'btn btn-primary'
+            %p
+              = t('registrations.edit.unhappy')
+              ? #{link_to t('registrations.edit.delete account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete}.
+            -#= link_to t('.back'), :back
