@@ -12,7 +12,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
 
-
   def create
     # if !verify_recaptcha
     #   self.resource = resource_class.new(sign_up_params)
@@ -25,7 +24,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
   def edit
+    @count_images = self.resource.categories.joins(:images).count
     @count_categories = self.resource.categories.count
+    @count_follows_categories = self.resource.follows.count
   end
 
   # PUT /resource

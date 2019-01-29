@@ -5,30 +5,69 @@
 
 }
 
+.avatar {
+  //vertical-align: middle;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  text-align: right;
+}
+
 h1{
   text-align: center;
 }
 
+
 .body-edit-registration {
   position: relative;
   width: 100%;
-  background: url('https://hdqwalls.com/download/material-design-4k-2048x1152.jpg') center no-repeat;
+  //background: url('https://hdqwalls.com/download/material-design-4k-2048x1152.jpg') center no-repeat;
+  background: url('back7.jpg') center no-repeat;
   background-size: cover;
   min-height: 100vh;
 }
 
-.container-avatar {
-  padding-top: 30px ;
+.container-edit {
+  position: relative;
+  top: 50px;
+  display: flex;
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 10px;
+  margin-right: 5%;
+  //margin-top: auto;
+  margin-left: 5%;
+  padding-top: 3%;
+  padding-bottom: 3%;
 }
 
-.container-info-profile {
-  padding-top: 14px;
+.about-user {
+  margin: auto;
+  display: block;
+}
+
+.container-avatar {
+  margin-left: 5%;
+  margin-top: -20% ;
 }
 
 .container-edit {
+
+}
+
+.container-info-profile {
+  margin-left: 5%;
+  text-align: center;
+  margin-top: 10%;
   //background-color: rgba(0,0,0,0.2);
   border-radius: 10px;
-  padding: 30px;
+  //max-width: 30%;
+}
+
+.container-edit-form {
+  //background-color: rgba(0,0,0,0.2);
+  margin: auto;
+  border-radius: 10px;
+  padding: 10px;
   min-width: 800px;
   height: auto;
   //padding-top: 15%;
@@ -39,11 +78,11 @@ h1{
   //min-height: 100vh;
 }
 
-
 #user_avatar{
-  background-image: url('profile.png');
-  width: 512px;
-  height: 512px;
+  background: url('user add.png') center no-repeat;
+  background-size: cover;
+  width: 300px;
+  height: 300px;
 }
 
 .img{
