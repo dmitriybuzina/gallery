@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 .body-categories {
   position: relative;
   width: 100%;
@@ -11,6 +10,7 @@
   background-size: cover;
   min-height: 100vh;
   padding-bottom: 5%;
+  padding-top: 3%;
 }
 
 .container-category {
@@ -80,30 +80,8 @@
   margin-right: auto;
 }
 
-.images {
-  padding-bottom: 30px;
-  padding-top: 2%;
-  text-align: center;
-  //display: block;
-  display: inline-grid;
-  grid-template-columns: auto auto auto;
-  margin-left: 12%;
-  margin-right: 12%;
-}
-
-.img:hover {
-  opacity: 0.5;
-}
-
-.img {
-  opacity: 1;
-  width: 420px;
-  height: 250px;
-  //margin: 10px;
-  border: 3px black;
-}
-
-.container-show {
+.body-show {
+  padding-top: 3%;
   width: 100%;
   min-height: 100vh;
   padding-bottom: 5%;

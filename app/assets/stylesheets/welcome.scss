@@ -3,10 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .carousel-image {
-  max-height: 550px;
+  height: 550px;
   z-index: 0;
   width: 100%;
-  height: 20%;
+  //height: 20%;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -19,6 +19,12 @@ h1 {
 
 p {
   font-family: "Lucida Console", Monaco, monospace;
+}
+
+.body-welcome {
+  //padding-top: 60px;
+  position: relative;
+  z-index: 0;
 }
 
 .welcome-info {
@@ -76,7 +82,7 @@ p {
   //background: url("back7.jpg") center no-repeat;
   //background-size: cover;
   height: auto;
-  max-width: 80%;
+  width: 80%;
   position: relative;
   text-align: center;
   margin-right: auto;
@@ -91,9 +97,9 @@ p {
 }
 
 .welcome-category {
-  padding: 20px;
+  padding-bottom: 20px;
   margin: 0 auto;
-  display: inline-block;
+  //display: inline-block;
   opacity: 1;
 }
 
@@ -148,10 +154,45 @@ h1.txt {
   background-size: cover;
 }
 
+.img-category-welcome {
+  height: 220px;
+  width: auto;
+  //width: auto;
+  //height: 220px;
+}
+
 .content {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%)
+}
+
+@media screen and (max-width: 768px) {
+  .carousel-image {
+    height: 400px;
+  }
+
+  .body-welcome {
+    padding-top: 10%;
+  }
+
+  .second-page {
+    width: 100%;
+  }
+
+  .img-category-welcome {
+    width: 100%;
+    height: 300px;
+  }
+
+  .welcome-info {
+    height: 100px;
+    width: 200px;
+  }
+
+  //.welcome-category {
+  //  display: block;
+  //}
 }
 

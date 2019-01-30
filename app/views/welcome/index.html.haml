@@ -1,51 +1,62 @@
-#carouselIndicators.carousel.slide{"data-ride" => "carousel"}
-  %ol.carousel-indicators
-    %li.active{"data-slide-to" => "0", "data-target" => "#carouselIndicators"}
-    %li{"data-slide-to" => "1", "data-target" => "#carouselIndicators"}
-    %li{"data-slide-to" => "2", "data-target" => "#carouselIndicators"}
-    %li{"data-slide-to" => "3", "data-target" => "#carouselIndicators"}
-    %li{"data-slide-to" => "4", "data-target" => "#carouselIndicators"}
-  .carousel-inner
-    .welcome-info
-      .back
-        %h1
-          AWESOME GALLERY
-        %p
-          go in with us
-    .carousel-item.active
-      =image_tag('back5.jpg', class: 'carousel-image')
-    .carousel-item
-      =image_tag('back4.jpg', class: 'carousel-image')
-    .carousel-item
-      =image_tag('back6.jpg', class: 'carousel-image')
-    .carousel-item
-      =image_tag('back3.jpg', class: 'carousel-image')
-    .carousel-item
-      =image_tag('back7.jpg', class: 'carousel-image')
-  %a.carousel-control-prev{"data-slide" => "prev", :href => "#carouselIndicators", :role => "button"}
-  %a.carousel-control-next{"data-slide" => "next", :href => "#carouselIndicators", :role => "button"}
+.body-welcome
+  #carouselIndicators.carousel.slide{"data-ride" => "carousel"}
+    %ol.carousel-indicators
+      %li.active{"data-slide-to" => "0", "data-target" => "#carouselIndicators"}
+      %li{"data-slide-to" => "1", "data-target" => "#carouselIndicators"}
+      %li{"data-slide-to" => "2", "data-target" => "#carouselIndicators"}
+      %li{"data-slide-to" => "3", "data-target" => "#carouselIndicators"}
+      %li{"data-slide-to" => "4", "data-target" => "#carouselIndicators"}
+    .carousel-inner
+      .welcome-info
+        .back
+          %h1
+            AWESOME GALLERY
+          %p
+            go in with us
+      .carousel-item.active
+        =image_tag('back5.jpg', class: 'carousel-image')
+      .carousel-item
+        =image_tag('back4.jpg', class: 'carousel-image')
+      .carousel-item
+        =image_tag('back6.jpg', class: 'carousel-image')
+      .carousel-item
+        =image_tag('back3.jpg', class: 'carousel-image')
+      .carousel-item
+        =image_tag('back7.jpg', class: 'carousel-image')
+    %a.carousel-control-prev{"data-slide" => "prev", :href => "#carouselIndicators", :role => "button"}
+    %a.carousel-control-next{"data-slide" => "next", :href => "#carouselIndicators", :role => "button"}
 
-.second-page
-  %h1.txt
-    Categories
-  .welcome-categories
-    - @categories.each do |category|
-      -if(category.main_image)
-        .welcome-category
-          = link_to image_tag(category.main_image, size: '250x220'), category_path(category)
-          .name-welcome-category
-            %h1.centered
-              = link_to category.name, category_path(category)
-  %h1.txt
-    Images
-  .welcome-images
-    - @images.each do |image|
-      .welcome-image
-        =link_to image_tag(image.file.url, size: '250x220'), category_image_path(category_id: image.category, id: image.id)
+  .second-page
+    %h1.txt
+      Categories
+    .row
+      -@categories.each do |category|
+        -if(category.main_image)
+          .col-12.col-md-3
+            .welcome-category
+              = link_to image_tag(category.main_image, class: 'img-category-welcome'), category_path(category)
+              .name-welcome-category
+                %h1.centered
+                  = link_to category.name, category_path(category)
 
-.third-page
-  %h1.centered
-    We have a huge number of images and you can add your own!
+    -#.welcome-categories
+    -#  - @categories.each do |category|
+    -#    -if(category.main_image)
+    -#      .welcome-category
+    -#        = link_to image_tag(category.main_image, class: 'img-category-welcome'), category_path(category)
+    -#        .name-welcome-category
+    -#          %h1.centered
+    -#            = link_to category.name, category_path(category)
+    %h1.txt
+      Images
+    .welcome-images
+      - @images.each do |image|
+        .welcome-image
+          =link_to image_tag(image.file.url, size: '250x220'), category_image_path(category_id: image.category, id: image.id)
+
+  .third-page
+    %h1.centered
+      We have a huge number of images and you can add your own!
 
 
 
