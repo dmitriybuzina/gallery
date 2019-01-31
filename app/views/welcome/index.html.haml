@@ -32,8 +32,8 @@
     .row
       -@categories.each do |category|
         -if(category.main_image)
-          .col-12.col-md-3
-            .welcome-category
+          .welcome-category
+            .col-12.col-md-3.col-sm-6
               = link_to image_tag(category.main_image, class: 'img-category-welcome'), category_path(category)
               .name-welcome-category
                 %h1.centered
@@ -52,11 +52,12 @@
     .welcome-images
       - @images.each do |image|
         .welcome-image
-          =link_to image_tag(image.file.url, size: '250x220'), category_image_path(category_id: image.category, id: image.id)
+          .col-12.col-md-3.col-sm-6
+            =link_to image_tag(image.file.url, size: '250x220'), category_image_path(category_id: image.category, id: image.id)
 
   .third-page
     %h1.centered
-      We have a huge number of images and you can add your own!
+      More and more images!
 
 
 

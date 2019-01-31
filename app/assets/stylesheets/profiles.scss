@@ -20,22 +20,27 @@ h1{
 .body-edit-registration {
   position: relative;
   width: 100%;
-  //background: url('https://hdqwalls.com/download/material-design-4k-2048x1152.jpg') center no-repeat;
   background: url('back7.jpg') center no-repeat;
   background-size: cover;
-  min-height: 100vh;
+  min-height: 140vh;
   padding-top: 3%;
+}
+
+.wrapper-avatar-info {
+  margin-left: 15%;
+  margin-right: 15%;
 }
 
 .container-edit {
   position: relative;
   top: 50px;
-  display: flex;
+  display: block;
   background-color: rgba(0,0,0,0.2);
   border-radius: 10px;
-  margin-right: 5%;
+
+  margin-right: 20%;
   //margin-top: auto;
-  margin-left: 5%;
+  margin-left: 20%;
   padding-top: 3%;
   padding-bottom: 3%;
 }
@@ -46,12 +51,8 @@ h1{
 }
 
 .container-avatar {
-  margin-left: 5%;
-  margin-top: -20% ;
-}
-
-.container-edit {
-
+  text-align: center;
+  margin: auto;
 }
 
 .container-info-profile {
@@ -60,22 +61,20 @@ h1{
   margin-top: 10%;
   //background-color: rgba(0,0,0,0.2);
   border-radius: 10px;
-  //max-width: 30%;
+}
+
+.form-label {
+  width: 200px;
 }
 
 .container-edit-form {
   //background-color: rgba(0,0,0,0.2);
   margin: auto;
-  border-radius: 10px;
-  padding: 10px;
-  min-width: 800px;
-  height: auto;
-  //padding-top: 15%;
-  //left: 35%;
-  //position: absolute;
-  //background: url('https://maxcdn.icons8.com/app/uploads/2016/03/material-1-1000x563.jpg') center no-repeat;
-  //background-size: cover;
-  //min-height: 100vh;
+  padding-top: 2%;
+  //border-radius: 10px;
+  //padding: 10px;
+  //min-width: 800px;
+  //height: auto;
 }
 
 #user_avatar{
@@ -85,7 +84,39 @@ h1{
   height: 300px;
 }
 
-.img{
-  position: relative;
-  text-align: center;
+
+@media screen and (max-width: 1500px) and (min-width: 1100px) {
+  .wrapper-avatar-info {
+    margin-right: 10%;
+    margin-left: 10%;
+  }
+  .container-edit {
+    margin-right: 10%;
+    margin-left: 10%;
+  }
+}
+
+@media screen and (max-width: 1099px) {
+  .wrapper-avatar-info {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .body-edit-registration {
+    min-height: 300vh;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .container-edit {
+    display: block;
+    margin: auto;
+  }
+
+  #user_avatar {
+    width: 200px;
+    height: 200px;
+  }
+
 }

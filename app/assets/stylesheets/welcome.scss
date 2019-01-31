@@ -99,7 +99,7 @@ p {
 .welcome-category {
   padding-bottom: 20px;
   margin: 0 auto;
-  //display: inline-block;
+  display: inline-block;
   opacity: 1;
 }
 
@@ -109,8 +109,7 @@ p {
 
 .welcome-image {
   position: relative;
-  padding:10px;
-  float: none;
+  //padding:10px;
   margin:10px;
   display: inline-block;
   opacity: 1;
@@ -126,7 +125,7 @@ p {
 
 .name-welcome-category {
   height: 80px;
-  width: auto;
+  width: 250px;
   padding-top: 0;
   background: aliceblue;
   //background: darkcyan;
@@ -156,7 +155,7 @@ h1.txt {
 
 .img-category-welcome {
   height: 220px;
-  width: auto;
+  width: 250px;
   //width: auto;
   //height: 220px;
 }
@@ -169,8 +168,13 @@ h1.txt {
 }
 
 @media screen and (max-width: 768px) {
+
   .carousel-image {
     height: 400px;
+  }
+
+  .welcome-category {
+    width: 100%;
   }
 
   .body-welcome {
@@ -186,13 +190,14 @@ h1.txt {
     height: 300px;
   }
 
+  .name-welcome-category {
+    width: 100%;
+  }
+
   .welcome-info {
     height: 100px;
     width: 200px;
   }
 
-  //.welcome-category {
-  //  display: block;
-  //}
 }
 

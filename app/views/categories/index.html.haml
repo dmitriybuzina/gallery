@@ -5,9 +5,9 @@
     .container-category
       .category-image
         -if(category.main_image)
-          = link_to image_tag(category.main_image, size: '360x320'), category_path(category)
+          = link_to image_tag(category.main_image, class: 'main-image-category'), category_path(category)
         -else
-          = link_to image_tag('category-no-image.png', size: '360x320'), category_path(category)
+          = link_to image_tag('category-no-image.png', class: 'main-image-category'), category_path(category)
       .container-actions
         = link_to image_tag('edit.png', class: 'action-icon', title: 'Edit'), edit_category_path(category), remote: true
         = link_to image_tag('delete.png', class: 'action-icon', title: 'Delete'), category, method: :delete
