@@ -17,7 +17,8 @@
               = resource.class.human_attribute_name(t('sessions.remember me'))
             - if User.find_by_email(resource.email)
               - if User.find_by_email(resource.email).failed_attempts > User.logins_before_captcha
-                = recaptcha_tags
+                %div{ style: '  display: flex; justify-content: center;' }
+                  = recaptcha_tags
         .form-group
           -#= flash[:recaptcha_error]
           -#= recaptcha_tags

@@ -1,4 +1,14 @@
 ru:
+  profile:
+    upload_images: 'Загружено картинок: '
+    follows_category: 'Подписки: '
+    created_category: 'Создано категорий: '
+  welcome:
+    categories: 'Категории'
+    images: 'Картинки'
+    more and more: 'Огомное количество картинок!'
+    awesome_gallery: 'КРУТАЯ ГАЛЕРИЯ'
+    go in: 'Присоединяйся'
   layouts:
     header:
       title: 'Галерея'
@@ -19,6 +29,7 @@ ru:
         name: 'Имя'
     show:
       model:
+        enter_name: 'Введите название'
         name: 'Имя'
         choose file: 'Выбирите файл'
         create image: 'Загрузить изображение'

@@ -11,30 +11,20 @@
                   = image_tag(current_user.avatar.url, class: 'img-thumbnail')
                   = f.label :remove_avatar do
                     = f.check_box :remove_avatar, title: 'Check to delete'
-                    -#=f.label 'avatar', value: 'Check to delete'
                 - else
                   = f.file_field :avatar
                   = f.hidden_field :avatar_cache
             .col-md-6.col-12
               .container-info-profile
                 .form-group
-                  .row
-                    .col-md-8
-                      =f.label 'Images upload', class: 'form-control form-label badge-secondary'
-                    .col-md-4
-                      =f.label 'Images', value: @count_images, class: 'form-control badge-primary'
+                  .col-md-12
+                    =f.label "#{t('profile.upload_images')}#{ @count_images }", class: 'form-control form-label badge-secondary'
                 .form-group
-                  .row
-                    .col-md-8
-                      =f.label 'Follows category', class: 'form-control form-label badge-secondary'
-                    .col-md-4
-                      =f.label 'Categories', value: @count_follows_categories, class: 'form-control badge-primary'
+                  .col-md-12
+                    =f.label "#{t('profile.created_category')}#{ @count_categories }", class: 'form-control form-label badge-secondary'
                 .form-group
-                  .row
-                    .col-md-8
-                      =f.label 'Created category', class: 'form-control form-label badge-secondary'
-                    .col-md-4
-                      =f.label 'Categories', value: @count_categories, class: 'form-control badge-primary'
+                  .col-md-12
+                    =f.label "#{t('profile.follows_category')}#{ @count_follows_categories }", class: 'form-control form-label badge-secondary'
         .row
           .container-edit-form
             .form-row

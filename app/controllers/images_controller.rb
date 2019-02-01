@@ -1,4 +1,5 @@
 class ImagesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_image, only: [:show, :new_like, :delete_like]
   before_action :parent, only: [:new, :create, :new_like, :delete_like, :show]
 
@@ -34,7 +35,7 @@ class ImagesController < ApplicationController
 
   def new_like
     @like = Like.new(user_id: current_user.id, image_id: @image.id)
-    # redirect_to category_image_path(@category.slug) if @like.save
+    redirect_to category_image_path(@category.slug) if @like.save
     @like.save
     activity('like')
   end

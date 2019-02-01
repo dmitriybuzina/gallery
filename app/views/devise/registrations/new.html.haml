@@ -24,6 +24,6 @@
           = f.password_field :password_confirmation, autocomplete: 'current-password', class: 'form-control form-new-session'
         .form-group
           = f.submit t('form.sign up'), class: 'btn btn-primary'
-        -#  = flash[:recaptcha_error]
-        -#  = recaptcha_tags
+          -#= flash[:recaptcha_error]
+          -#= recaptcha_tags
       = render 'devise/shared/links'

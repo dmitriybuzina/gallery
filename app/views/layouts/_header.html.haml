@@ -1,5 +1,6 @@
 %nav.navbar.navbar-expand-lg.navbar-light.bg-company-sky.flex-row
-  %a.navbar-brand{:href => root_path} Gallery
+  %a.navbar-brand{:href => root_path}
+    =t('layouts.header.title')
   %button.navbar-toggler{"aria-controls" => "navbarNavDropdown", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavDropdown", "data-toggle" => "collapse", :type => "button"}
     %span.navbar-toggler-icon
   #navbarNavDropdown.collapse.navbar-collapse
@@ -23,7 +24,6 @@
       -else
         %li{class: "nav-item#{" active" if I18n.locale == :ru}"}
           = link_to "Рус", { locale: :ru }, class: "nav-link"
-
       - unless user_signed_in?
         .nav-item
           %a.nav-link{ :href => new_user_session_path }
@@ -38,20 +38,23 @@
                 -else
                   = image_tag(current_user.avatar.url, class: 'icon')
                 =current_user.email
-                -#= image_tag('caret-bottom.png')
             %ul.dropdown-menu
               %li.well{ :align => "center" }
-                %div
+                %div{ class: 'nav-profile' }
                   -unless current_user.avatar.url.present?
                     = image_tag('profile.png', class: 'avatar')
                   -else
                     %span
                       = image_tag(current_user.avatar.url, class: 'avatar')
                   %span
-                    = current_user.first_name
-                    = current_user.last_name
-                = link_to(t('.log_out'), destroy_user_session_path, method: :delete)
-                = link_to(t('.settings'), edit_user_registration_path)
+                    %h1
+                      = current_user.first_name
+                      = current_user.last_name
+                .row{ class: 'nav-profile' }
+                  .col-6
+                    = button_to t('.log_out'), destroy_user_session_path, method: :delete, class: 'btn btn-primary'
+                  .col-6
+                    = button_to t('.settings'), edit_user_registration_path, method: :get, class: 'btn btn-primary'
 
 
 

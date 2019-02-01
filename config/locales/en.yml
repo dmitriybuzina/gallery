@@ -30,6 +30,16 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  profile:
+    upload_images: 'Upload images: '
+    follows_category: 'Follows_category: '
+    created_category: 'Created category: '
+  welcome:
+    categories: 'Categories'
+    images: 'Images'
+    more and more: 'More and more images!'
+    awesome_gallery: 'AWESOME GALLERY'
+    go in: 'go in with us'
   layouts:
     header:
       title: 'Gallery'
@@ -50,6 +60,7 @@ en:
         name: 'Name'
     show:
       model:
+        enter_name: 'Enter name'
         name: 'Name'
         choose file: 'Choose file'
         create image: 'Upload image'

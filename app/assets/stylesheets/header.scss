@@ -55,5 +55,11 @@ nav.navbar {
 }
 
 .nav-profile {
-  clear: both;
+  min-width: 300px;
+}
+
+@media screen and (max-width: 1000px) {
+  .nav-profile  {
+    max-width: 200px;
+  }
 }

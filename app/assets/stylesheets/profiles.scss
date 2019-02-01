@@ -1,19 +1,16 @@
 // Place all the styles related to the Profiles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.container-profile{
-
-}
 
 .avatar {
-  //vertical-align: middle;
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   text-align: right;
+  margin: 10px;
 }
 
-h1{
+h1 {
   text-align: center;
 }
 
@@ -22,7 +19,7 @@ h1{
   width: 100%;
   background: url('back7.jpg') center no-repeat;
   background-size: cover;
-  min-height: 140vh;
+  min-height: 160vh;
   padding-top: 3%;
 }
 
@@ -39,7 +36,6 @@ h1{
   border-radius: 10px;
 
   margin-right: 20%;
-  //margin-top: auto;
   margin-left: 20%;
   padding-top: 3%;
   padding-bottom: 3%;
@@ -56,25 +52,21 @@ h1{
 }
 
 .container-info-profile {
-  margin-left: 5%;
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
   margin-top: 10%;
-  //background-color: rgba(0,0,0,0.2);
   border-radius: 10px;
 }
 
 .form-label {
-  width: 200px;
+  width: 220px;
+  margin: auto;
 }
 
 .container-edit-form {
-  //background-color: rgba(0,0,0,0.2);
   margin: auto;
   padding-top: 2%;
-  //border-radius: 10px;
-  //padding: 10px;
-  //min-width: 800px;
-  //height: auto;
 }
 
 #user_avatar{
@@ -84,11 +76,10 @@ h1{
   height: 300px;
 }
 
-
 @media screen and (max-width: 1500px) and (min-width: 1100px) {
   .wrapper-avatar-info {
-    margin-right: 10%;
-    margin-left: 10%;
+    margin-right: 15%;
+    margin-left: 15%;
   }
   .container-edit {
     margin-right: 10%;
@@ -98,13 +89,19 @@ h1{
 
 @media screen and (max-width: 1099px) {
   .wrapper-avatar-info {
-    display: block;
+      margin-right: 8%;
+      margin-left: 8%;
+  }
+
+  .container-edit {
+    margin-right: 5%;
+    margin-left: 5%;
   }
 }
 
 @media screen and (max-width: 750px) {
   .body-edit-registration {
-    min-height: 300vh;
+    min-height: 250vh;
   }
 }
 

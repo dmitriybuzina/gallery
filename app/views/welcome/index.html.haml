@@ -10,9 +10,9 @@
       .welcome-info
         .back
           %h1
-            AWESOME GALLERY
+            =t('welcome.awesome_gallery')
           %p
-            go in with us
+            =t('welcome.go in')
       .carousel-item.active
         =image_tag('back5.jpg', class: 'carousel-image')
       .carousel-item
@@ -28,12 +28,12 @@
 
   .second-page
     %h1.txt
-      Categories
+      =t('welcome.categories')
     .row
       -@categories.each do |category|
         -if(category.main_image)
           .welcome-category
-            .col-12.col-md-3.col-sm-6
+            .col-12.col-md-3
               = link_to image_tag(category.main_image, class: 'img-category-welcome'), category_path(category)
               .name-welcome-category
                 %h1.centered
@@ -48,7 +48,7 @@
     -#          %h1.centered
     -#            = link_to category.name, category_path(category)
     %h1.txt
-      Images
+      =t('welcome.images')
     .welcome-images
       - @images.each do |image|
         .welcome-image
@@ -57,7 +57,7 @@
 
   .third-page
     %h1.centered
-      More and more images!
+      =t('welcome.more and more')
 
 
 

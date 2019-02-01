@@ -3,6 +3,6 @@
     .form-category
       -#= f.label t('categories.index.modal.name'), class: 'form-control'
       = f.file_field :file, class: 'form-control-file border border-white', placeholder: 'Chose file', style: 'margin-bottom: 5px'
-      = f.text_field :name, class: 'form-control', placeholder: 'Enter name'
+      = f.text_field :name, class: 'form-control', placeholder: t('categories.show.model.enter_name')
       -#= f.label :file, class: 'form-control'
       = f.submit t('categories.show.model.create image'), class: 'form-control btn btn-primary'
