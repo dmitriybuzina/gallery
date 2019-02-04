@@ -6,23 +6,12 @@
   height: 550px;
   z-index: 0;
   width: 100%;
-  //height: 20%;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
-h1 {
-  font-size: 180%;
-  font-family: "Lucida Console", Monaco, monospace;
-}
-
-p {
-  font-family: "Lucida Console", Monaco, monospace;
-}
-
 .body-welcome {
-  //padding-top: 60px;
   position: relative;
   z-index: 0;
 }
@@ -64,12 +53,8 @@ p {
 }
 
 .back {
+  padding: 13% 16% 13% 16%;
   border-radius: 15px;
-  //padding: 5%;
-  padding-top: 13%;
-  padding-right: 16%;
-  padding-bottom: 13%;
-  padding-left: 16%;
   background: white;
   position: absolute;
   top: 50%;
@@ -79,8 +64,6 @@ p {
 }
 
 .second-page {
-  //background: url("back7.jpg") center no-repeat;
-  //background-size: cover;
   height: auto;
   width: 80%;
   position: relative;
@@ -101,8 +84,6 @@ p {
 }
 
 .welcome-image {
-  position: relative;
-  //padding:10px;
   margin:10px;
   display: inline-block;
   opacity: 1;
@@ -148,8 +129,6 @@ h1.txt {
 .img-category-welcome {
   height: 220px;
   width: 250px;
-  //width: auto;
-  //height: 220px;
 }
 
 .content {
@@ -158,11 +137,6 @@ h1.txt {
   left: 50%;
   transform: translate(-50%, -50%)
 }
-
-//@media screen and (min-width: 769px) and (max-width: 1300px) {
-//  .welcome-categories [
-//
-//}
 
 @media screen and (max-width: 768px) {
 

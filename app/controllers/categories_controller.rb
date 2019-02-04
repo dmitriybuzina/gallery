@@ -21,13 +21,9 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    # respond_to do |format|
-    #   format.js { render :edit }
-    # end
   end
 
   def create
-    # @category = current_user.categories.new(category_params)
     @category = Category.new(category_params)
     @category.user_id = current_user.id
     @category.counter = 0
