@@ -20,13 +20,6 @@
           = link_to category.name, category_path(category)
   = paginate @categories
 
--#%button{ 'id'=>'button_category', 'data-target' => '#categories_modal', 'data-toggle' => 'modal' }
--#  = image_tag('new_category.png', width: "200", height: "200")
--#%br/
-
--#= link_to 'New Category', new_category_path
--#= link_to 'Home', welcome_index_path
-
 -#= render 'layouts/modal', modal_id: 'categories_modal' do
 -#  = render 'categories/edit'
 

@@ -39,14 +39,6 @@
                 %h1.centered
                   = link_to category.name, category_path(category)
 
-    -#.welcome-categories
-    -#  - @categories.each do |category|
-    -#    -if(category.main_image)
-    -#      .welcome-category
-    -#        = link_to image_tag(category.main_image, class: 'img-category-welcome'), category_path(category)
-    -#        .name-welcome-category
-    -#          %h1.centered
-    -#            = link_to category.name, category_path(category)
     %h1.txt
       =t('welcome.images')
     .welcome-images

@@ -20,8 +20,5 @@
                 %div{ style: '  display: flex; justify-content: center;' }
                   = recaptcha_tags
         .form-group
-          -#= flash[:recaptcha_error]
-          -#= recaptcha_tags
           = f.submit  t('form.sign in'), class: 'btn btn-primary'
-        -#= link_to t('sessions.home'), welcome_index_path
       = render 'devise/shared/links'

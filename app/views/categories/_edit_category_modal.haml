@@ -4,6 +4,5 @@
       .modal-header
         %button.close{"data-dismiss" => "modal", type: "button"} ×
       .modal-body
-        -#=render 'categories/edit', category: @category
         %span
           = render 'form', category: @category
